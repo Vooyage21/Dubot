@@ -13,7 +13,7 @@
 
 • `pip install pyUltroid`
 
- • `git clone https://github.com/ionmusic/Kazu-Ubot`
+ • `git clone nama repo`
 
  • `cd Kazu-Ubot`
 
@@ -29,11 +29,11 @@
   - ketik ctrl + S
   - ctrl + X
 
- • `screen -S Kazu`
+ • `screen -S nama repo`
 
  • `bash startup`
 
 </details>
 
-<p><a href="https://heroku.com/deploy?template=https://github.com/ionmusic/Kazu-Ubot"><img src="https://img.shields.io/badge/BUAT DI-HEROKU-aqua?style=plastic&logo=heroku&logoColor=gold"width="300" /></a></p>
+<p><a href="https://heroku.com/deploy?template=https://github.com/"><img src="https://img.shields.io/badge/BUAT DI-HEROKU-aqua?style=plastic&logo=heroku&logoColor=gold"width="300" /></a></p>
 
