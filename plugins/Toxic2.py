@@ -10,7 +10,7 @@
 
 •`{i}yatim`
 
-•`{i}kont`
+•`{i}komto`
     Coba aja sendiri.
 """
 
@@ -95,7 +95,7 @@ async def _(event):
 
 @kazu_cmd(outgoing=True, pattern="yatim")
 async def _(event):
-    xx = await event.eor("`Hai Anak YATIMM 🙈, Jangan Lupa Makan Yaa`")
+    xx = await event.eor("`HALLOOO ANAK YATIMM, Jangan Lupa Makan Yaa`")
     sleep(1)
     await event.eor("`Jangan Bilang Lu Ga Dikasih Makan Sama Ortu 😁`")
     sleep(1)
@@ -116,30 +116,30 @@ async def _(event):
     await event.eor("`Tapi Bo'ong KWKWKW`")
 # Create by myself @localheart
 
-@kazu_cmd(outgoing=True, pattern="kont")
+@kazu_cmd(outgoing=True, pattern="komto")
 async def _(event):
-    xx = await event.eor("**KONTOL!**")
+    xx = await event.eor("**EHHH EHH KONTULL**")
     sleep(1.5)
-    await event.eor("**LU ITU KONTOL!**")
+    await event.eor("**KAU ITU KUNTUL NYA KECIL**")
     sleep(1.5)
-    await event.eor("**DI BIKIN DARI KONTOL!**")
+    await event.eor("**JANGAN BELAGU!! PAHAM LU**")
     sleep(1.5)
-    await event.eor("**MUKALU PERSIS KONTOLL!**")
+    await event.eor("**KUNTUL KECIL SO SO AN HANTAM SINI HANTAM SANA**")
     sleep(1.5)
-    await event.eor("**DASAR ANAK NGONTOLLLL**")
+    await event.eor("**DASAR ANAK KOONTOLLLL**")
     sleep(1.5)
-    await event.eor("**NOLEP KONTOLL**")
+    await event.eor("**UDAH ANAK KONTOLL PENYENDIRI LAGI**")
     sleep(1.5)
-    await event.eor("**NGERUSUH KONTOLL**")
+    await event.eor("**IWWWW**")
     sleep(1.5)
-    await event.eor("**BENER BENER KONTOLL**")
+    await event.eor("**PANTAS MAIN TELE BIAR APA?? BIAR JAGO?**")
     sleep(1.5)
     await event.eor("**PADAHAL LO GAPUNYA KONTOLL**")
     sleep(1.5)
-    await event.eor("**MENDING LO OPERASI KONTOLL**")
+    await event.eor("**MENDING LO IKUT GW**")
     sleep(1.5)
-    await event.eor("**BIAR LO PUNYA KONTOLL**")
+    await event.eor("**GW TENDANG KNTLLL LU**")
     sleep(1.5)
-    await event.eor("**KASIAN CACAD GAPUNYA KONTOLL**")
+    await event.eor("**BIAR CACADDD GA SANGE SANA SINI BLOKK**")
     sleep(1.5)
-    await event.eor("**EH IYA LUPA TOLOL MULUT LU KEK KONTOLll ANJINGG!**")
+    await event.eor("**LUU NGELAWAN GW PECAH KONTOLL LU PAHAM!**")
