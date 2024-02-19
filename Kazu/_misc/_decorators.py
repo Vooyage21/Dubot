@@ -167,7 +167,7 @@ def kazu_cmd(
                 LOGS.exception(e)
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 naam = get_display_name(chat)
-                ftext = "**Kazu Client Error:** `Forward this to` @SpotifyStream_Id\n\n"
+                ftext = "**Dante Client Error:** `Forward this to` @SpotifyStream_Id\n\n"
                 ftext += f"**Dante Version:** `{str(pyver)}"
                 ftext += "`\n**Userbot Version:** `" + str(kazu_ver)
                 ftext += "`\n**Telethon Version:** `" + str(telever)
