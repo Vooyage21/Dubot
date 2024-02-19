@@ -36,13 +36,13 @@ async def _help(kazu):
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["Official"][plug]:
                     output += i
-                output += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
+                output += "\nᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
                 await kazu.eor(output)
             elif HELP.get("Addons") and plug in HELP["Addons"]:
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["Addons"][plug]:
                     output += i
-                output += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
+                output += "\nᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
                 await kazu.eor(output)
             else:
                 try:
@@ -50,7 +50,7 @@ async def _help(kazu):
                     for d in LIST[plug]:
                         x += HNDLR + d
                         x += "\n"
-                    x += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
+                    x += "\nᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
                     await kazu.eor(x)
                 except BaseException:
                     file = None
