@@ -57,21 +57,21 @@ async def get_readable_time(seconds: int) -> str:
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    ping = await eor(ping, "**✧**")
-    await ping.edit("**✧✧**")
-    await ping.edit("**✧✧✧**")
-    await ping.edit("**✧✧✧✧**")
-    await ping.edit("**✧✧✧✧✧**")
+    ping = await eor(ping, "**🖕**")
+    await ping.edit("**🫰**")
+    await ping.edit("**⚡**")
+    await ping.edit("**🖖**")
+    await ping.edit("**🖕**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     user = await ping.client.get_me()
     await ping.edit("⚡")
     sleep(3)
     await ping.edit(
-        f"**✧ 𝙺𝙰𝚉𝚄 𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ✧**\n\n"
-        f"✧ **𝙿𝙸𝙽𝙶𝙴𝚁 :** `%sms`\n"
-        f"✧ **𝚄𝙿𝚃𝙸𝙼𝙴 :** `{uptime}` \n"
-        f"✧ **𝙾𝚆𝙽𝙴𝚁 :** [{user.first_name}](tg://user?id={user.id})" % (duration)
+        f"**Dante UBot**\n\n"
+        f"**Ping!! :** `%sms`\n"
+        f"**UpTime :** `{uptime}` \n"
+        f"**Owner :** {user.first_name} (tg://user?id={user.id})" % (duration)
     )
 
 
@@ -102,38 +102,38 @@ async def _(ping):
     duration = (end - start).microseconds / 1000
     user = await ping.client.get_me()
     await lping.edit(
-        f"❃ **Ping !!** "
+        f"**Ping !!** "
         f"`%sms` \n"
-        f"❃ **Uptime -** "
+        f"**Uptime -** "
         f"`{uptime}` \n"
-        f"**✦҈͜͡➳ Master :** [{user.first_name}](tg://user?id={user.id})" % (duration)
+        f"**Master :** [{user.first_name}](tg://user?id={user.id})" % (duration)
     )
 
 
-@kazu_cmd(pattern="keping$")
+@kazu_cmd(pattern="Dping$")
 @devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Kping$")
 async def _(pong):
     await get_readable_time((time.time() - StartTime))
     start = datetime.now()
     kopong = await eor(pong, "**P**")
     await kopong.edit("**WOI**")
-    await kopong.edit("**AWAS LU LIHAT NIH**")
-    await kopong.edit("**NIH 🫰**")
+    await kopong.edit("**⚡**")
+    await kopong.edit("**🫰**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     user = await pong.client.get_me()
     await kopong.edit(
         f"**NIH** "
-        f"\nDANTE UBOT `%sms` \n"
-        f"**✲ 𝙱𝙸𝙹𝙸 𝙿𝙴𝙻𝙴𝚁** "
-        f"\nSALKEN!『[{user.first_name}](tg://user?id={user.id})』 \n" % (duration)
+        f"\nDante UBot `%sms` \n"
+        f"**Yoo!!** "
+        f"\nSalken! Saya {user.first_name} (tg://user?id={user.id})』 \n" % (duration)
     )
 
 
 # .keping & kping Coded by Koala
 
 
-@kazu_cmd(pattern=r"kaz$")
+@kazu_cmd(pattern=r"Dan$")
 @devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Kaz$")
 async def _(pong):
     uptime = await get_readable_time((time.time() - StartTime))
@@ -151,7 +151,7 @@ async def _(pong):
     await kping.edit("🫰")
     sleep(3)
     await kping.edit(
-        f"**ᴜʙᴏᴛ ᴅᴀɴᴛᴇ!! 🫰**\n**𝙿𝙸𝙽𝙶** : %sms\n**𝙱𝙾𝚃 𝚄𝙿𝚃𝙸𝙼𝙴** : {uptime}🕛" % (duration)
+        f"**ᴜʙᴏᴛ ᴅᴀɴᴛᴇ!! 🫰**\n**Ping!!** : %sms\n**Uptime** : {uptime}🕛" % (duration)
     )
 
 
