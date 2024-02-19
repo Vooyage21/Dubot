@@ -51,15 +51,15 @@ from . import (
     kazu_cmd,
 )
 
-@kazu_cmd(pattern="zu$")
+@kazu_cmd(pattern="Tt$")
 async def _(event):
     xx = await event.eor("Aku")
     sleep(3)
     await xx.edit("Cuma Mau Bilang")
     sleep(2)
-    await xx.edit("Kalo Bang Kazu ...")
+    await xx.edit("Kalo Dante Itu...")
     sleep(1)
-    await xx.edit("Ganteng Banget")
+    await xx.edit("Setia Mhehe")
 
 
 # Create by myself @localheart
@@ -107,14 +107,14 @@ async def _(event):
     sleep(1.5)
     await xx.edit("MENTAL TEMPE")
     sleep(1.5)
-    await xx.edit("LEMBEK NGENTOT🔥")
+    await xx.edit("LEMBEK.")
 
 
 @kazu_cmd(pattern="pp$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
-        "PASANG PP DULU GOBLOK,BIAR ORANG-ORANG PADA TAU BETAPA HINA NYA MUKA LU 😆",
+        "PASANG PP DULU GOBLOK,BIAR ORANG-ORANG PADA TAU BETAPA JELEK NYA MUKA LU!",
         reply_to=event.reply_to_msg_id,
     )
     await event.delete()
@@ -212,11 +212,11 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="quen$")
+@kazu_cmd(pattern="Az$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
-        "Queen Mau Bilang Bang Riz Ganteng",
+        "P ADU NASIP?",
         reply_to=event.reply_to_msg_id,
     )
     await event.delete()
@@ -226,7 +226,7 @@ async def _(event):
 async def _(event):
     await event.client.send_message(
         event.chat_id,
-        "SOKAB BET LU GOBLOK, KAGA ADA ISTILAH NYA BAWAHAN TEMENAN AMA BOS!!",
+        "SOKAB BET LU, EMG KITA KENAL??!",
         reply_to=event.reply_to_msg_id,
     )
     await event.delete()
