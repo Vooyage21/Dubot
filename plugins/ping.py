@@ -193,6 +193,6 @@ async def _(pong):
     await xx.edit("Waalaikumsalam.....")
     end = datetime.now()
     duration = (end - start).microseconds / 9000
-    await xx.edit("🔊")
+    await xx.edit("Tunggu...")
     sleep(3)
     await xx.edit("**𝙿𝙸𝙽𝙶!**\n`%sms`" % (duration))
