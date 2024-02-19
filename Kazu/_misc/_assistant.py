@@ -21,20 +21,20 @@ from . import append_or_update, owner_and_sudos
 OWNER = kazu_bot.full_name
 
 MSG = f"""
-**ᴋᴀᴢᴜ ᴜʙᴏᴛ​**
+**ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​**
 ➖➖➖➖➖➖➖➖➖➖
 **Owner**: [{OWNER}](tg://user?id={kazu_bot.uid})
-**Support**: @kazusupportgrp
+**Support**: @SpotifyStream_Id
 ➖➖➖➖➖➖➖➖➖➖
 """
 
 IN_BTTS = [
     [
         Button.url(
-            "Repository",
-            url="https://github.com/ionmusic/Kazu-Ubot",
+            "Channels",
+            url="https://t.me/SpotifyStreamMusic",
         ),
-        Button.url("Support", url="https://t.me/kazusupportgrp"),
+        Button.url("Support", url="https://t.me/SpotifyStream_Id"),
     ]
 ]
 
@@ -91,12 +91,12 @@ def in_pattern(pattern=None, owner=False, **kwargs):
             if owner and event.sender_id not in owner_and_sudos():
                 res = [
                     await event.builder.article(
-                        title="ᴋᴀᴢᴜ ᴜʙᴏᴛ​",
-                        url="https://t.me/kazusupportgrp​",
-                        description="© ᴋᴀᴢᴜ ᴜʙᴏᴛ",
+                        title="ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​",
+                        url="https://t.me/SpotifyStreamMusic",
+                        description="ᴅᴀɴᴛᴇ ᴜʙᴏᴛ",
                         text=MSG,
                         thumb=InputWebDocument(
-                            "https://graph.org//file/d854abd533a783c6642b1.jpg",
+                            "https://mallucampaign.in/images/img_1708349297.jpg",
                             0,
                             "image/jpeg",
                             [],
@@ -127,7 +127,7 @@ def in_pattern(pattern=None, owner=False, **kwargs):
                                 title="Unhandled Exception has Occured!",
                                 text=error_text(),
                                 buttons=Button.url(
-                                    "Report", "https://t.me/kazusupportgrp"
+                                    "Report", "https://t.me/SpotifyStream_Id"
                                 ),
                             )
                         ]
