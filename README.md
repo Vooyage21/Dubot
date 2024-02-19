@@ -15,7 +15,7 @@
 
  • `git clone nama repo`
 
- • `cd Kazu-Ubot`
+ • `cd Xy`
 
  • `pip3 install requirements.txt`
  
