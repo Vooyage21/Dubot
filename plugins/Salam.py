@@ -69,9 +69,9 @@ async def _(event):
     
 @kazu_cmd(pattern="kg$")
 async def _(event):
-    xx = await event.eor("**Lu kenapa Begitu ?**")
+    xx = await event.eor("**Nih Gw Pantun,Buah Apel Buah Kedondong**")
     sleep(2)
-    await xx.edit("**Keren Lu Begitu ?**")
+    await xx.edit("**Senggol Dong!!!**")
 
 @kazu_cmd(pattern="hm$")
 async def _(event):
