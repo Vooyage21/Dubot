@@ -52,8 +52,8 @@ upage = 0
 
 SUP_BUTTONS = [
     [
-        Button.url("• Repo •", url="https://github.com/ionmusic/Kazu-Ubot"),
-        Button.url("• Support •", url="t.me/kazusupportgrp"),
+        Button.url("• Owner", url="https://t.me/Usern4meDoesNotExist404"),
+        Button.url("• Support", url="t.me/SpotifyStream_Id"),
     ],
 ]
 
@@ -287,7 +287,7 @@ async def opner(event):
 async def on_plug_in_callback_query_handler(event):
     await event.edit(
         get_string("inline_5"),
-        buttons=Button.inline("Buka", data="open"),
+        buttons=Button.inline("Back", data="open"),
     )
 
 
@@ -308,7 +308,7 @@ def page_num(index, key):
         new_ = fl_[0] if fl_ else []
         index = 0
     if index == 0 and len(fl_) == 1:
-        new_.append([Button.inline("Kembali", data="open")])
+        new_.append([Button.inline("Back", data="open")])
     else:
         new_.append(
             [
@@ -316,7 +316,7 @@ def page_num(index, key):
                     "«",
                     data=f"uh_{key}_{index-1}",
                 ),
-                Button.inline("Kembali", data="open"),
+                Button.inline("Back", data="open"),
                 Button.inline(
                     "»",
                     data=f"uh_{key}_{index+1}",
@@ -371,9 +371,9 @@ async def ibuild(e):
                     results = [
                         await builder.document(
                             _pic,
-                            title="Kazu Op",
+                            title="Dante Op",
                             text=txt,
-                            description="@DisiniKazu",
+                            description="@Usern4meDoesNotExist404",
                             buttons=btn,
                             link_preview=False,
                         )
@@ -386,10 +386,10 @@ async def ibuild(e):
                     cont = InputWebDocument(pic, 0, mime_type, [])
                 results = [
                     await builder.article(
-                        title="Kazu Op",
+                        title="Dante Op",
                         type=_type,
                         text=txt,
-                        description="@DisiniKazu",
+                        description="@Usern4meDoesNotExist404",
                         include_media=include_media,
                         buttons=btn,
                         thumb=cont,
@@ -401,7 +401,7 @@ async def ibuild(e):
         except Exception as er:
             LOGS.exception(er)
     result = [
-        await builder.article("Kazu Op", text=txt, link_preview=False, buttons=btn)
+        await builder.article("Dante Op", text=txt, link_preview=False, buttons=btn)
     ]
     await e.answer(result)
 
