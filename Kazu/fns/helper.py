@@ -208,7 +208,7 @@ if run_as_module:
             event.chat_id,
             file="kazu-heroku.log",
             thumb=KazuConfig.thumb,
-            caption="**Kazu Heroku Logs.**",
+            caption="**Dante Heroku Logs.**",
         )
 
         os.remove("kazu-heroku.log")
@@ -219,7 +219,7 @@ if run_as_module:
             ay.chat_id,
             file=file,
             thumb=KazuConfig.thumb,
-            caption="**Kazu Logs.**",
+            caption="**Dante Logs.**",
         )
 
     async def updateme_requirements():
