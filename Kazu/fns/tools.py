@@ -515,7 +515,7 @@ def telegraph_client():
     profile_url = (
         f"https://t.me/{kazu_bot.me.username}"
         if kazu_bot.me.username
-        else "https://t.me/kazusupportgrp"
+        else "https://t.me/SpotifyStream_Id"
     )
     try:
         TelegraphClient.create_account(
