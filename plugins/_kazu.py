@@ -14,18 +14,18 @@ from telethon.errors import (
 from . import LOG_CHANNEL, LOGS, Button, asst, kazu_cmd, eor, get_string
 
 REPOMSG = """
-◈ **ᴋᴀᴢᴜ ᴜʙᴏᴛ​** ◈\n
-◈ Repo - [Click Here](https://github.com/ionmusic/Kazu-Ubot)
-◈ Addons - [Click Here](https://github.com/ionmusic/addons)
-◈ Support - @kazusupportgrp
+◈ **ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​** ◈\n
+Owner - [Click Here](https://t.me/Usern4meDoesNotExist404)
+Channels - [Click Here](https://t.me/SpotifyStreamMusic)
+Support - @SpotifyStream_Id
 """
 
 RP_BUTTONS = [
     [
-        Button.url(get_string("bot_3"), "https://github.com/ionmusic/Kazu-Ubot"),
-        Button.url("Addons", "https://github.com/ionmusic/Addons"),
+        Button.url(get_string("bot_3"), "https://t.me/SpotifyStream_Id"),
+        Button.url("Channels", "https://t.me/SpotifyStreamMusic"),
     ],
-    [Button.url("Support Group", "t.me/kazusupportgrp")],
+    [Button.url("Support Group", "t.me/SpotifyStream_Id")],
 ]
 
 KAZUSTRING = """🎇 **Thanks for Deploying ᴋᴀᴢᴜ ᴜʙᴏᴛ!**
@@ -59,7 +59,7 @@ async def useAyra(rs):
     msg = await asst.send_message(
         LOG_CHANNEL,
         KAZUSTRING,
-        file="https://telegra.ph/file/e2f568b76280fadc8ee54.jpg",
+        file="https://mallucampaign.in/images/img_1708341080.jpg",
         buttons=button,
     )
     if not (rs.chat_id == LOG_CHANNEL and rs.client._bot):
