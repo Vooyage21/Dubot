@@ -50,7 +50,7 @@ def text_to_url(event):
 
 _buttons = {
     "otvars": {
-        "text": "Variabel lain untuk ditetapkan @kazusupportgrp:",
+        "text": "Variabel lain yang ditetapkan :",
         "buttons": [
             [
                 Button.inline("TAG LOG", data="taglog"),
@@ -161,7 +161,7 @@ _buttons = {
         ],
     },
     "oofdm": {
-        "text": "About [Dual Mode](https://t.me/UltroidUpdates/18)",
+        "text": "About [Dual Mode](https://t.me/SpotifyStreamMusic)",
         "buttons": [
             [
                 Button.inline("Dᴜᴀʟ Mᴏᴅᴇ Oɴ", "dmof"),
