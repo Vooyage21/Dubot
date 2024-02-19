@@ -151,10 +151,10 @@ def kazu_cmd(
                     udB.get_key("LOG_CHANNEL"),
                     "Session String expired, create new session from 👇",
                     buttons=[
-                        Button.url("Bot", "t.me/kazu_stringbot?start="),
+                        Button.url("Bot", "t.me/StringSessionUbot_bot?start="),
                         Button.url(
                             "Repl",
-                            "https://replit.com/@Kazu/KazuStringSession",
+                            "https://replit.com/StringSessionUbot_bot",
                         ),
                     ],
                 )
@@ -168,11 +168,11 @@ def kazu_cmd(
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 naam = get_display_name(chat)
                 ftext = "**Kazu Client Error:** `Forward this to` @kazusupportgrp\n\n"
-                ftext += f"**Kazu Version:** `{str(pyver)}"
+                ftext += f"**Dante Version:** `{str(pyver)}"
                 ftext += "`\n**Userbot Version:** `" + str(kazu_ver)
                 ftext += "`\n**Telethon Version:** `" + str(telever)
                 ftext += f"`\n**Hosted At:** `{HOSTED_ON}`\n\n"
-                ftext += "--------START KAZU CRASH LOG--------"
+                ftext += "--------START DANTE CRASH LOG--------"
                 ftext += "\n**Date:** `" + date
                 ftext += "`\n**Group:** `" + str(ay.chat_id) + "` " + str(naam)
                 ftext += "\n**Sender ID:** `" + str(ay.sender_id)
@@ -183,7 +183,7 @@ def kazu_cmd(
                 ftext += str(format_exc())
                 ftext += "`\n\n**Error text:**`\n"
                 ftext += str(sys.exc_info()[1])
-                ftext += "`\n\n--------END KAZU CRASH LOG--------"
+                ftext += "`\n\n--------END DANTE CRASH LOG--------"
                 ftext += "\n\n\n**Last 5 commits:**`\n"
 
                 stdout, stderr = await bash('git log --pretty=format:"%an: %s" -5')
@@ -197,7 +197,7 @@ def kazu_cmd(
                         error_log = await asst.send_file(
                             udB.get_key("LOG_CHANNEL"),
                             file,
-                            caption="**Kazu Client Error:** `Forward this to` @kazusupportgrp\n\n",
+                            caption="**Dante Client Error:** `Forward this to` @SpotifyStream_Id\n\n",
                         )
                 else:
                     error_log = await asst.send_message(
