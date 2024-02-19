@@ -181,7 +181,7 @@ def devs_cmd(**args):
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
                     text = "**✘ KAZU-UBOT ERROR REPORT ✘**\n\n"
-                    link = "[Group Support](https://t.me/kazusupportgrp)"
+                    link = "[Group Support](https://t.me/)"
                     text += "Jika mau, Anda bisa melaporkan error ini, "
                     text += f"Cukup forward saja pesan ini ke {link}.\n\n"
 
