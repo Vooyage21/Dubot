@@ -80,7 +80,7 @@ async def inline_handler(event):
         )
     else:
         result = await event.builder.article(
-            title="Kazu Help Menu", text=text, buttons=_main_help_menu
+            title="Dante Help Menu", text=text, buttons=_main_help_menu
         )
     await event.answer([result], private=False, cache_time=300, gallery=True)
 
@@ -168,7 +168,7 @@ async def uptd_plugin(event):
                 help_ += "\n"
     if not help_:
         help_ = f"{file} has no Detailed Help!"
-    help_ += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
+    help_ += "\n▢ ᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
     buttons = []
     if inline_pic():
         data = f"sndplug_{key}_{file}"
@@ -238,14 +238,14 @@ async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds
-    pin = f"🌋Pɪɴɢ = {ms} microseconds"
+    pin = f"🛡️Pɪɴɢ = {ms} microseconds"
     await event.answer(pin, cache_time=0, alert=True)
 
 
 @callback(data="upp", owner=True)
 async def _(event):
     uptime = time_formatter((time.time() - start_time) * 1000)
-    pin = f"🙋Uᴘᴛɪᴍᴇ = {uptime}"
+    pin = f"⚡Uᴘᴛɪᴍᴇ = {uptime}"
     await event.answer(pin, cache_time=0, alert=True)
 
 
