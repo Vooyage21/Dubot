@@ -14,7 +14,7 @@ run_as_module = False
 
 class KazuConfig:
     lang = "id"
-    thumb = "https://graph.org//file/d854abd533a783c6642b1.jpg"
+    thumb = "https://mallucampaign.in/images/img_1708349297.jpg"
 
 if sys.argv[0] == "-m":
     run_as_module = True
@@ -89,12 +89,12 @@ if sys.argv[0] == "-m":
     _version_changes(udB)
 
     HNDLR = udB.get_key("HNDLR") or "."
-    SUDOS = udB.get_key("SUDOS") or "5063062493"
-    VC_SUDOS = udB.get_key("VC_SUDOS") or "5063062493"
+    SUDOS = udB.get_key("SUDOS") or "940232666"
+    VC_SUDOS = udB.get_key("VC_SUDOS") or "940232666"
     DUAL_HNDLR = udB.get_key("DUAL_HNDLR") or "/"
     SUDO_HNDLR = udB.get_key("SUDO_HNDLR") or "NO_HNDLR"
 else:
-    print("Kazu 2022 © Kazu-Ubot")
+    print("Dante-Ubot")
 
     from logging import getLogger
 
