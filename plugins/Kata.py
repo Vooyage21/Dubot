@@ -134,15 +134,15 @@ async def _(event):
 async def _(event):
     await event.client.send_message(
         event.chat_id,
-        "◈ ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ​ ᴀᴄᴛɪᴠᴇᴅ ◈",
+        "Dante Userbot Active!",
         reply_to=event.reply_to_msg_id,
     )
     
-@kazu_cmd(pattern="riz$")
+@kazu_cmd(pattern="Dante$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
-        "**Mmuuaahh😘**",
+        "**Mmuuaahh🥹**",
         reply_to=event.reply_to_msg_id,
     )
     await event.delete()
