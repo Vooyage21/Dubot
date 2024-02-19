@@ -169,14 +169,14 @@ async def _(e):
 async def repo(e):
     res = [
         await e.builder.article(
-            title="Kazu Ubot",
+            title="Dante Ubot",
             description="Ubot | Telethon",
             thumb=wb(kazupic, 0, "image/jpeg", []),
-            text="**◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ​ ◈**",
+            text="**ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​**",
             buttons=SUP_BUTTONS,
         ),
     ]
-    await e.answer(res, switch_pm="Kazu Repo.", switch_pm_param="start")
+    await e.answer(res, switch_pm="Repo.", switch_pm_param="start")
 
 
 @in_pattern("go", owner=True)
@@ -574,8 +574,8 @@ async def inline_tl(ay):
             [
                 await ay.builder.article(
                     title="How to Use?",
-                    description="Tl Searcher by Kazu",
-                    url="https://t.me/stufsupport",
+                    description="By Dante",
+                    url="https://t.me/SpotifyStream_Id",
                     text=text,
                 )
             ],
@@ -598,7 +598,7 @@ async def inline_tl(ay):
                 await ay.builder.article(
                     title=key.__name__,
                     description=tyyp,
-                    url="https://t.me/stufsupport",
+                    url="https://t.me/SpotifyStream_Id",
                     text=text[:4000],
                 )
             )
