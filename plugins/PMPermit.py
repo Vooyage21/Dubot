@@ -79,7 +79,7 @@ if udB.get_key("PM_TEXT"):
     UNAPPROVED_MSG = (
         "**Pesan Keamanan dari {ON}!**\n\n"
         + udB.get_key("PM_TEXT")
-        + "\n\nEnte Punya {warn}/{twarn} peringatan!"
+        + "\n\nKau Punya {warn}/{twarn} peringatan!"
     )
 # 1
 WARNS = udB.get_key("PMWARNS") or 4
@@ -811,7 +811,7 @@ async def in_pm_ans(event):
                 await event.builder.document(
                     res,
                     title="Inline PmPermit",
-                    description="[ᴋᴀᴢᴜ](https://t.me/disinikazu)",
+                    description="[Dante](https://t.me/Usern4meDoesNotExist404)",
                     text=msg_,
                     buttons=buttons,
                     link_preview=False,
@@ -828,7 +828,7 @@ async def in_pm_ans(event):
                 title="Inline PMPermit.",
                 type=_type,
                 text=msg_,
-                description="[ᴋᴀᴢᴜ](https://t.me/disinikazu)",
+                description="[Dante](https://t.me/Usern4meDoesNotExist404)",
                 include_media=include_media,
                 buttons=buttons,
                 thumb=cont,
