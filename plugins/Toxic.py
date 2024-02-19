@@ -1,9 +1,9 @@
 # @riizzvbss
 """
-◈ Perintah Tersedia
+▢ Perintah Tersedia
 
 •`{i}A sampai Z`
-   Coba aja sendiri.
+   Coba aja.
 """
 
 from time import sleep
