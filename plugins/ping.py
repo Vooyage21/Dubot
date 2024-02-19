@@ -93,11 +93,11 @@ async def _(ping):
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    lping = await eor(ping, "**★ PING ★**")
-    await lping.edit("**★★ PING ★★**")
-    await lping.edit("**★★★ PING ★★★**")
-    await lping.edit("**★★★★ PING ★★★★**")
-    await lping.edit("**✦҈͜͡➳ PONG!**")
+    lping = await eor(ping, "**PING**")
+    await lping.edit("**PING**")
+    await lping.edit("**PING**")
+    await lping.edit("**PING**")
+    await lping.edit("**PONG!**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     user = await ping.client.get_me()
@@ -115,18 +115,18 @@ async def _(ping):
 async def _(pong):
     await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    kopong = await eor(pong, "**『⍟𝐊𝐎𝐍𝐓𝐎𝐋』**")
-    await kopong.edit("**◆◈𝐊𝐀𝐌𝐏𝐀𝐍𝐆◈◆**")
-    await kopong.edit("**𝐏𝐄𝐂𝐀𝐇𝐊𝐀𝐍 𝐁𝐈𝐉𝐈 𝐊𝐀𝐔 𝐀𝐒𝐔**")
-    await kopong.edit("**☬𝐒𝐈𝐀𝐏 𝐊𝐀𝐌𝐏𝐀𝐍𝐆 𝐌𝐄𝐍𝐔𝐌𝐁𝐔𝐊 𝐀𝐒𝐔☬**")
+    kopong = await eor(pong, "**P**")
+    await kopong.edit("**WOI**")
+    await kopong.edit("**AWAS LU LIHAT NIH**")
+    await kopong.edit("**NIH 🫰**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     user = await pong.client.get_me()
     await kopong.edit(
-        f"**✲ 𝙺𝙾𝙽𝚃𝙾𝙻 𝙼𝙴𝙻𝙴𝙳𝚄𝙶** "
-        f"\n ⫸ 𝙺𝙾𝙽𝚃𝙾𝙻 `%sms` \n"
+        f"**NIH** "
+        f"\nDANTE UBOT `%sms` \n"
         f"**✲ 𝙱𝙸𝙹𝙸 𝙿𝙴𝙻𝙴𝚁** "
-        f"\n ⫸ 𝙺𝙰𝙼𝙿𝙰𝙽𝙶『[{user.first_name}](tg://user?id={user.id})』 \n" % (duration)
+        f"\nSALKEN!『[{user.first_name}](tg://user?id={user.id})』 \n" % (duration)
     )
 
 
