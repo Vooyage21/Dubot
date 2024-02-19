@@ -163,8 +163,8 @@ async def allcmds(event, telegraph):
         for zz in LIST[z]:
             txt += HNDLR + zz + "\n"
         txt += "\n\n"
-    t = telegraph.create_page(title="Kazu All Cmds", content=[txt])
-    await eor(event, f"All Kazu Cmds : [Click Here]({t['url']})", link_preview=False)
+    t = telegraph.create_page(title="Dante All Cmds", content=[txt])
+    await eor(event, f"All Dante Cmds : [Click Here]({t['url']})", link_preview=False)
 
 
 async def ReTrieveFile(input_file_name):
