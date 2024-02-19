@@ -84,7 +84,7 @@ async def _help(kazu):
                     elif HELP.get("Addons") and file in HELP["Addons"]:
                         for i in HELP["Addons"][file]:
                             output += i
-                    output += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
+                    output += "\n▢ ᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
                     await kazu.eor(output)
         except BaseException as er:
             LOGS.exception(er)
