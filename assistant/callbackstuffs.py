@@ -348,7 +348,7 @@ async def changes(okk):
                 language="md",
             )
             return await okk.edit(
-                f"**• Kazu Ubot •**{cli}", file=img, buttons=button
+                f"**Dante Ubot**{cli}", file=img, buttons=button
             )
         except Exception as er:
             LOGS.exception(er)
@@ -427,7 +427,7 @@ async def _(e):
         code = await conv.get_response()
         if GDrive._create_token_file(code=code.text):
             await conv.send_message(
-                "`Berhasil!\nAnda siap menggunakan Google Drive Kazu Ubot.`",
+                "`Berhasil!\nAnda siap menggunakan Google Drive Dante Ubot.`",
                 buttons=Button.inline("Main Menu", data="setter"),
             )
         else:
