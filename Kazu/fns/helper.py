@@ -167,20 +167,20 @@ if run_as_module:
             output = f"**Plugin** - `{plug}`\n"
             for i in HELP[plug]:
                 output += i
-            output += "©↻ꝛɪᴢ"
-            await eod(ok, f"✓ `Kazu - Installed`: `{plug}` ✓\n\n{output}")
+            output += "ᴅᴀɴᴛᴇ"
+            await eod(ok, f" `Dante - Installed`: `{plug}` ✓\n\n{output}")
         elif plug in CMD_HELP:
             output = f"Plugin Name-{plug}\n\n✘ Commands Available-\n\n"
             output += str(CMD_HELP[plug])
-            await eod(ok, f"✓ `Kazu - Installed`: `{plug}` ✓\n\n{output}")
+            await eod(ok, f" `Dante - Installed`: `{plug}` ✓\n\n{output}")
         else:
             try:
                 x = f"Plugin Name-{plug}\n\n◈ Commands Available-\n\n"
                 for d in LIST[plug]:
                     x += HNDLR + d + "\n"
-                await eod(ok, f"✓ `Kazu - Installed`: `{plug}` ✓\n\n`{x}`")
+                await eod(ok, f" `Dante - Installed`: `{plug}` \n\n`{x}`")
             except BaseException:
-                await eod(ok, f"✓ `Kazu - Installed`: `{plug}` ✓")
+                await eod(ok, f" `Dante - Installed`: `{plug}` ")
 
     async def heroku_logs(event):
         """
@@ -202,7 +202,7 @@ if run_as_module:
             )
         await xx.edit("`Downloading Logs...`")
         ok = app.get_log()
-        with open("kazu-heroku.log", "w") as log:
+        with open("Dante-heroku.log", "w") as log:
             log.write(ok)
         await event.client.send_file(
             event.chat_id,
@@ -236,8 +236,8 @@ if run_as_module:
         )
         ac_br = repo.active_branch.name
         ch_log = tldr_log = ""
-        ch = f"<b>Kazu {kazu_version} updates for <a href={UPSTREAM_REPO_URL}/tree/{ac_br}>[{ac_br}]</a>:</b>"
-        ch_tl = f"Kazu {kazu_version} updates for {ac_br}:"
+        ch = f"<b>Dante {kazu_version} updates for <a href={UPSTREAM_REPO_URL}/tree/{ac_br}>[{ac_br}]</a>:</b>"
+        ch_tl = f"Dante {kazu_version} updates for {ac_br}:"
         d_form = "%d/%m/%y || %H:%M"
         for c in repo.iter_commits(diff):
             ch_log += f"\n\n💬 <b>{c.count()}</b> 🗓 <b>[{c.committed_datetime.strftime(d_form)}]</b>\n<b><a href={UPSTREAM_REPO_URL.rstrip('/')}/commit/{c}>[{c.summary}]</a></b> 👨‍💻 <code>{c.author}</code>"
