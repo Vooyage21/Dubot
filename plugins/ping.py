@@ -57,11 +57,11 @@ async def get_readable_time(seconds: int) -> str:
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    ping = await eor(ping, "**🖕**")
-    await ping.edit("**🫰**")
-    await ping.edit("**⚡**")
-    await ping.edit("**🖖**")
-    await ping.edit("**🖕**")
+    ping = await eor(ping, "**⚡**")
+    await ping.edit("**DANTE⚡**")
+    await ping.edit("**DAN⚡**")
+    await ping.edit("**D⚡**")
+    await ping.edit("**⚡DANTE⚡**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     user = await ping.client.get_me()
@@ -138,20 +138,20 @@ async def _(pong):
 async def _(pong):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    kping = await eor(pong, "✊")
-    await kping.edit("🤚")
-    await kping.edit("✌️")
-    await kping.edit("🖖")   
-    await kping.edit("🤟")
-    await kping.edit("🖕")
-    await kping.edit("**NIH BUAT KAMU**")
-    await kping.edit("**SEMUANYA MINGGIR DANTE MAU KASIH KEJUTAN.....**")
+    kping = await eor(pong, "Mengecek Sinyal...")
+    await kping.edit("**0% ▒▒▒▒▒▒▒▒▒▒**")
+    await kping.edit("**20% ██▒▒▒▒▒▒▒▒**")
+    await kping.edit("**40% ████▒▒▒▒▒▒**")   
+    await kping.edit("**60% ██████▒▒▒▒**")
+    await kping.edit("**80% ████████▒▒**")
+    await kping.edit("**80% ████████▒▒**")
+    await kping.edit("**100% ██████████**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
-    await kping.edit("🫰")
+    await kping.edit("DANTE UBOT DIMULAI...")
     sleep(3)
     await kping.edit(
-        f"**ᴜʙᴏᴛ ᴅᴀɴᴛᴇ!! 🫰**\n**Ping!!** : %sms\n**Uptime** : {uptime}🕛" % (duration)
+        f"**Saya Active Tuan Dante ^⁠_⁠^ !!**\n**Ping!!** : %sms\n**Uptime** : {uptime}🕛" % (duration)
     )
 
 
