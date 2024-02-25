@@ -12,24 +12,7 @@ if not run_as_module:
 from .. import *
 
 DEVLIST = [
-    1054295664,  # @riizzvbss
-    1803618640, # @onlymeriz
-    817945139, # @kenapatagkazu
-    5063062493, # @disinikazu
-    5063062493,  # kazu
-    1373744866,  # om
-    816526222,  # gsdssdf
-    1860375797,  # uputjingan
-    712277262,  # uput
-    876054262,  # himiko
-    1087819304,  # rja
-    1992087933,  # xen
-    1329377873,  #
-    1839010591,  # amwabf
-    482945686,  # nan
-    961659670,  # kazu
-    984144778,  # aki-aki
-    479344690,  # rey
+    940232666 #gw
 ]
 
 
