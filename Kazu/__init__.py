@@ -98,6 +98,6 @@ else:
 
     from logging import getLogger
 
-    LOGS = getLogger("Kazu")
+    LOGS = getLogger("Dante")
 
     kazu_bot = asst = udB = vcClient = None
