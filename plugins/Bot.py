@@ -88,7 +88,7 @@ alive_txt = """
   ▢ Telethon - {}
 """
 
-in_alive = "{}\n\n▢ <b>Dante Version -><b> <code>{}</code>\n▢ <b>Dante -></b> <code>{}</code>\n▢ <b>Python -></b> <code>{}</code>\n▢ <b>Waktu aktif -></b> <code>{}</code>\n▢ <b>Branch -></b> [ {} ]\n\n• <b>▢ ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​</b>"
+in_alive = "{}\n\n▢ <b>Dante Version -><b> <code>{}</code>\n▢ <b>Dante -></b> <code>{}</code>\n▢ <b>Python -></b> <code>{}</code>\n▢ <b>Waktu aktif -></b> <code>{}</code>\n▢ <b>\n\n• <b>▢ ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​</b>"
 
 
 async def get_readable_time(seconds: int) -> str:
@@ -261,13 +261,13 @@ async def _(event):
         with open(file, "r") as f:
             code = f.read()[-2500:]
         file = await Carbon(
-            file_name="kazu-logs",
+            file_name="Dante-logs",
             code=code,
             backgroundColor=choice(ATRA_COL),
         )
-        await event.reply("**Kazu Logs.**", file=file)
+        await event.reply("**Dante Logs.**", file=file)
     elif opt == "open":
-        with open("kazu.log", "r") as f:
+        with open("Dante.log", "r") as f:
             file = f.read()[-4000:]
         return await event.eor(f"`{file}`")
     else:
