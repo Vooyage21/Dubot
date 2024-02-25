@@ -1,4 +1,4 @@
-# Ported By @Riizzvbss
+
 """
 ◈ Perintah Tersedia
 
@@ -67,11 +67,11 @@ async def _(event):
 
 @kazu_cmd(pattern="smgt$")
 async def _(event):
-    xx = await event.eor("Apapun Yang Terjadi")
+    xx = await event.eor("Lah kok nyerah??")
     sleep(3)
-    await xx.edit("Tetaplah Menyerah")
+    await xx.edit("jangan nyerang Dong:' kan ada aku")
     sleep(1)
-    await xx.edit("Dan Jangan Pernah Bangkit")
+    await xx.edit("yang selalu buat kamu semangat umm")
 
 
 # Create by myself @localheart
@@ -80,7 +80,7 @@ async def _(event):
 @kazu_cmd(pattern=r"ywc$")
 async def _(event):
     await event.client.send_message(
-        event.chat_id, "Ok Sama Sama", reply_to=event.reply_to_msg_id
+        event.chat_id, "Ok bawang", reply_to=event.reply_to_msg_id
     )
     await event.delete()
 
@@ -95,19 +95,19 @@ async def _(event):
     sleep(1.5)
     await xx.edit("GAUSAH SO ASIK")
     sleep(1.5)
-    await xx.edit("EMANG KENAL?")
+    await xx.edit("EMANG KITA KENAL?")
     sleep(1.5)
-    await xx.edit("GAUSAH REPLY")
+    await xx.edit("GAUSAH REPLY JUGA")
     sleep(1.5)
-    await xx.edit("KITA BUKAN KAWAN")
+    await xx.edit("KITA KAGAK KENAL")
     sleep(1.5)
-    await xx.edit("GASUKA PC ANJING")
+    await xx.edit("GASUKA BANYAK TINGKAH")
     sleep(1.5)
     await xx.edit("BOCAH KAMPUNG")
     sleep(1.5)
-    await xx.edit("MENTAL TEMPE")
+    await xx.edit("BOCAH KAGAK ADA ORANG TUA")
     sleep(1.5)
-    await xx.edit("LEMBEK.")
+    await xx.edit("CUIH.")
 
 
 @kazu_cmd(pattern="pp$")
@@ -159,14 +159,9 @@ async def _(event):
 
 
 @kazu_cmd(pattern="nb$")
-async def _(event):
-    if event.chat_id in BLACKLIST_CHAT:
-        return await event.eor(
-            event, "Perintah ini Dilarang digunakan di Group ini"
-        )
     await event.client.send_message(
         event.chat_id,
-        "MAEN BOT MULU ALAY NGENTOTT, KESANNYA NORAK GOBLOK!!!",
+        "VIRTUAL VIRTUAL TAIK ANJING, MENDING NIKAH BLOK INI KAGAK ADA KEPASTIAN MASIH AJA MAU BLOK",
         reply_to=event.reply_to_msg_id,
     )
     await event.delete()
@@ -176,7 +171,7 @@ async def _(event):
 async def _(event):
     await event.client.send_message(
         event.chat_id,
-        "NAMANYA JUGA JAMET CAPER SANA SINI BUAT CARI NAMA",
+        "CAPER SANA SINI BUAT CARI NAMA BOCAH AMPAS",
         reply_to=event.reply_to_msg_id,
     )
     await event.delete()
@@ -186,7 +181,7 @@ async def _(event):
 async def _(event):
     await event.client.send_message(
         event.chat_id,
-        "WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK, DI TONGKRONGAN JADI BABU, DI TELE SOK JAGOAN...",
+        "WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK, DI TONGKRONGAN JADI BABU, DI TELE SOK JAGOAN MANA PENGANGGURAN LAGI CUIH",
         reply_to=event.reply_to_msg_id,
     )
     await event.delete()
@@ -288,22 +283,22 @@ async def _(event):
 
 @kazu_cmd(pattern="virtual$")
 async def _(event):
-    xx = await event.eor("OOOO")
+    xx = await event.eor("CIEEE YG VIRTUAL")
     sleep(1.5)
-    await xx.edit("INI YANG VIRTUAL")
+    await xx.edit("UDAH TAU VIRTUAL")
     sleep(1.5)
-    await xx.edit("YANG KATANYA SAYANG BANGET")
+    await xx.edit("MASIH AJA SETIA GOBLOKKK KAN SAKIT KAN THOLOL")
     sleep(1.5)
-    await xx.edit("TAPI TETEP AJA DI TINGGAL")
+    await xx.edit("TERUS GALAU DIMANA MANA, SADAR GOBLOK")
     sleep(1.5)
-    await xx.edit("NI INGET")
+    await xx.edit("LU CUMA JADI TEMPAT DIA KESEPIAN AJA")
     sleep(1.5)
-    await xx.edit("TANGANNYA AJA GA BISA DI PEGANG")
+    await xx.edit("JADI SADAR DIRI DEK DEKKK")
     sleep(1.5)
-    await xx.edit("APALAGI OMONGANNYA")
+    await xx.edit("APALAGI DENGAR OMONGAN MANIS")
     sleep(1.5)
     await xx.edit("BHAHAHAHA")
     sleep(1.5)
-    await xx.edit("KASIAN MANA MASIH MUDA")
+    await xx.edit("KAN TOLOLL KALAU MASIH AJA PERCAYA VIRTUAL - VIRTUAL")
     
     
