@@ -66,7 +66,7 @@ if sys.argv[0] == "-m":
             validate_session(Var.SESSION, LOGS),
             udB=udB,
             app_version=kazu_version,
-            device_model="Kazu",
+            device_model="Dante",
         )
         kazu_bot.run_in_loop(autobot())
 
