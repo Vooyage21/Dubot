@@ -211,11 +211,11 @@ async def _(event):
     changelog_str = changelog + "\n\n" + get_string("inline_8")
     if len(changelog_str) > 1024:
         await event.edit(get_string("upd_4"))
-        with open("kazu_updates.txt", "w+") as file:
+        with open("Dante_updates.txt", "w+") as file:
             file.write(tl_chnglog)
         await event.edit(
             get_string("upd_5"),
-            file="kazu_updates.txt",
+            file="Dante_updates.txt",
             buttons=[
                 [Button.inline("Update", data="updatenow")],
                 [Button.inline("«", data="ownr")],
@@ -226,7 +226,7 @@ async def _(event):
         await event.edit(
             changelog_str,
             buttons=[
-                [Button.inline("Update Now", data="updatenow")],
+                [Button.inline("Update", data="updatenow")],
                 [Button.inline("«", data="ownr")],
             ],
             parse_mode="html",
@@ -238,14 +238,14 @@ async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds
-    pin = f"🛡️Pɪɴɢ = {ms} microseconds"
+    pin = f"🛡️Ping = {ms} microseconds"
     await event.answer(pin, cache_time=0, alert=True)
 
 
 @callback(data="upp", owner=True)
 async def _(event):
     uptime = time_formatter((time.time() - start_time) * 1000)
-    pin = f"⚡Uᴘᴛɪᴍᴇ = {uptime}"
+    pin = f"⚡Uptime = {uptime}"
     await event.answer(pin, cache_time=0, alert=True)
 
 
@@ -315,7 +315,8 @@ def page_num(index, key):
                 Button.inline(
                     "«",
                     data=f"uh_{key}_{index-1}",
-                ),                
+                ),
+                Button.inline("⌂", data="open"),
                 Button.inline(
                     "»",
                     data=f"uh_{key}_{index+1}",
