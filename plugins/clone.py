@@ -25,7 +25,7 @@ from telethon.tl.types import MessageEntityMentionName
 from . import *
 
 
-@ultroid_cmd(pattern="clone ?(.*)", fullsudo=True)
+@kazu__cmd(pattern="clone ?(.*)", fullsudo=True)
 async def _(event):
     eve = await event.eor("`Processing...`")
     reply_message = await event.get_reply_message()
@@ -64,7 +64,7 @@ async def _(event):
     )
 
 
-@ultroid_cmd(pattern="revert$")
+@kazu__cmd(pattern="revert$")
 async def _(event):
     name = OWNER_NAME
     ok = ""
