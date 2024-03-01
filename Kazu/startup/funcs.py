@@ -448,7 +448,7 @@ async def ready():
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"**Dante Ubot has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(kazu_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @kazusupportgrp\n➖➖➖➖➖➖➖➖➖➖"
+        MSG = f"**Dante Ubot has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(kazu_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @SpotifyStreamMusic\n➖➖➖➖➖➖➖➖➖➖"
         BTTS, PHOTO = None, None
         if prev_spam := udB.get_key("LAST_UPDATE_LOG_SPAM"):
             try:
