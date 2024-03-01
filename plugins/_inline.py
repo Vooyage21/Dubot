@@ -177,7 +177,7 @@ async def uptd_plugin(event):
         buttons.append(
             [
                 Button.inline(
-                    "Kirim Plugin",
+                    "Copy Plugin",
                     data=data,
                 )
             ]
@@ -217,7 +217,7 @@ async def _(event):
             get_string("upd_5"),
             file="kazu_updates.txt",
             buttons=[
-                [Button.inline("• Uᴘᴅᴀᴛᴇ Nᴏᴡ •", data="updatenow")],
+                [Button.inline("Update", data="updatenow")],
                 [Button.inline("«", data="ownr")],
             ],
         )
@@ -292,7 +292,7 @@ async def on_plug_in_callback_query_handler(event):
 
 
 def page_num(index, key):
-    rows = udB.get_key("HELP_ROWS") or 4
+    rows = udB.get_key("HELP_ROWS") or 6
     cols = udB.get_key("HELP_COLUMNS") or 2
     loaded = HELP.get(key, [])
     emoji = udB.get_key("EMOJI_IN_HELP") or ""
@@ -315,8 +315,7 @@ def page_num(index, key):
                 Button.inline(
                     "«",
                     data=f"uh_{key}_{index-1}",
-                ),
-                Button.inline("Back", data="open"),
+                ),                
                 Button.inline(
                     "»",
                     data=f"uh_{key}_{index+1}",
