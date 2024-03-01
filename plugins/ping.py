@@ -1,12 +1,4 @@
-# Ported By @disinikazu & @Riizzvbss
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-#
-# ReCode by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
+
 
 
 import time
@@ -84,7 +76,7 @@ async def _(ping):
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     await xping.edit(
-        f"**PONG!! 🍭**\n**Ping** : %sms\n**Bot Uptime** : {uptime}🕛" % (duration)
+        f"**Ping!! **\n**Ping** : %sms\n**Bot Uptime** : {uptime} " % (duration)
     )
 
 
@@ -143,15 +135,14 @@ async def _(pong):
     await kping.edit("**20% ██▒▒▒▒▒▒▒▒**")
     await kping.edit("**40% ████▒▒▒▒▒▒**")   
     await kping.edit("**60% ██████▒▒▒▒**")
-    await kping.edit("**80% ████████▒▒**")
-    await kping.edit("**80% ████████▒▒**")
+    await kping.edit("**80% ████████▒▒**")    
     await kping.edit("**100% ██████████**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
-    await kping.edit("DANTE UBOT DIMULAI...")
+    await kping.edit("**DANTE UBOT DIMULAI...**")
     sleep(3)
     await kping.edit(
-        f"**Saya Active Tuan Dante ^⁠_⁠^ !!**\n**Ping!!** : %sms\n**Uptime** : {uptime}🕛" % (duration)
+        f"**Saya Active Tuan Dante!!**\n**Ping!!** : %sms\n**Uptime** : {uptime}🕛" % (duration)
     )
 
 
@@ -190,7 +181,7 @@ async def _(speed):
 async def _(pong):
     start = datetime.now()
     xx = await eor(pong, "`Assalamualaikum Tuan`")
-    await xx.edit("Waalaikumsalam.....")
+    await xx.edit("Jawab Tuan..")
     end = datetime.now()
     duration = (end - start).microseconds / 9000
     await xx.edit("Tunggu...")
