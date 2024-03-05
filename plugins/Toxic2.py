@@ -1,4 +1,4 @@
-# @riizzvbss
+
 """
 ◈ Perintah Tersedia
 
@@ -17,11 +17,11 @@
 from time import sleep
 from . import (
     eor,
-    kazu_cmd,
+    dante_cmd,
 )
 
 
-@kazu_cmd(outgoing=True, pattern="ngentot")
+@dante_cmd(outgoing=True, pattern="ngentot")
 async def _(event):
     xx = await event.eor("**EH ANAK NGENTODD!!**")
     sleep(1)
@@ -42,10 +42,9 @@ async def _(event):
     await event.eor("**SAMA ORANG LAIN**")
     sleep(1)
     await event.eor("**HAHAHAHA CUIHH GOBLOKK**")
-# Create by myself @localheart
 
 
-@kazu_cmd(outgoing=True, pattern="goblok")
+@dante_cmd(outgoing=True, pattern="goblok")
 async def _(event):
     xx = await event.eor("**WOYY GOBLOK!!**")
     sleep(1)
@@ -66,10 +65,9 @@ async def _(event):
     await event.eor("**EHHH SANGE NYA MAU DAPAT YANG CANTIK**")
     sleep(1)
     await event.eor("**HAHAHAHA**")
-# Create by myself @localheart
 
 
-@kazu_cmd(outgoing=True, pattern="ngatain")
+@dante_cmd(outgoing=True, pattern="ngatain")
 async def _(event):
     xx = await event.eor("**BABI!!**")
     sleep(1)
@@ -90,10 +88,8 @@ async def _(event):
     await event.eor("**EHHH SANGEE NYA MAU DAPAT YANG CANTIK TAMBAH GRATIS PULA KANN TOLOLLLL**")
     sleep(1)
     await event.eor("**HAHAHAHA**")
-# Create by myself @localheart
 
-
-@kazu_cmd(outgoing=True, pattern="yatim")
+@dante_cmd(outgoing=True, pattern="yatim")
 async def _(event):
     xx = await event.eor("`HALLOOO ANAK YATIMM, Jangan Lupa Makan Yaa`")
     sleep(1)
@@ -114,9 +110,8 @@ async def _(event):
     await event.eor("`MAAF YA, CANDAA BEBANNNN xixixi`")
     sleep(1)
     await event.eor("`Tapi Bo'ong KWKWKW`")
-# Create by myself @localheart
 
-@kazu_cmd(outgoing=True, pattern="komto")
+@dante_cmd(outgoing=True, pattern="komto")
 async def _(event):
     xx = await event.eor("**EHHH EHH KONTULL**")
     sleep(1.5)
