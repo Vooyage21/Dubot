@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 import base64
 import inspect
@@ -18,8 +12,8 @@ from telethon.tl.alltlobjects import LAYER, tlobjects
 from telethon.tl.types import DocumentAttributeAudio as Audio
 from telethon.tl.types import InputWebDocument as wb
 
-from Kazu.fns.misc import google_search
-from Kazu.fns.tools import (
+from dante.fns.misc import google_search
+from dante.fns.tools import (
     _webupload_cache,
     async_searcher,
     get_ofox,
@@ -28,12 +22,12 @@ from Kazu.fns.tools import (
 )
 
 from . import *
-from . import _kazu_cache
+from . import _dante_cache
 
 SUP_BUTTONS = [
     [
         Button.url("• Owner •", url="https://t.me/Usern4meDoesNotExist404"),
-        Button.url("• Support •", url="t.me/SpotifyStream_Id"),
+        Button.url("• Support •", url="t.me/MusicStreamMp3"),
     ],
 ]
 
