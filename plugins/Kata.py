@@ -48,10 +48,10 @@ import string
 from time import sleep
 from . import (
     eor,
-    kazu_cmd,
+    dante_cmd,
 )
 
-@kazu_cmd(pattern="Tt$")
+@dante_cmd(pattern="Tt$")
 async def _(event):
     xx = await event.eor("Aku")
     sleep(3)
@@ -65,7 +65,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@kazu_cmd(pattern="smgt$")
+@dante_cmd(pattern="smgt$")
 async def _(event):
     xx = await event.eor("Lah kok nyerah??")
     sleep(3)
@@ -77,7 +77,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@kazu_cmd(pattern=r"ywc$")
+@dante_cmd(pattern=r"ywc$")
 async def _(event):
     await event.client.send_message(
         event.chat_id, "Ok bawang", reply_to=event.reply_to_msg_id
@@ -85,7 +85,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="jamet$")
+@dante_cmd(pattern="jamet$")
 async def _(event):
     xx = await event.eor("WOII")
     sleep(1.5)
@@ -110,7 +110,7 @@ async def _(event):
     await xx.edit("CUIH.")
 
 
-@kazu_cmd(pattern="pp$")
+@dante_cmd(pattern="pp$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -120,7 +120,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="dp$")
+@dante_cmd(pattern="dp$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -130,7 +130,7 @@ async def _(event):
     await event.delete()
 
     
-@kazu_cmd(pattern="ra$")
+@dante_cmd(pattern="ra$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -138,7 +138,7 @@ async def _(event):
         reply_to=event.reply_to_msg_id,
     )
     
-@kazu_cmd(pattern="Dante$")
+@dante_cmd(pattern="Dante$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -148,7 +148,7 @@ async def _(event):
     await event.delete()
     
 
-@kazu_cmd(pattern="so$")
+@dante_cmd(pattern="so$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -158,7 +158,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="nb$")
+@dante_cmd(pattern="nb$")
     await event.client.send_message(
         event.chat_id,
         "VIRTUAL VIRTUAL TAIK ANJING, MENDING NIKAH BLOK INI KAGAK ADA KEPASTIAN MASIH AJA MAU BLOK",
@@ -167,7 +167,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="met$")
+@dante_cmd(pattern="met$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -177,7 +177,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="war$")
+@dante_cmd(pattern="war$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -187,7 +187,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="wartai$")
+@dante_cmd(pattern="wartai$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -197,7 +197,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="kismin$")
+@dante_cmd(pattern="kismin$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -207,7 +207,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="Az$")
+@dante_cmd(pattern="Az$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -217,7 +217,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="sokab$")
+@dante_cmd(pattern="sokab$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -227,7 +227,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="gembel$")
+@dante_cmd(pattern="gembel$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -237,7 +237,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="cuih$")
+@dante_cmd(pattern="cuih$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -247,7 +247,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="dih$")
+@dante_cmd(pattern="dih$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -257,7 +257,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern=r"gcs$")
+@dante_cmd(pattern=r"gcs$")
 async def _(event):
     if event.chat_id in BLACKLIST_CHAT:
         return await event.eor(
@@ -271,7 +271,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="skb$")
+@dante_cmd(pattern="skb$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -281,7 +281,7 @@ async def _(event):
     await event.delete()
 
 
-@kazu_cmd(pattern="virtual$")
+@dante_cmd(pattern="virtual$")
 async def _(event):
     xx = await event.eor("CIEEE YG VIRTUAL")
     sleep(1.5)
