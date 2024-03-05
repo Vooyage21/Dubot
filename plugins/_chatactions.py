@@ -7,12 +7,12 @@
 
 import asyncio
 
-from Kazu.dB import stickers
-from Kazu.dB.forcesub_db import get_forcesetting
-from Kazu.dB.gban_mute_db import is_gbanned
-from Kazu.dB.greetings_db import get_goodbye, get_welcome, must_thank
-from Kazu.fns.helper import inline_mention
-from Kazu.fns.tools import create_tl_btn
+from dante.dB import stickers
+from dante.dB.forcesub_db import get_forcesetting
+from dante.dB.gban_mute_db import is_gbanned
+from dante.dB.greetings_db import get_goodbye, get_welcome, must_thank
+from dante.fns.helper import inline_mention
+from dante.fns.tools import create_tl_btn
 from telethon import events
 from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.functions.channels import GetParticipantRequest
@@ -22,11 +22,11 @@ try:
     from ProfanityDetector import detector
 except ImportError:
     detector = None
-from . import LOG_CHANNEL, LOGS, asst, kazu_bot, get_string, types, udB
+from . import LOG_CHANNEL, LOGS, asst, dante_bot, get_string, types, udB
 from ._inline import something
 
 
-@kazu_bot.on(events.ChatAction())
+@dante_bot.on(events.ChatAction())
 async def Function(event):
     try:
         await DummyHandler(event)
@@ -169,7 +169,7 @@ async def DummyHandler(bjir):
 
 
 """
-@kazu_bot.on(events.NewMessage(incoming=True))
+@dante_bot.on(events.NewMessage(incoming=True))
 async def chatBot_replies(e):
     sender = await e.get_sender()
     if not isinstance(sender, types.User) or sender.bot:
@@ -198,7 +198,7 @@ async def chatBot_replies(e):
 """
 
 
-@kazu_bot.on(events.Raw(types.UpdateUserName))
+@dante_bot.on(events.Raw(types.UpdateUserName))
 async def uname_change(e):
     await uname_stuff(e.user_id, e.usernames[0] if e.usernames else None, e.first_name)
 
