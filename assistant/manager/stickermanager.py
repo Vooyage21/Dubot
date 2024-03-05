@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 import random
 
@@ -18,8 +12,8 @@ from telethon.tl.types import InputStickerSetItem as SetItem
 from telethon.tl.types import InputStickerSetShortName, User
 from telethon.utils import get_display_name, get_input_document
 
-from Kazu.fns.misc import Quotly
-from Kazu.fns.tools import TgConverter
+from dante.fns.misc import Quotly
+from dante.fns.tools import TgConverter
 
 from . import LOGS, asst, asst_cmd, udB
 
@@ -97,7 +91,7 @@ async def kang_cmd(ay):
                     stickers=[SetItem(file, emoji=emoji)],
                     videos=video,
                     animated=animated,
-                    software="@stufsupport",
+                    software="@MusicStreamMp3",
                 )
             )
         except Exception as er:
