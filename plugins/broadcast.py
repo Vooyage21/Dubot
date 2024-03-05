@@ -1,11 +1,5 @@
-# ayra - userbot
-# copyright (c) 2021-2022 senpai80
-#
-# this file is a part of < https://github.com/senpai80/ayra/ >
-# please read the gnu affero general public license in
-# <https://www.github.com/senpai80/ayra/blob/main/license/>.
 """
-✘ **bantuan untuk broadcast**
+**bantuan untuk broadcast**
 
 ๏ **perintah:** `gcast`
 ◉ **keterangan:** kirim pesan ke semua obrolan grup.
@@ -24,16 +18,16 @@
 """
 import asyncio
 
-from Kazu.dB import DEVLIST
-from Kazu.dB.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
-from Kazu.fns.tools import create_tl_btn, format_btn, get_msg_button
+from dante.dB import DEVLIST
+from dante.dB.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
+from dante.fns.tools import create_tl_btn, format_btn, get_msg_button
 from telethon.errors.rpcerrorlist import FloodWaitError
 
 from . import *
 from ._inline import something
 
 
-@kazu_cmd(pattern="[Gg][c][a][s][t]( (.*)|$)", fullsudo=false)
+@dante_cmd(pattern="[Gg][c][a][s][t]( (.*)|$)", fullsudo=false)
 async def gcast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -48,7 +42,7 @@ async def gcast(event):
     done = 0
     err = ""
     chat_blacklist = udb.get_key("GBLACKLISTS") or []
-    chat_blacklist.append(-1001287188817)
+    chat_blacklist.append(-1001627039023)
     udb.set_key("GBLACKLISTS", chat_blacklist)
     async for x in event.client.iter_dialogs():
         if x.is_group:
@@ -73,7 +67,7 @@ async def gcast(event):
     await kk.edit(f"**berhasil di {done} obrolan, kesalahan {er} obrolan.**")
 
 
-@kazu_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=false)
+@dante_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=false)
 async def gucast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -103,22 +97,22 @@ async def gucast(event):
     await kk.edit(f"berhasil di {done} obrolan, kesalahan {er} obrolan")
 
 
-@kazu_cmd(pattern="addbl")
+@dante_cmd(pattern="addbl")
 @register(incoming=true, from_users=DEVLIST, pattern=r"^addbl")
 async def blacklist_(event):
     await gblacker(event, "add")
 
 
-@kazu_cmd(pattern="delbl")
+@dante_cmd(pattern="delbl")
 async def ungblacker(event):
     await gblacker(event, "remove")
 
 
-@kazu_cmd(pattern="blchat")
+@dante_cmd(pattern="blchat")
 async def chatbl(event):
     id = event.chat_id
     if xx := list_bl(id):
-        sd = "**❏ daftar blacklist gcast**\n\n"
+        sd = "**daftar blacklist gcast**\n\n"
         return await event.eor(sd + xx)
     await event.eor("**belum ada daftar**")
 
