@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 import os
 import re
@@ -20,14 +14,14 @@ from telethon.errors.rpcerrorlist import (
 from telethon.tl.types import MessageEntityMention, MessageEntityMentionName, User
 from telethon.utils import get_display_name
 
-from Kazu.dB.botchat_db import tag_add, who_tag
+from dante.dB.botchat_db import tag_add, who_tag
 
 from . import (
     LOG_CHANNEL,
     LOGS,
     Button,
     asst,
-    kazu_bot,
+    dante_bot,
     callback,
     events,
     get_string,
@@ -39,7 +33,7 @@ CACHE_SPAM = {}
 TAG_EDITS = {}
 
 
-@kazu_bot.on(
+@dante_bot.on(
     events.NewMessage(
         incoming=True,
         func=lambda e: (e.mentioned),
@@ -114,7 +108,7 @@ async def all_messages_catcher(e):
 
 if udB.get_key("TAG_LOG"):
 
-    @kazu_bot.on(events.MessageEdited(func=lambda x: not x.out))
+    @dante_bot.on(events.MessageEdited(func=lambda x: not x.out))
     async def upd_edits(event):
         x = event.sender
         if isinstance(x, User) and (x.bot or x.verified):
@@ -185,7 +179,7 @@ if udB.get_key("TAG_LOG"):
         except Exception as er:
             LOGS.exception(er)
 
-    @kazu_bot.on(
+    @dante_bot.on(
         events.NewMessage(
             outgoing=True,
             chats=[udB.get_key("TAG_LOG")],
@@ -231,18 +225,18 @@ async def when_added_or_joined(event):
 asst.add_event_handler(
     when_added_or_joined, events.ChatAction(func=lambda x: x.user_added)
 )
-kazu_bot.add_event_handler(
+dante_bot.add_event_handler(
     when_added_or_joined,
     events.ChatAction(func=lambda x: x.user_added or x.user_joined),
 )
-_client = {"bot": asst, "user": kazu_bot}
+_client = {"bot": asst, "user": dante_bot}
 
 
 @callback(
     re.compile(
         "leave_ch_(.*)",
     ),
-    from_users=[kazu_bot.uid],
+    from_users=[dante_bot.uid],
 )
 async def leave_ch_at(event):
     cht = event.data_match.group(1).decode("UTF-8")
