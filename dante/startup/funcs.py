@@ -448,7 +448,7 @@ async def ready():
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"**Dante Ubot has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(kazu_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @SpotifyStreamMusic\n➖➖➖➖➖➖➖➖➖➖"
+        MSG = f"**Dante Ubot has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(dante_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @MusicStreamSupport\n➖➖➖➖➖➖➖➖➖➖"
         BTTS, PHOTO = None, None
         if prev_spam := udB.get_key("LAST_UPDATE_LOG_SPAM"):
             try:
@@ -462,7 +462,7 @@ async def ready():
         spam_sent = await asst.send_message(chat_id, MSG, file=PHOTO, buttons=BTTS)
     except ValueError as e:
         try:
-            await (await kazu_bot.send_message(chat_id, str(e))).delete()
+            await (await dante_bot.send_message(chat_id, str(e))).delete()
             spam_sent = await asst.send_message(chat_id, MSG, file=PHOTO, buttons=BTTS)
         except Exception as g:
             LOGS.info(g)
