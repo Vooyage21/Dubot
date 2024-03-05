@@ -38,10 +38,10 @@ if run_as_module:
     from telethon import __version__
     from telethon.tl.alltlobjects import LAYER
 
-    from ..version import __version__ as __kazu__
-    from ..version import kazu_version
+    from ..version import __version__ as __dante__
+    from ..version import dante_version
 
-    file = f"Dante{sys.argv[6]}.log" if len(sys.argv) > 6 else "kazu.log"
+    file = f"Dante{sys.argv[6]}.log" if len(sys.argv) > 6 else "dante.log"
 
     if os.path.exists(file):
         os.remove(file)
@@ -87,9 +87,9 @@ if run_as_module:
     )
 
     LOGS.info(f"Python version - {platform.python_version()}")
-    LOGS.info(f"py-Dante Version - {__kazu__}")
+    LOGS.info(f"py-Dante Version - {__dante__}")
     LOGS.info(f"Telethon Version - {__version__} [Layer: {LAYER}]")
-    LOGS.info(f"Dante Version - {kazu_version} [{HOSTED_ON}]")
+    LOGS.info(f"Dante Version - {dante_version} [{HOSTED_ON}]")
 
     try:
         from safety.tools import *
