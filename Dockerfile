@@ -12,7 +12,7 @@ COPY installer.sh .
 RUN bash installer.sh
 
 # changing workdir
-WORKDIR "/root/Xy"
+WORKDIR "/root/Vooyage21"
 
 # start the bot.
 CMD ["bash", "startup"]
