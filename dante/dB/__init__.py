@@ -19,10 +19,10 @@ DEVLIST = [
 DEFAULT = list(map(int, b64decode("NTA2MzA2MjQ5Mw==").split()))
 
 
-KAZU_IMAGES = [
-    f"https://graph.org/file/{_}.jpg"
+DANTE_IMAGES = [
+    f"https://mallucampaign.in/images/{_}.jpg"
     for _ in [
-        "d854abd533a783c6642b1",
+        "img_1708349297",
     ]
 ]
 
