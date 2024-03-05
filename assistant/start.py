@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 from datetime import datetime
 
@@ -12,9 +6,9 @@ from telethon import Button, events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.utils import get_display_name
 
-from Kazu._misc import SUDO_M, owner_and_sudos
-from Kazu.dB.asst_fns import *
-from Kazu.fns.helper import inline_mention
+from dante._misc import SUDO_M, owner_and_sudos
+from dante.dB.asst_fns import *
+from dante.fns.helper import inline_mention
 from strings import get_string
 
 from . import *
@@ -29,7 +23,7 @@ if Owner_info_msg is None:
 
 **Message Forwards** - {udB.get_key("PMBOT")}
 
-**ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​ [v{kazu_version}](https://t.me/SpotifyStream_Id)**
+**ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​ [v{dante_version}](https://t.me/MusicStreamMp3)**
 """
 
 
@@ -65,10 +59,10 @@ _start = [
 @callback("ownerinfo")
 async def own(event):
     msg = Owner_info_msg.format(
-        mention=event.sender.mention, me=inline_mention(kazu_bot.me)
+        mention=event.sender.mention, me=inline_mention(dante_bot.me)
     )
     if custom_info:
-        msg += "\n\n• Powered by **@SpotifyStream_Id**"
+        msg += "\n\n• Powered by **@MusicStreamSupport**"
     await event.edit(
         msg,
         buttons=[Button.inline("Close", data="closeit")],
