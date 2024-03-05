@@ -16,10 +16,10 @@
 
 import base64
 
-from . import kazu_cmd
+from . import dante_cmd
 
 
-@kazu_cmd(pattern="encode ?(.*)")
+@dante_cmd(pattern="encode ?(.*)")
 async def encod(e):
     match = e.pattern_match.group(1)
     if not match and e.is_reply:
@@ -34,7 +34,7 @@ async def encod(e):
     await e.eor(f"**=>> Encoded Text :** `{match}`\n\n**=>> OUTPUT :**\n`{atc}`")
 
 
-@kazu_cmd(pattern="decode ?(.*)")
+@dante_cmd(pattern="decode ?(.*)")
 async def encod(e):
     match = e.pattern_match.group(1)
     if not match and e.is_reply:
