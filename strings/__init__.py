@@ -2,14 +2,14 @@ import sys
 import os
 from typing import Any, Dict, List, Union
 from glob import glob
-from Kazu import *
-from Kazu.fns.tools import translate
+from dante import *
+from dante.fns.tools import translate
 try:
     from yaml import safe_load
 except ModuleNotFoundError:
-    from Kazu.fns.tools import safe_load
+    from dante.fns.tools import safe_load
 
-KazuConfig.lang = udB.get_key("language") or os.getenv("LANGUAGE", "id")
+danteConfig.lang = udB.get_key("language") or os.getenv("LANGUAGE", "id")
 
 languages = {}
 
