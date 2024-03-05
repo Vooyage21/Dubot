@@ -8,7 +8,7 @@ from speedtest import Speedtest
 
 from . import (
      StartTime,
-     kazu_cmd,
+     dante_cmd,
      DEVLIST,
      eor,
      humanbytes,
@@ -44,7 +44,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@kazu_cmd(pattern=r"^pink$", incoming=True, from_users=DEVLIST)
+@dante_cmd(pattern=r"^pink$", incoming=True, from_users=DEVLIST)
 @devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Cpink$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
@@ -67,7 +67,7 @@ async def _(ping):
     )
 
 
-@kazu_cmd(pattern="ping$")
+@dante_cmd(pattern="ping$")
 @devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
@@ -80,7 +80,7 @@ async def _(ping):
     )
 
 
-@kazu_cmd(pattern="lping$")
+@dante_cmd(pattern="lping$")
 @devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Lping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
@@ -102,7 +102,7 @@ async def _(ping):
     )
 
 
-@kazu_cmd(pattern="Dping$")
+@dante_cmd(pattern="Dping$")
 @devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Kping$")
 async def _(pong):
     await get_readable_time((time.time() - StartTime))
@@ -125,7 +125,7 @@ async def _(pong):
 # .keping & kping Coded by Koala
 
 
-@kazu_cmd(pattern=r"Dan$")
+@dante_cmd(pattern=r"Dan$")
 @devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Kaz$")
 async def _(pong):
     uptime = await get_readable_time((time.time() - StartTime))
@@ -146,7 +146,7 @@ async def _(pong):
     )
 
 
-@kazu_cmd(pattern="speedtest$")
+@dante_cmd(pattern="speedtest$")
 async def _(speed):
     xxnx = await eor(speed, "`Running speed test...`")
     test = Speedtest()
@@ -177,7 +177,7 @@ async def _(speed):
     )
 
 
-@kazu_cmd(pattern="pong$")
+@dante_cmd(pattern="pong$")
 async def _(pong):
     start = datetime.now()
     xx = await eor(pong, "`Assalamualaikum Tuan`")
