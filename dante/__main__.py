@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 from . import *
 
@@ -31,22 +25,22 @@ def main():
         and os.path.exists(".git")
         and kazu_bot.run_in_loop(updater())
     ):
-        kazu_bot.run_in_loop(bash("bash installer.sh"))
+        dante_bot.run_in_loop(bash("bash installer.sh"))
 
         os.execl(sys.executable, "python3", "-m", "Kazu")
 
-    kazu_bot.run_in_loop(startup_stuff())
+    dante_bot.run_in_loop(startup_stuff())
     
-    kazu_bot.run_in_loop(join_ajg())
+    dante_bot.run_in_loop(join_ajg())
 
-    kazu_bot.me.phone = None
+    dante_bot.me.phone = None
 
-    if not kazu_bot.me.bot:
-        udB.set_key("OWNER_ID", kazu_bot.uid)
+    if not dante_bot.me.bot:
+        udB.set_key("OWNER_ID", dante_bot.uid)
 
     LOGS.info("Initialising...")
 
-    kazu_bot.run_in_loop(autopilot())
+    dante_bot.run_in_loop(autopilot())
 
     pmbot = udB.get_key("PMBOT")
     manager = udB.get_key("MANAGER")
@@ -72,19 +66,19 @@ def main():
     # for channel plugins
     plugin_channels = udB.get_key("PLUGIN_CHANNEL")
 
-    # Customize ayra Assistant...
-    kazu_bot.run_in_loop(customize())
+    # Customize dante Assistant...
+    dante_bot.run_in_loop(customize())
 
     # Load Addons from Plugin Channels.
     if plugin_channels:
-        kazu_bot.run_in_loop(plug(plugin_channels))
+        dante_bot.run_in_loop(plug(plugin_channels))
 
     # Send/Ignore Deploy Message..
     if not udB.get_key("LOG_OFF"):
-        kazu_bot.run_in_loop(ready())
+        dante_bot.run_in_loop(ready())
 
     # Edit Restarting Message (if It's restarting)
-    kazu_bot.run_in_loop(WasItRestart(udB))
+    dante_bot.run_in_loop(WasItRestart(udB))
 
     try:
         cleanup_cache()
@@ -92,7 +86,7 @@ def main():
         pass
 
     LOGS.info(
-        f"Took {time_formatter((time.time() - start_time)*1000)} to start ◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ​ ◈"
+        f"Took {time_formatter((time.time() - start_time)*1000)} to start ◈ ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​"
     )
     LOGS.info(suc_msg)
 
