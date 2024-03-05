@@ -27,14 +27,14 @@ import os
 from telethon.tl.functions.account import UpdateProfileRequest
 from telethon.tl.functions.photos import DeletePhotosRequest, UploadProfilePhotoRequest
 
-from . import eod, eor, get_string, mediainfo, kazu_cmd
+from . import eod, eor, get_string, mediainfo, dante_cmd
 
 TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 
 # bio changer
 
 
-@kazu_cmd(pattern="setbio( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="setbio( (.*)|$)", fullsudo=True)
 async def _(ayra):
     ok = await ayra.eor("...")
     set = ayra.pattern_match.group(1).strip()
@@ -48,7 +48,7 @@ async def _(ayra):
 # name changer
 
 
-@kazu_cmd(pattern="setname ?((.|//)*)", fullsudo=True)
+@dante_cmd(pattern="setname ?((.|//)*)", fullsudo=True)
 async def _(ayra):
     ok = await ayra.eor("...")
     names = ayra.pattern_match.group(1).strip()
@@ -71,7 +71,7 @@ async def _(ayra):
 # profile pic
 
 
-@kazu_cmd(pattern="setfp$", fullsudo=True)
+@dante_cmd(pattern="setfp$", fullsudo=True)
 async def _(ayra):
     if not ayra.is_reply:
         return await ayra.eor("`Balas ke Media..`", time=5)
@@ -93,7 +93,7 @@ async def _(ayra):
 # delete profile pic(s)
 
 
-@kazu_cmd(pattern="delfp( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="delfp( (.*)|$)", fullsudo=True)
 async def remove_profilepic(delpfp):
     ok = await eor(delpfp, "`...`")
     group = delpfp.text[8:]
@@ -108,7 +108,7 @@ async def remove_profilepic(delpfp):
     await eod(ok, f"`Berhasil dihapus {len(pfplist)} gambar profil(s).`")
 
 
-@kazu_cmd(pattern="poto( (.*)|$)")
+@dante_cmd(pattern="poto( (.*)|$)")
 async def gpoto(e):
     ayra = e.pattern_match.group(1).strip()
     a = await e.eor(get_string("com_1"))
