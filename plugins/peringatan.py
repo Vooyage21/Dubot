@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
 ◈ Perintah Tersedia
 
@@ -24,19 +18,19 @@
 
 """
 
-from Kazu.dB.warn_db import add_warn, reset_warn, warns
+from dante.dB.warn_db import add_warn, reset_warn, warns
 
-from . import eor, get_string, inline_mention, udB, kazu_cmd
+from . import eor, get_string, inline_mention, udB, dante_cmd
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="warn( (.*)|$)",
     manager=True,
     groups_only=True,
     admins_only=True,
 )
 async def warn(e):
-    kazu_bot = e.client
+    dante_bot = e.client
     reply = await e.get_reply_message()
     if len(e.text) > 5 and " " not in e.text[5]:
         return
@@ -69,17 +63,17 @@ async def warn(e):
     if count + 1 >= number:
         if "ban" in action:
             try:
-                await kazu_bot.edit_permissions(e.chat_id, user, view_messages=False)
+                await dante_bot.edit_permissions(e.chat_id, user, view_messages=False)
             except BaseException:
                 return await e.eor("`Ada yang salah.`", time=5)
         elif "kick" in action:
             try:
-                await kazu_bot.kick_participant(e.chat_id, user)
+                await dante_bot.kick_participant(e.chat_id, user)
             except BaseException:
                 return await e.eor("`Ada yang salah.`", time=5)
         elif "mute" in action:
             try:
-                await kazu_bot.edit_permissions(
+                await dante_bot.edit_permissions(
                     e.chat_id, user, until_date=None, send_messages=False
                 )
             except BaseException:
@@ -103,7 +97,7 @@ async def warn(e):
     )
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="resetwarn( (.*)|$)",
     manager=True,
     groups_only=True,
@@ -129,7 +123,7 @@ async def rwarn(e):
     await e.eor(f"Dihapus Semua Peringatan dari {user}.")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="warns( (.*)|$)",
     manager=True,
     groups_only=True,
@@ -162,7 +156,7 @@ async def twarns(e):
         await e.eor("`Tidak ada Peringatan`")
 
 
-@kazu_cmd(pattern="setwarn( (.*)|$)", manager=True)
+@dante_cmd(pattern="setwarn( (.*)|$)", manager=True)
 async def warnset(e):
     ok = e.pattern_match.group(1).strip()
     if not ok:
