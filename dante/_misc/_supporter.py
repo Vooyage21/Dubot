@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 import inspect
 import os
@@ -12,7 +6,7 @@ from base64 import b64decode
 
 from telethon import events, types
 
-from Kazu._misc._decorators import compile_pattern, kazu_cmd
+from Kazu._misc._decorators import compile_pattern, dante_cmd
 from Kazu._misc._wrappers import eod, eor
 
 from .. import *
@@ -20,12 +14,12 @@ from ..dB._core import LIST
 from ..dB import DEVLIST, DEFAULT
 from . import CMD_HELP, SUDO_M  # ignore: pylint
 
-ALIVE_NAME = kazu_bot.me.first_name
+ALIVE_NAME = dante_bot.me.first_name
 BOTLOG_CHATID = BOTLOG = udB.get_key("LOG_CHANNEL")
 
 
-bot = borg = catub = friday = kazu_bot
-catub.cat_cmd = kazu_cmd
+bot = borg = catub = friday = dante_bot
+catub.cat_cmd = dante_cmd
 
 black_list_chats = udB.get_key("BLACKLIST_CHATS")
 
@@ -47,8 +41,8 @@ def admin_cmd(pattern=None, command=None, **args):
 
 
 friday_on_cmd = admin_cmd
-command = kazu_cmd
-register = kazu_cmd
+command = dante_cmd
+register = dante_cmd
 
 
 def sudo_cmd(allow_sudo=True, pattern=None, command=None, **args):
