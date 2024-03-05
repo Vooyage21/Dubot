@@ -13,7 +13,7 @@
 
 import re
 
-from . import Button, asst, kazu_cmd, callback, get_string, in_pattern, udB
+from . import Button, asst, dante_cmd, callback, get_string, in_pattern, udB
 
 CALC = {}
 
@@ -44,7 +44,7 @@ lst = list(zip(tayrad[::4], tayrad[1::4], tayrad[2::4], tayrad[3::4]))
 lst.append([Button.inline("=", data="calc=")])
 
 
-@kazu_cmd(pattern="calc")
+@dante_cmd(pattern="calc")
 async def icalc(e):
     udB.del_key("calc")
     if e.client._bot:
