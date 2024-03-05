@@ -21,9 +21,6 @@ except ImportError:
 
 from .. import LOGS
 
-# -----------
-# @buddhhu
-
 
 async def get_uinfo(e):
     user, data = None, None
