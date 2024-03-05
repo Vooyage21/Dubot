@@ -16,8 +16,8 @@ if sys.argv[0] == "-m":
 
     from .configs import Var
     from .startup import *
-    from .startup._database import KazuDB
-    from .startup.BaseClient import KazuClient
+    from .startup._database import danteDB
+    from .startup.BaseClient import danteClient
     from .startup.connections import validate_session, vc_connection
     from .startup.funcs import _version_changes, autobot, enable_inline, update_envs
     from .version import dante_version
