@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 import re
 
@@ -15,7 +9,7 @@ STRINGS = {
 • Here, are the Some Basic stuff from, where you can Know, about its Usage.""",
     2: """🎉** About Dante Ubot**
 
- Kazu Ubot is Pluggable and powerful Telethon and Pyrogram Userbot, made in Python from Scratch. It is Aimed to Increase Security along with Addition of Other Useful Features.
+ dante Ubot is Pluggable and powerful Telethon and Pyrogram Userbot, made in Python from Scratch. It is Aimed to Increase Security along with Addition of Other Useful Features.
 
 ❣ Kang by **@Usern4meDoesNotExist404**""",
     3: """**💡• FAQs •**
@@ -32,13 +26,13 @@ STRINGS = {
 -> [Also Check](https://t.me/UltroidUpdates/14)
 
 **• To Know About Updates**
-  - Gabung @SpotifyStreamMusic.""",
+  - Gabung @MusicStreamSupport.""",
     4: f"""• `To Know All Available Commands`
 
   - `{HNDLR}help`
   - `{HNDLR}cmds`""",
     5: """• **For Any Other Query or Suggestion**
-  - Move to **@SpotifyStreamMusic**.
+  - Move to **@MusicStreamSupport**.
 
 • Thanks for Reaching till END.""",
 }
