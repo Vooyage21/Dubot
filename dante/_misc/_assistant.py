@@ -17,7 +17,7 @@ OWNER = dante_bot.full_name
 MSG = f"""
 **ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​**
 ➖➖➖➖➖➖➖➖➖➖
-**Owner**: [{OWNER}](tg://user?id={kazu_bot.uid})
+**Owner**: [{OWNER}](tg://user?id={dante_bot.uid})
 **Support**: @SpotifyStream_Id
 ➖➖➖➖➖➖➖➖➖➖
 """
