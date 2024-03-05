@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 import asyncio
 import time
@@ -14,10 +8,10 @@ from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl import functions, types
 
 try:
-    from .. import _kazu_cache
+    from .. import _dante_cache
     from .._misc import SUDO_M
 except ImportError:
-    _kazu_cache = {}
+    _dante_cache = {}
     SUDO_M = None
 
 
@@ -51,29 +45,29 @@ async def _callback_check(event):
         "Klik Tombol Di Bawah Ini untuk membuktikan diri sebagai Admin!",
         buttons=Button.inline("Klik Saya", f"cc_{id_}"),
     )
-    if not _kazu_cache.get("admin_callback"):
-        _kazu_cache.update({"admin_callback": {id_: None}})
+    if not _dante_cache.get("admin_callback"):
+        _dante_cache.update({"admin_callback": {id_: None}})
     else:
         _kazu_cache["admin_callback"].update({id_: None})
-    while not _kazu_cache["admin_callback"].get(id_):
+    while not _dante_cache["admin_callback"].get(id_):
         await asyncio.sleep(1)
-    key = _kazu_cache.get("admin_callback", {}).get(id_)
-    del _kazu_cache["admin_callback"][id_]
+    key = _dante_cache.get("admin_callback", {}).get(id_)
+    del _dante_cache["admin_callback"][id_]
     return key
 
 
 async def get_update_linked_chat(event):
-    if _kazu_cache.get("LINKED_CHATS") and _kazu_cache["LINKED_CHATS"].get(event.chat_id):
-        _ignore = _kazu_cache["LINKED_CHATS"][event.chat_id]["linked_chat"]
+    if _dante_cache.get("LINKED_CHATS") and _dante_cache["LINKED_CHATS"].get(event.chat_id):
+        _ignore = _dante_cache["LINKED_CHATS"][event.chat_id]["linked_chat"]
     else:
         channel = await event.client(
             functions.channels.GetFullChannelRequest(event.chat_id)
         )
         _ignore = channel.full_chat.linked_chat_id
-        if _kazu_cache.get("LINKED_CHATS"):
-            _kazu_cache["LINKED_CHATS"].update({event.chat_id: {"linked_chat": _ignore}})
+        if _dante_cache.get("LINKED_CHATS"):
+            _dante_cache["LINKED_CHATS"].update({event.chat_id: {"linked_chat": _ignore}})
         else:
-            _kazu_cache.update(
+            _dante_cache.update(
                 {"LINKED_CHATS": {event.chat_id: {"linked_chat": _ignore}}}
             )
     return _ignore
