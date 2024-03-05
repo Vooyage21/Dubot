@@ -1,13 +1,4 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
-# https://github.com/xditya/TeleBot/blob/master/telebot/plugins/mybot/pmbot/incoming.py
-
-# --------------------------------------- Imports -------------------------------------------- #
 
 import os
 
@@ -18,9 +9,9 @@ from telethon.tl.functions.messages import GetFullChatRequest
 from telethon.tl.types import Channel, Chat
 from telethon.utils import get_display_name
 
-from Kazu.dB.asst_fns import *
-from Kazu.dB.botchat_db import *
-from Kazu.fns.helper import inline_mention
+from dante.dB.asst_fns import *
+from dante.dB.botchat_db import *
+from dante.fns.helper import inline_mention
 
 from . import *
 
