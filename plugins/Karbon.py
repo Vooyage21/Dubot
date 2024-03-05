@@ -20,7 +20,7 @@ import random
 
 from telethon.utils import get_display_name
 
-from . import Carbon, eor, get_string, inline_mention, os, kazu_cmd
+from . import Carbon, eor, get_string, inline_mention, os, dante_cmd
 
 _colorspath = "resources/colorlist.txt"
 
@@ -31,7 +31,7 @@ else:
     all_col = []
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="(rc|c)arbon",
 )
 async def crbn(event):
@@ -52,7 +52,7 @@ async def crbn(event):
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
             return await eor(xxxx, get_string("carbon_2"))
-    xx = await Carbon(code=code, file_name="kazu_carbon", backgroundColor=col)
+    xx = await Carbon(code=code, file_name="dante_carbon", backgroundColor=col)
     await xxxx.delete()
     await event.reply(
         f"Carbonised by {inline_mention(event.sender)}",
@@ -60,7 +60,7 @@ async def crbn(event):
     )
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="ccarbon( (.*)|$)",
 )
 async def crbn(event):
@@ -103,7 +103,7 @@ RaySoTheme = [
     "midnight",
 ]
 
-@kazu_cmd(pattern="rayso")
+@dante_cmd(pattern="rayso")
 async def pass_on(kaz):
     spli = kaz.text.split()
     theme, dark, title, text = None, True, get_display_name(kaz.chat), None
