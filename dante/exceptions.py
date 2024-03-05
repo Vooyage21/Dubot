@@ -4,7 +4,7 @@ Exceptions which can be raised by dante Ubot Itself.
 """
 
 
-class KazuError(Exception):
+class danteError(Exception):
     ...
 
 
@@ -16,5 +16,5 @@ class DependencyMissingError(ImportError):
     ...
 
 
-class RunningAsFunctionLibError(KazuError):
+class RunningAsFunctionLibError(danteError):
     ...
