@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-REPO="https://github.com/ionmusic/Kazu-Ubot.git"
-DIR="/root/ionmusic"
+REPO="https://github.com/Vooyage21/Xy.git"
+DIR="/root/Vooyage21"
 
 spinner(){
     local pid=$!
@@ -36,7 +36,7 @@ clone_repo(){
             fi
             return
     fi
-    echo -e "Cloning Kazu-Ubot ${BRANCH}... "
+    echo -e "Cloning Dante-Ubot ${BRANCH}... "
     git clone -b $BRANCH $REPO $DIR
 }
 
