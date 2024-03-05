@@ -42,9 +42,9 @@ import asyncio
 import re
 from os import remove
 
-from Kazu.dB import DEVLIST
-from Kazu.dB.logusers_db import *
-from Kazu.dB.pmpermit_db import *
+from dante.dB import DEVLIST
+from dante.dB.logusers_db import *
+from dante.dB.pmpermit_db import *
 
 try:
     from tabulate import tabulate
@@ -74,7 +74,7 @@ UND = get_string("pmperm_1")
 UNS = get_string("pmperm_2")
 NO_REPLY = get_string("pmperm_3")
 
-UNAPPROVED_MSG = "**Pesan Keamanan {ON}!**\n\n{UND}\n\nEnte Punya {warn}/{twarn} peringatan!"
+UNAPPROVED_MSG = "**Pesan Keamanan {ON}!**\n\n{UND}\n\nKamu Punya {warn}/{twarn} peringatan!"
 if udB.get_key("PM_TEXT"):
     UNAPPROVED_MSG = (
         "**Pesan Keamanan dari {ON}!**\n\n"
@@ -121,7 +121,7 @@ async def delete_pm_warn_msgs(chat: int):
 
 if udB.get_key("PMLOG"):
 
-    @kazu_cmd(
+    @dante_cmd(
         pattern="logpm$",
     )
     async def _(e):
@@ -133,7 +133,7 @@ if udB.get_key("PMLOG"):
         nolog_user(e.chat_id)
         return await e.eor("`Now I Will log msgs from here.`", time=3)
 
-    @kazu_cmd(
+    @dante_cmd(
         pattern="nologpm$",
     )
     async def _(e):
@@ -145,7 +145,7 @@ if udB.get_key("PMLOG"):
         log_user(e.chat_id)
         return await e.eor("`Now I Won't log msgs from here.`", time=3)
 
-    @kazu_bot.on(
+    @dante_bot.on(
         events.NewMessage(
             incoming=True,
             func=lambda e: e.is_private,
@@ -161,7 +161,7 @@ if udB.get_key("PMLOG"):
 if udB.get_key("PMSETTING"):
     if udB.get_key("AUTOAPPROVE"):
 
-        @kazu_bot.on(
+        @dante_bot.on(
             events.NewMessage(
                 outgoing=True,
                 func=lambda e: e.is_private and e.out and not e.text.startswith(HNDLR),
@@ -176,7 +176,7 @@ if udB.get_key("PMSETTING"):
             approve_user(miss.id)
             await delete_pm_warn_msgs(miss.id)
             try:
-                await kazu_bot.edit_folder(miss.id, folder=0)
+                await dante_bot.edit_folder(miss.id, folder=0)
             except BaseException:
                 pass
             try:
@@ -195,7 +195,7 @@ if udB.get_key("PMSETTING"):
             except MessageNotModifiedError:
                 pass
 
-    @kazu_bot.on(
+    @dante_bot.on(
         events.NewMessage(
             incoming=True,
             func=lambda e: e.is_private
@@ -274,13 +274,13 @@ if udB.get_key("PMSETTING"):
                         except Exception as e:
                             LOGS.info(str(e))
                     elif PMPIC:
-                        _to_delete[user.id] = await kazu_bot.send_file(
+                        _to_delete[user.id] = await dante_bot.send_file(
                             user.id,
                             PMPIC,
                             caption=message_,
                         )
                     else:
-                        _to_delete[user.id] = await kazu_bot.send_message(
+                        _to_delete[user.id] = await dante_bot.send_message(
                             user.id, message_
                         )
 
@@ -309,13 +309,13 @@ if udB.get_key("PMSETTING"):
                         except Exception as e:
                             LOGS.info(str(e))
                     elif PMPIC:
-                        _to_delete[user.id] = await kazu_bot.send_file(
+                        _to_delete[user.id] = await dante_bot.send_file(
                             user.id,
                             PMPIC,
                             caption=message_,
                         )
                     else:
-                        _to_delete[user.id] = await kazu_bot.send_message(
+                        _to_delete[user.id] = await dante_bot.send_message(
                             user.id, message_
                         )
                 LASTMSG.update({user.id: event.text})
@@ -335,7 +335,7 @@ if udB.get_key("PMSETTING"):
                 update_pm(user.id, message_, wrn)
                 if inline_pm:
                     try:
-                        results = await kazu_bot.inline_query(
+                        results = await dante_bot.inline_query(
                             my_bot, f"ip_{user.id}"
                         )
                         _to_delete[user.id] = await results[0].click(
@@ -344,13 +344,13 @@ if udB.get_key("PMSETTING"):
                     except Exception as e:
                         LOGS.info(str(e))
                 elif PMPIC:
-                    _to_delete[user.id] = await kazu_bot.send_file(
+                    _to_delete[user.id] = await dante_bot.send_file(
                         user.id,
                         PMPIC,
                         caption=message_,
                     )
                 else:
-                    _to_delete[user.id] = await kazu_bot.send_message(
+                    _to_delete[user.id] = await dante_bot.send_message(
                         user.id, message_
                     )
             LASTMSG.update({user.id: event.text})
@@ -370,15 +370,15 @@ if udB.get_key("PMSETTING"):
                         "PMPermit is messed! Pls restart the bot!!",
                     )
                     return LOGS.info("COUNT_PM is messed.")
-                await kazu_bot(BlockRequest(user.id))
-                await kazu_bot(ReportSpamRequest(peer=user.id))
+                await dante_bot(BlockRequest(user.id))
+                await dante_bot(ReportSpamRequest(peer=user.id))
                 await asst.edit_message(
                     int(udB.get_key("LOG_CHANNEL")),
                     _not_approved[user.id],
                     f"**{mention}** [`{user.id}`] Diblokir karena spamming.",
                 )
 
-    @kazu_cmd(pattern="(start|stop|clear)archive$", fullsudo=True)
+    @dante_cmd(pattern="(start|stop|clear)archive$", fullsudo=True)
     async def _(e):
         x = e.pattern_match.group(1).strip()
         if x == "start":
@@ -394,7 +394,7 @@ if udB.get_key("PMSETTING"):
             except Exception as mm:
                 await e.eor(str(mm), time=5)
 
-    @kazu_cmd(pattern="(a|ok)(?: |$)", fullsudo=True)
+    @dante_cmd(pattern="(a|ok)(?: |$)", fullsudo=True)
     async def approvepm(apprvpm):
         if apprvpm.reply_to_msg_id:
             user = (await apprvpm.get_reply_message()).sender
@@ -445,7 +445,7 @@ if udB.get_key("PMSETTING"):
         else:
             await apprvpm.eor("`User may already be approved.`", time=5)
 
-    @kazu_cmd(pattern="(no|tolak)(?: |$)", fullsudo=True)
+    @dante_cmd(pattern="(no|tolak)(?: |$)", fullsudo=True)
     async def disapprovepm(e):
         if e.reply_to_msg_id:
             user = (await e.get_reply_message()).sender
@@ -496,7 +496,7 @@ if udB.get_key("PMSETTING"):
             )
 
 
-@kazu_cmd(pattern="block( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="block( (.*)|$)", fullsudo=True)
 async def blockpm(block):
     match = block.pattern_match.group(1).strip()
     if block.reply_to_msg_id:
@@ -539,7 +539,7 @@ async def blockpm(block):
         pass
 
 
-@kazu_cmd(pattern="unblock( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="unblock( (.*)|$)", fullsudo=True)
 async def unblockpm(event):
     match = event.pattern_match.group(1).strip()
     reply = await event.get_reply_message()
@@ -601,7 +601,7 @@ async def unblockpm(event):
         pass
 
 
-@kazu_cmd(pattern="listapproved$", owner=True)
+@dante_cmd(pattern="listapproved$", owner=True)
 async def list_approved(event):
     xx = await event.eor(get_string("com_1"))
     all = get_approved()
@@ -679,14 +679,14 @@ async def apr_in(event):
     re.compile(
         b"disapprove_(.*)",
     ),
-    from_users=[kazu_bot.uid],
+    from_users=[dante_bot.uid],
 )
 async def disapr_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
     if is_approved(uid):
         disapprove_user(uid)
         try:
-            user = await kazu_bot.get_entity(uid)
+            user = await dante_bot.get_entity(uid)
         except BaseException:
             return await event.delete()
         await event.edit(
@@ -721,7 +721,7 @@ async def disapr_in(event):
 async def blck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
     try:
-        await kazu_bot(BlockRequest(uid))
+        await dante_bot(BlockRequest(uid))
     except BaseException:
         pass
     try:
@@ -745,7 +745,7 @@ async def blck_in(event):
 async def unblck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
     try:
-        await kazu_bot(UnblockRequest(uid))
+        await dante_bot(UnblockRequest(uid))
     except BaseException:
         pass
     try:
