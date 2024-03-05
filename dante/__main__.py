@@ -23,11 +23,11 @@ def main():
     if (
         udB.get_key("UPDATE_ON_RESTART")
         and os.path.exists(".git")
-        and kazu_bot.run_in_loop(updater())
+        and dante_bot.run_in_loop(updater())
     ):
         dante_bot.run_in_loop(bash("bash installer.sh"))
 
-        os.execl(sys.executable, "python3", "-m", "Kazu")
+        os.execl(sys.executable, "python3", "-m", "dante")
 
     dante_bot.run_in_loop(startup_stuff())
     
