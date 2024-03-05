@@ -18,9 +18,9 @@ from traceback import format_exc
 
 from telethon import events
 
-from Kazu import kazu_bot
-from Kazu._misc._supporter import CMD_HNDLR, CMD_HELP
-from Kazu.dB import DEFAULT, DEVLIST
+from dante import dante_bot
+from dante._misc._supporter import CMD_HNDLR, CMD_HELP
+from dante.dB import DEFAULT, DEVLIST
 
 
 def babu_cmd(pattern=None, command=None, **args):
@@ -107,8 +107,8 @@ def command(**args):
                 return
 
         if allow_edited_updates:
-            kazu_bot.add_event_handler(func, events.MessageEdited(**args))
-        kazu_bot.add_event_handler(func, events.NewMessage(**args))
+            dante_bot.add_event_handler(func, events.MessageEdited(**args))
+        dante_bot.add_event_handler(func, events.NewMessage(**args))
 
     return decorator
 
@@ -180,9 +180,9 @@ def devs_cmd(**args):
                 if not disable_errors:
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
-                    text = "**✘ KAZU-UBOT ERROR REPORT ✘**\n\n"
-                    link = "[Group Support](https://t.me/kazusupportgrp)"
-                    text += "Jika mau, Anda bisa melaporkan error ini, "
+                    text = "**DANTE-UBOT ERROR REPORT**\n\n"
+                    link = "[Group Support](https://t.me/MusicStreamSupport)"
+                    text += "Jika mau, Anda bisa melaporkan masalah ini, "
                     text += f"Cukup forward saja pesan ini ke {link}.\n\n"
 
                     ftext = "========== DISCLAIMER =========="
@@ -190,7 +190,7 @@ def devs_cmd(**args):
                     ftext += "\nkami hanya mencatat fakta error dan tanggal,"
                     ftext += "\nkami menghormati privasi Anda."
                     ftext += "\nJika mau, Anda bisa melaporkan error ini,"
-                    ftext += "\ncukup forward saja pesan ini ke @kazusupportgrp"
+                    ftext += "\ncukup forward saja pesan ini ke @MusicStreamSupport"
                     ftext += "\n================================\n\n"
                     ftext += "--------BEGIN USERBOT TRACEBACK LOG--------\n"
                     ftext += "\nTanggal : " + date
@@ -219,10 +219,10 @@ def devs_cmd(**args):
                     with open("error.log", "w+") as file:
                         file.write(ftext)
 
-        if kazu_bot:
+        if dante_bot:
             if not disable_edited:
-                kazu_bot.add_event_handler(wrapper, events.MessageEdited(**args))
-            kazu_bot.add_event_handler(wrapper, events.NewMessage(**args))
+                dante_bot.add_event_handler(wrapper, events.MessageEdited(**args))
+            dante_bot.add_event_handler(wrapper, events.NewMessage(**args))
         return wrapper
 
     return decorator
