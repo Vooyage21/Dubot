@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
 ◈ Perintah Tersedia
 
@@ -21,7 +15,7 @@ import math
 import shutil
 from random import choice
 
-from Kazu.fns import some_random_headers
+from dante.fns import some_random_headers
 
 from . import (
     HOSTED_ON,
@@ -31,7 +25,7 @@ from . import (
     get_string,
     humanbytes,
     udB,
-    kazu_cmd,
+    dante_cmd,
 )
 
 HEROKU_API = None
@@ -51,7 +45,7 @@ if HOSTED_ON == "heroku":
         LOGS.exception(er)
 
 
-@kazu_cmd(pattern="usage")
+@dante_cmd(pattern="usage")
 async def usage_finder(event):
     x = await event.eor(get_string("com_1"))
     try:
