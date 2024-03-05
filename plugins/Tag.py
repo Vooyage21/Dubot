@@ -1,26 +1,21 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
+
 """
 ◈ Perintah Tersedia
 
 • `{i}tagall`
-    Tandai 100 Anggota Obrolan Teratas.
+    Tandai 100 Anggota Obrolan.
 
 • `{i}tagadmins`
-    Tandai Admin obrolan itu.
+    Tandai Admin.
 
 • `{i}tagowner`
-    Tandai Pemilik obrolan itu
+    Tandai Pemilik.
 
 • `{i}tagbots`
-    Tandai Bot dari obrolan itu.
+    Tandai Bot.
 
 • `{i}tagrec`
-    Tandai Anggota Aktif baru-baru ini.
+    Tandai Anggota Aktif.
 
 • `{i}tagon`
     Tandai Anggota online (berfungsi hanya jika privasi tidak aktif).
@@ -35,10 +30,10 @@ from telethon.tl.types import UserStatusOffline as off
 from telethon.tl.types import UserStatusOnline as onn
 from telethon.tl.types import UserStatusRecently as rec
 
-from . import inline_mention, kazu_cmd
+from . import inline_mention, dante_cmd
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="tag(on|off|all|bots|rec|admins|owner)( (.*)|$)",
     groups_only=True,
 )
