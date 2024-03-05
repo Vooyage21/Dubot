@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
 ◈ Perintah Tersedia
@@ -42,8 +36,8 @@ except ImportError:
 from telegraph import upload_file as uf
 
 from . import (
-    KazuConfig,
-    kazu_cmd,
+    danteConfig,
+    dante_cmd,
     bash,
     con,
     downloader,
@@ -56,7 +50,7 @@ from . import (
 opn = []
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="thumbnail$",
 )
 async def _(e):
@@ -75,7 +69,7 @@ async def _(e):
     await e.eor(get_string("cvt_6").format(nn), link_preview=False)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="rename( (.*)|$)",
 )
 async def imak(event):
@@ -112,7 +106,7 @@ async def imak(event):
         f"`{xxx.name}`",
         file=xxx,
         force_document=True,
-        thumb=KazuConfig.thumb,
+        thumb=danteConfig.thumb,
     )
     os.remove(inp)
     await xx.delete()
@@ -130,7 +124,7 @@ conv_keys = {
 }
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="convert( (.*)|$)",
 )
 async def uconverter(event):
@@ -148,7 +142,7 @@ async def uconverter(event):
         convert = conv_keys[input_]
     except KeyError:
         return await xx.edit(get_string("sts_3").format("gif/img/sticker/webm"))
-    file = await con.convert(b, outname="ayra", convert_to=convert)
+    file = await con.convert(b, outname="dante", convert_to=convert)
     if file:
         await event.client.send_file(
             event.chat_id, file, reply_to=event.reply_to_msg_id or event.id
@@ -157,7 +151,7 @@ async def uconverter(event):
     await xx.delete()
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="doc( (.*)|$)",
 )
 async def _(event):
@@ -176,7 +170,7 @@ async def _(event):
     os.remove(input_str)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="open( (.*)|$)",
 )
 async def _(event):
