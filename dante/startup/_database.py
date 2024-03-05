@@ -111,7 +111,7 @@ class MongoDB(_BaseDatabase):
         super().__init__()
 
     def __repr__(self):
-        return f"<Kazu.MonGoDB\n -total_keys: {len(self.keys())}\n>"
+        return f"<dante.MonGoDB\n -total_keys: {len(self.keys())}\n>"
 
     @property
     def name(self):
@@ -144,7 +144,7 @@ class MongoDB(_BaseDatabase):
             return x["value"]
 
     def flushall(self):
-        self.dB.drop_database("KazuDB")
+        self.dB.drop_database("danteDB")
         self._cache.clear()
         return True
 
@@ -167,7 +167,7 @@ class SqlDB(_BaseDatabase):
             self._connection.autocommit = True
             self._cursor = self._connection.cursor()
             self._cursor.execute(
-                "CREATE TABLE IF NOT EXISTS Kazu (kazuCli varchar(70))"
+                "CREATE TABLE IF NOT EXISTS dante (danteCli varchar(70))"
             )
         except Exception as error:
             LOGS.exception(error)
@@ -184,21 +184,21 @@ class SqlDB(_BaseDatabase):
     @property
     def usage(self):
         self._cursor.execute(
-            "SELECT pg_size_pretty(pg_relation_size('Kazu')) AS size"
+            "SELECT pg_size_pretty(pg_relation_size('dante')) AS size"
         )
         data = self._cursor.fetchall()
         return int(data[0][0].split()[0])
 
     def keys(self):
         self._cursor.execute(
-            "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name  = 'kazu'"
+            "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name  = 'dante'"
         )  # case sensitive
         data = self._cursor.fetchall()
         return [_[0] for _ in data]
 
     def get(self, variable):
         try:
-            self._cursor.execute(f"SELECT {variable} FROM Kazu")
+            self._cursor.execute(f"SELECT {variable} FROM dante")
         except psycopg2.errors.UndefinedColumn:
             return None
         data = self._cursor.fetchall()
@@ -217,13 +217,13 @@ class SqlDB(_BaseDatabase):
         except BaseException as er:
             LOGS.exception(er)
         self._cache.update({key: value})
-        self._cursor.execute(f"ALTER TABLE Kazu ADD {key} TEXT")
-        self._cursor.execute(f"INSERT INTO Kazu ({key}) values (%s)", (str(value),))
+        self._cursor.execute(f"ALTER TABLE dante ADD {key} TEXT")
+        self._cursor.execute(f"INSERT INTO dante ({key}) values (%s)", (str(value),))
         return True
 
     def delete(self, key):
         try:
-            self._cursor.execute(f"ALTER TABLE Kazu DROP COLUMN {key}")
+            self._cursor.execute(f"ALTER TABLE dante DROP COLUMN {key}")
         except psycopg2.errors.UndefinedColumn:
             return False
         return True
@@ -232,7 +232,7 @@ class SqlDB(_BaseDatabase):
         self._cache.clear()
         self._cursor.execute("DROP TABLE Kazu")
         self._cursor.execute(
-            "CREATE TABLE IF NOT EXISTS Kazu (kazuCli varchar(70))"
+            "CREATE TABLE IF NOT EXISTS dante (danteCli varchar(70))"
         )
         return True
 
@@ -301,7 +301,7 @@ class RedisDB(_BaseDatabase):
 
 class LocalDB(_BaseDatabase):
     def __init__(self):
-        self.db = Database("kazu")
+        self.db = Database("dante")
         super().__init__()
 
     def keys(self):
