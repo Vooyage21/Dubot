@@ -308,10 +308,10 @@ class LocalDB(_BaseDatabase):
         return self._cache.keys()
 
     def __repr__(self):
-        return f"<Kazu.LocalDB\n -total_keys: {len(self.keys())}\n>"
+        return f"<dante.LocalDB\n -total_keys: {len(self.keys())}\n>"
 
 
-def KazuDB():
+def danteDB():
     _er = False
     from .. import HOSTED_ON
     try:
