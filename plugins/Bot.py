@@ -25,8 +25,8 @@ from telethon.errors.rpcerrorlist import (
     ChatSendMediaForbiddenError,
 )
 
-from Kazu.version import __version__ as KazuVer
-from Kazu.dB import DEVLIST
+from dante.version import __version__ as KazuVer
+from dante.dB import DEVLIST
 from . import HOSTED_ON, LOGS
 
 try:
@@ -41,7 +41,7 @@ from . import (
     ATRA_COL,
     LOGS,
     OWNER_NAME,
-    KAZU_IMAGES,
+    DANTE_IMAGES,
     Button,
     Carbon,
     Telegraph,
@@ -62,20 +62,20 @@ from . import (
     start_time,
     time_formatter,
     udB,
-    kazu_cmd,
-    kazu_version,
+    dante_cmd,
+    dante_version,
     updater,
 )
 
 
-def KAZUPIC():
-    return inline_pic() or choice(KAZU_IMAGES)
+def DANTEPIC():
+    return inline_pic() or choice(DANTE_IMAGES)
 
 
 buttons = [
     [
         Button.url(get_string("bot_3"), "https://Usern4meDoesNotExist404"),
-        Button.url(get_string("bot_4"), "t.me/UBot_Telegram"),
+        Button.url(get_string("bot_4"), "t.me/TeamAllBots"),
     ]
 ]
 
@@ -121,19 +121,19 @@ async def get_readable_time(seconds: int) -> str:
 
 @callback("alive")
 async def alive(event):
-    text = alive_txt.format(kazu_version, KazuVer, __version__)
+    text = alive_txt.format(dante_version, danteVer, __version__)
     await event.answer(text, alert=True)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="alive( (.*)|$)",
 )
-async def lol(ayra):
-    match = ayra.pattern_match.group(1).strip()
+async def lol(dante):
+    match = dante.pattern_match.group(1).strip()
     inline = None
     if match in ["inline", "i"]:
         try:
-            res = await ayra.client.inline_query(asst.me.username, "alive")
+            res = await dante.client.inline_query(asst.me.username, "alive")
             return await res[0].click(ayra.chat_id)
         except BotMethodInvalidError:
             pass
@@ -154,8 +154,8 @@ async def lol(ayra):
         parse = "html"
         als = in_alive.format(
             header,
-            f"{kazu_version} [{HOSTED_ON}]",
-            KazuVer,
+            f"{dante_version} [{HOSTED_ON}]",
+            danteVer,
             pyver(),
             uptime,
             kk,
@@ -168,8 +168,8 @@ async def lol(ayra):
         als = (get_string("alive_1")).format(
             header,
             OWNER_NAME,
-            f"{kazu_version} [{HOSTED_ON}]",
-            KazuVer,
+            f"{dante_version} [{HOSTED_ON}]",
+            danteVer,
             uptime,
             pyver(),
             __version__,
@@ -180,38 +180,38 @@ async def lol(ayra):
             als = als.replace("▢", a)
     if pic:
         try:
-            await ayra.reply(
+            await dante.reply(
                 als,
                 file=pic,
                 parse_mode=parse,
                 link_preview=False,
                 buttons=buttons if inline else None,
             )
-            return await ayra.try_delete()
+            return await dante.try_delete()
         except ChatSendMediaForbiddenError:
             pass
         except BaseException as er:
             LOGS.exception(er)
             try:
-                await ayra.reply(file=pic)
-                await ayra.reply(
+                await dante.reply(file=pic)
+                await dante.reply(
                     als,
                     parse_mode=parse,
                     buttons=buttons if inline else None,
                     link_preview=False,
                 )
-                return await ayra.try_delete()
+                return await dante.try_delete()
             except BaseException as er:
                 LOGS.exception(er)
     await eor(
-        ayra,
+        dante,
         als,
         parse_mode=parse,
         link_preview=False,
         buttons=buttons if inline else None,
     )
 
-@kazu_cmd(
+@dante_cmd(
     pattern="cmds$",
 )
 async def cmds(event):
@@ -221,12 +221,12 @@ async def cmds(event):
 heroku_api = Var.HEROKU_API
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="restart$",
     fullsudo=False,
 )
-async def restart(ayra):
-    ok = await ayra.eor(get_string("bot_5"))
+async def restart(dante):
+    ok = await dante.eor(get_string("bot_5"))
     call_back()
     who = "bot" if ayra.client._bot else "user"
     udB.set_key("_RESTART", f"{who}_{ayra.chat_id}_{ok.id}")
@@ -236,24 +236,24 @@ async def restart(ayra):
     if len(sys.argv) > 1:
         os.execl(sys.executable, sys.executable, "main.py")
     else:
-        os.execl(sys.executable, sys.executable, "-m", "Kazu")
+        os.execl(sys.executable, sys.executable, "-m", "dante")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="shutdown$",
     fullsudo=False,
 )
-async def shutdownbot(ayra):
-    await shutdown(ayra)
+async def shutdownbot(dante):
+    await shutdown(dante)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="logs( (.*)|$)",
     chats=[],
 )
 async def _(event):
     opt = event.pattern_match.group(1).strip()
-    file = f"kazu{sys.argv[-1]}.log" if len(sys.argv) > 1 else "kazu.log"
+    file = f"dante{sys.argv[-1]}.log" if len(sys.argv) > 1 else "dante.log"
     if opt == "heroku":
         await heroku_logs(event)
     elif opt == "carbon" and Carbon:
@@ -267,7 +267,7 @@ async def _(event):
         )
         await event.reply("**Dante Logs.**", file=file)
     elif opt == "open":
-        with open("Dante.log", "r") as f:
+        with open("dante.log", "r") as f:
             file = f.read()[-4000:]
         return await event.eor(f"`{file}`")
     else:
@@ -276,7 +276,7 @@ async def _(event):
 
 
 @in_pattern("alive", owner=True)
-async def inline_alive(ayra):
+async def inline_alive(dante):
     pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
         pic = choice(pic)
@@ -287,7 +287,7 @@ async def inline_alive(ayra):
     rep = xx.replace(".git", f"/tree/{y}")
     kk = f"<a href={rep}>{y}</a>"
     als = in_alive.format(
-        header, f"{kazu_version} [{HOSTED_ON}]", KazuVer, pyver(), uptime, kk
+        header, f"{dante_version} [{HOSTED_ON}]", danteVer, pyver(), uptime, kk
     )
 
     if _e := udB.get_key("ALIVE_EMOJI"):
@@ -316,7 +316,7 @@ async def inline_alive(ayra):
                         buttons=buttons,
                     )
                 ]
-            return await ayra.answer(results)
+            return await dante.answer(results)
         except BaseException as er:
             LOGS.info(er)
     result = [
@@ -324,10 +324,10 @@ async def inline_alive(ayra):
             "Alive", text=als, parse_mode="html", link_preview=False, buttons=buttons
         )
     ]
-    await ayra.answer(result)
+    await dante.answer(result)
 
 
-@kazu_cmd(pattern="update( (.*)|$)")
+@dante_cmd(pattern="update( (.*)|$)")
 async def _(e):
     xx = await e.eor(get_string("upd_1"))
     if e.pattern_match.group(1).strip() and (
@@ -337,14 +337,14 @@ async def _(e):
         await bash("git pull -f && pip3 install -r requirements.txt")
         call_back()
         await xx.edit(get_string("upd_7"))
-        os.execl(sys.executable, "python3", "-m", "Kazu")
+        os.execl(sys.executable, "python3", "-m", "dante")
         # return
     m = await updater()
     branch = (Repo.init()).active_branch
     if m:
         x = await asst.send_file(
             udB.get_key("LOG_CHANNEL"),
-            KAZUPIC(),
+            DANTEPIC(),
             caption="• **Pembaruan tersedia** •",
             force_document=False,
             buttons=Button.inline("Changelog", data="changes"),
@@ -357,7 +357,7 @@ async def _(e):
         )
     else:
         await xx.edit(
-            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/ionmusic/Kazu-Ubot/tree/{branch}">[{branch}]</a></strong>',
+            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://t.me/MusicStreamSupport{branch}">[{branch}]</a></strong>',
             parse_mode="html",
             link_preview=False,
         )
@@ -368,7 +368,7 @@ async def updava(event):
     await event.delete()
     await asst.send_file(
         udB.get_key("LOG_CHANNEL"),
-        KAZUPIC(),
+        DANTEPIC(),
         caption="• **Pembaruan tersedia** •",
         force_document=False,
         buttons=Button.inline("Changelog", data="changes"),
