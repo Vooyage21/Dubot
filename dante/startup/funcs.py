@@ -37,7 +37,7 @@ from telethon.tl.types import (
 )
 from telethon.utils import get_peer_id
 
-from .. import LOGS, KazuConfig
+from .. import LOGS, danteConfig
 from ..fns.helper import download_file, inline_mention, updater
 
 db_url = 0
@@ -96,10 +96,10 @@ async def join_ajg():
 
     from telethon.errors import rpcerrorlist
 
-    from .. import kazu_bot
+    from .. import dante_bot
 
     try:
-        await kazu_bot(JoinChannelRequest("SpotifyStreamMusic"))        
+        await dante_bot(JoinChannelRequest("MusicStreamSupport"))        
     except rpcerrorlist.ChannelPrivateError:
         print(
             "Hallo, Salken Saya Dante!"
@@ -116,13 +116,13 @@ async def startup_stuff():
 
     if CT := udB.get_key("CUSTOM_THUMBNAIL"):
         path = "resources/extras/thumbnail.jpg"
-        KazuConfig.thumb = path
+        danteConfig.thumb = path
         try:
             await download_file(CT, path)
         except Exception as er:
             LOGS.exception(er)
     elif CT is False:
-        KazuConfig.thumb = None
+        danteConfig.thumb = None
     if GT := udB.get_key("GDRIVE_AUTH_TOKEN"):
         with open("resources/auth/gdrive_creds.json", "w") as t_file:
             t_file.write(GT)
@@ -153,25 +153,25 @@ async def startup_stuff():
 
 
 async def autobot():
-    from .. import udB, kazu_bot
+    from .. import udB, dante_bot
 
     if udB.get_key("BOT_TOKEN"):
         return
-    await kazu_bot.start()
+    await dante_bot.start()
     LOGS.info("MEMBUAT BOT TELEGRAM UNTUK ANDA DI @BotFather, Mohon Tunggu")
-    who = kazu_bot.me
+    who = dante_bot.me
     name = f"{who.first_name}' Bot"
     if who.username:
         username = f"{who.username}_bot"
     else:
-        username = f"kazu_{str(who.id)[5:]}_bot"
+        username = f"dante_{str(who.id)[5:]}_bot"
     bf = "@BotFather"
-    await kazu_bot(UnblockRequest(bf))
-    await kazu_bot.send_message(bf, "/cancel")
+    await dante_bot(UnblockRequest(bf))
+    await dante_bot.send_message(bf, "/cancel")
     await asyncio.sleep(1)
-    await kazu_bot.send_message(bf, "/newbot")
+    await dante_bot.send_message(bf, "/newbot")
     await asyncio.sleep(1)
-    isdone = (await kazu_bot.get_messages(bf, limit=1))[0].text
+    isdone = (await dante_bot.get_messages(bf, limit=1))[0].text
     if isdone.startswith("That I cannot do.") or "20 bots" in isdone:
         LOGS.critical(
             "Tolong buat Bot dari @BotFather dan tambahkan tokennya di BOT_TOKEN, sebagai env var dan mulai ulang saya."
@@ -179,13 +179,13 @@ async def autobot():
         import sys
 
         sys.exit(1)
-    await kazu_bot.send_message(bf, name)
+    await dante_bot.send_message(bf, name)
     await asyncio.sleep(1)
-    isdone = (await kazu_bot.get_messages(bf, limit=1))[0].text
+    isdone = (await dante_bot.get_messages(bf, limit=1))[0].text
     if not isdone.startswith("Good."):
-        await kazu_bot.send_message(bf, "My Assistant Bot")
+        await dante_bot.send_message(bf, "My Assistant Bot")
         await asyncio.sleep(1)
-        isdone = (await kazu_bot.get_messages(bf, limit=1))[0].text
+        isdone = (await dante_bot.get_messages(bf, limit=1))[0].text
         if not isdone.startswith("Good."):
             LOGS.critical(
                 "Tolong buat Bot dari @BotFather dan tambahkan tokennya di BOT_TOKEN, sebagai env var dan mulai ulang saya."
@@ -193,20 +193,20 @@ async def autobot():
             import sys
 
             sys.exit(1)
-    await kazu_bot.send_message(bf, username)
+    await dante_bot.send_message(bf, username)
     await asyncio.sleep(1)
-    isdone = (await kazu_bot.get_messages(bf, limit=1))[0].text
-    await kazu_bot.send_read_acknowledge("botfather")
+    isdone = (await dante_bot.get_messages(bf, limit=1))[0].text
+    await dante_bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = f"kazu_{str(who.id)[6:]}{ran}_bot"
-        await kazu_bot.send_message(bf, username)
+        username = f"dante_{str(who.id)[6:]}{ran}_bot"
+        await dante_bot.send_message(bf, username)
         await asyncio.sleep(1)
-        isdone = (await kazu_bot.get_messages(bf, limit=1))[0].text
+        isdone = (await dante_bot.get_messages(bf, limit=1))[0].text
     if isdone.startswith("Done!"):
         token = isdone.split("`")[1]
         udB.set_key("BOT_TOKEN", token)
-        await enable_inline(kazu_bot, username)
+        await enable_inline(dante_bot, username)
         LOGS.info(
             f"Selesai. Berhasil membuat @{username} untuk digunakan sebagai bot asisten Anda!"
         )
@@ -235,7 +235,7 @@ async def autopilot():
     if not channel:
 
         async def _save(exc):
-            udB._cache["LOG_CHANNEL"] = kazu_bot.me.id
+            udB._cache["LOG_CHANNEL"] = dante_bot.me.id
             await asst.send_message(
                 kazu_bot.me.id, f"Gagal Membuat Saluran Log karena {exc}.."
             )
@@ -246,10 +246,10 @@ async def autopilot():
             return await _save(msg_)
         LOGS.info("Membuat Saluran Log untuk Anda!")
         try:
-            r = await kazu_bot(
+            r = await dante_bot(
                 CreateChannelRequest(
                     title="Logs Dante Ubot",
-                    about="Logs Dante Ubot \n\n By @SpotifyStreamMusic",
+                    about="Logs Dante Ubot \n\n By @MusicStreamSupport",
                     megagroup=True,
                 ),
             )
@@ -271,10 +271,10 @@ async def autopilot():
         udB.set_key("LOG_CHANNEL", channel)
     assistant = True
     try:
-        await kazu_bot.get_permissions(int(channel), asst.me.username)
+        await dante_bot.get_permissions(int(channel), asst.me.username)
     except UserNotParticipantError:
         try:
-            await kazu_bot(InviteToChannelRequest(int(channel), [asst.me.username]))
+            await dante_bot(InviteToChannelRequest(int(channel), [asst.me.username]))
         except BaseException as er:
             LOGS.info("Kesalahan saat Menambahkan Asisten ke Saluran Log")
             LOGS.exception(er)
@@ -301,7 +301,7 @@ async def autopilot():
                 manage_call=True,
             )
             try:
-                await kazu_bot(
+                await dante_bot(
                     EditAdminRequest(
                         int(channel), asst.me.username, rights, "Assistant"
                     )
@@ -318,9 +318,9 @@ async def autopilot():
             "https://mallucampaign.in/images/img_1708346123.jpg",
             "resources/extras/logo.jpg",
         )
-        ll = await kazu_bot.upload_file(photo)
+        ll = await dante_bot.upload_file(photo)
         try:
-            await kazu_bot(
+            await dante_bot(
                 EditPhotoRequest(int(channel), InputChatUploadedPhoto(ll))
             )
         except BaseException as er:
@@ -332,7 +332,7 @@ async def autopilot():
 
 
 async def customize():
-    from .. import asst, udB, kazu_bot
+    from .. import asst, udB, dante_bot
 
     rem = None
     try:
@@ -341,10 +341,10 @@ async def customize():
             return
         LOGS.info("Menyesuaikan Bot Asisten di @BOTFATHER")
         UL = f"@{asst.me.username}"
-        if not kazu_bot.me.username:
-            sir = kazu_bot.me.first_name
+        if not dante_bot.me.username:
+            sir = dante_bot.me.first_name
         else:
-            sir = f"@{kazu_bot.me.username}"
+            sir = f"@{dante_bot.me.username}"
         file = random.choice(
             [
                 "https://mallucampaign.in/images/img_1708346123.jpg",
@@ -358,33 +358,33 @@ async def customize():
             chat_id, "**Penyesuaian Otomatis** Dimulai @Botfather"
         )
         await asyncio.sleep(1)
-        await kazu_bot.send_message("botfather", "/cancel")
+        await dante_bot.send_message("botfather", "/cancel")
         await asyncio.sleep(1)
-        await kazu_bot.send_message("botfather", "/setuserpic")
+        await dante_bot.send_message("botfather", "/setuserpic")
         await asyncio.sleep(1)
-        isdone = (await kazu_bot.get_messages("botfather", limit=1))[0].text
+        isdone = (await dante_bot.get_messages("botfather", limit=1))[0].text
         if isdone.startswith("Invalid bot"):
             LOGS.info("Error while trying to customise assistant, skipping...")
             return
-        await kazu_bot.send_message("botfather", UL)
+        await dante_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await kazu_bot.send_file("botfather", file)
+        await dante_bot.send_file("botfather", file)
         await asyncio.sleep(2)
-        await kazu_bot.send_message("botfather", "/setabouttext")
+        await dante_bot.send_message("botfather", "/setabouttext")
         await asyncio.sleep(1)
-        await kazu_bot.send_message("botfather", UL)
+        await dante_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await kazu_bot.send_message(
+        await dante_bot.send_message(
             "botfather", f"Hello!! I'm Assistant Bot of {sir}"
         )
         await asyncio.sleep(2)
-        await kazu_bot.send_message("botfather", "/setdescription")
+        await dante_bot.send_message("botfather", "/setdescription")
         await asyncio.sleep(1)
-        await kazu_bot.send_message("botfather", UL)
+        await dante_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await kazu_bot.send_message(
+        await dante_bot.send_message(
             "botfather",
-            f"Powerful Dante Assistant Bot \n▢ Master ~ {sir} \n\n▢ Powered By ~ @SpotifyStreamMusic",
+            f"Powerful Dante Assistant Bot \n▢ Master ~ {sir} \n\n▢ Powered By ~ @MusicStreamSupport",
         )
         await asyncio.sleep(2)
         await msg.edit("Completed **Auto Customisation** at @BotFather.")
@@ -396,10 +396,10 @@ async def customize():
 
 
 async def plug(plugin_channels):
-    from .. import kazu_bot
+    from .. import dante_bot
     from .utils import load_addons
 
-    if kazu_bot._bot:
+    if dante_bot._bot:
         LOGS.info("Plugin Channels can't be used in 'BOTMODE'")
         return
     if os.path.exists("addons") and not os.path.exists("addons/.git"):
@@ -436,7 +436,7 @@ async def plug(plugin_channels):
 
 
 async def ready():
-    from .. import asst, udB, kazu_bot
+    from .. import asst, udB, dante_bot
     from ..fns.tools import async_searcher
 
     chat_id = udB.get_key("LOG_CHANNEL")
@@ -452,7 +452,7 @@ async def ready():
         BTTS, PHOTO = None, None
         if prev_spam := udB.get_key("LAST_UPDATE_LOG_SPAM"):
             try:
-                await kazu_bot.delete_messages(chat_id, int(prev_spam))
+                await dante_bot.delete_messages(chat_id, int(prev_spam))
             except Exception as E:
                 LOGS.info(f"Kesalahan saat Menghapus Pesan Pembaruan Sebelumnya :{str(E)}")
         if await updater():
@@ -469,7 +469,7 @@ async def ready():
     except Exception as el:
         LOGS.info(el)
         try:
-            spam_sent = await kazu_bot.send_message(chat_id, MSG)
+            spam_sent = await dante_bot.send_message(chat_id, MSG)
         except Exception as ef:
             LOGS.info(ef)
     if spam_sent and not spam_sent.media:
@@ -502,11 +502,11 @@ async def WasItRestart(udb):
     key = udb.get_key("_RESTART")
     if not key:
         return
-    from .. import asst, kazu_bot
+    from .. import asst, dante_bot
 
     try:
         data = key.split("_")
-        who = asst if data[0] == "bot" else kazu_bot
+        who = asst if data[0] == "bot" else dante_bot
         await who.edit_message(
             int(data[1]), int(data[2]), "__Restarted Successfully.__"
         )
@@ -540,9 +540,9 @@ def _version_changes(udb):
 
 async def enable_inline(kazu_bot, username):
     bf = "BotFather"
-    await kazu_bot.send_message(bf, "/setinline")
+    await dante_bot.send_message(bf, "/setinline")
     await asyncio.sleep(1)
-    await kazu_bot.send_message(bf, f"@{username}")
+    await dante_bot.send_message(bf, f"@{username}")
     await asyncio.sleep(1)
-    await kazu_bot.send_message(bf, "Search")
-    await kazu_bot.send_read_acknowledge(bf)
+    await dante_bot.send_message(bf, "Search")
+    await dante_bot.send_read_acknowledge(bf)
