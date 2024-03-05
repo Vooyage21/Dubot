@@ -5,29 +5,29 @@ from telethon.errors import (
     ChatSendMediaForbiddenError,
 )
 
-from . import LOG_CHANNEL, LOGS, Button, asst, kazu_cmd, eor, get_string
+from . import LOG_CHANNEL, LOGS, Button, asst, dante_cmd, eor, get_string
 
 REPOMSG = """
 **ᴅᴀɴᴛᴇ ᴜʙᴏᴛ** \n
 Owner - [Click Here](https://t.me/Usern4meDoesNotExist404)
-Channels - [Click Here](https://t.me/SpotifyStreamMusic)
-Support - @SpotifyStream_Id
+Channels - [Click Here](https://t.me/MusicStreamMp3)
+Support - @MusicStreamSupport
 """
 
 RP_BUTTONS = [
     [
-        Button.url(get_string("bot_3"), "https://t.me/SpotifyStream_Id"),
-        Button.url("Channels", "https://t.me/SpotifyStreamMusic"),
+        Button.url(get_string("bot_3"), "https://t.me/MusicStreamMp3"),
+        Button.url("Channels", "https://t.me/MusicStreamMp3"),
     ],
-    [Button.url("Support Group", "t.me/SpotifyStream_Id")],
+    [Button.url("Support Group", "t.me/MusicStreamSupport")],
 ]
 
-KAZUSTRING = """🎇 **Thanks for Deploying ᴅᴀɴᴛᴇ ᴜʙᴏᴛ!**
+DANTESTRING = """🎇 **Thanks for Deploying ᴅᴀɴᴛᴇ ᴜʙᴏᴛ!**
 
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="repo$",
     manager=True,
 )
@@ -47,12 +47,12 @@ async def repify(e):
     await e.eor(REPOMSG)
 
 
-@kazu_cmd(pattern="kazu$")
+@dante_cmd(pattern="dante$")
 async def useAyra(rs):
     button = Button.inline("Start >>", "initft_2")
     msg = await asst.send_message(
         LOG_CHANNEL,
-        KAZUSTRING,
+        DANTESTRING,
         file="https://mallucampaign.in/images/img_1708341080.jpg",
         buttons=button,
     )
