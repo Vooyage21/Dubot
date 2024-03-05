@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 import asyncio
 import inspect
@@ -43,7 +37,7 @@ from ..fns.admins import admin_check
 from ..fns.helper import bash
 from ..fns.helper import time_formatter as tf
 from ..version import __version__ as pyver
-from ..version import kazu_version as kazu_ver
+from ..version import dante_version as dante_ver
 from . import SUDO_M, owner_and_sudos
 from ._wrappers import eod
 
@@ -64,8 +58,8 @@ def compile_pattern(data, hndlr):
     return re.compile("\\" + hndlr + data)
 
 
-def kazu_cmd(
-    pattern=None, unsafe_pattern=r"^[^/!#@\$A-Za-z]", incoming=True, from_users=DEVLIST, manager=False, kazu_bot=kazu_bot, asst=asst, **kwargs
+def dante_cmd(
+    pattern=None, unsafe_pattern=r"^[^/!#@\$A-Za-z]", incoming=True, from_users=DEVLIST, manager=False, dante_bot=dante_bot, asst=asst, **kwargs
 ):
     owner_only = kwargs.get("owner_only", False)
     groups_only = kwargs.get("groups_only", False)
@@ -118,9 +112,9 @@ def kazu_cmd(
                     udB.get_key("LOG_CHANNEL"),
                     f"`FloodWaitError:\n{str(fwerr)}\n\nSleeping for {tf((fwerr.seconds + 10)*1000)}`",
                 )
-                await kazu_bot.disconnect()
+                await dante_bot.disconnect()
                 await asyncio.sleep(fwerr.seconds + 10)
-                await kazu_bot.connect()
+                await dante_bot.connect()
                 await asst.send_message(
                     udB.get_key("LOG_CHANNEL"),
                     "`Bot is working again`",
@@ -167,9 +161,9 @@ def kazu_cmd(
                 LOGS.exception(e)
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 naam = get_display_name(chat)
-                ftext = "**Dante Client Error:** `Forward this to` @SpotifyStream_Id\n\n"
+                ftext = "**Dante Client Error:** `Forward this to` @MusicStreamSupport\n\n"
                 ftext += f"**Dante Version:** `{str(pyver)}"
-                ftext += "`\n**Userbot Version:** `" + str(kazu_ver)
+                ftext += "`\n**Userbot Version:** `" + str(dante_ver)
                 ftext += "`\n**Telethon Version:** `" + str(telever)
                 ftext += f"`\n**Hosted At:** `{HOSTED_ON}`\n\n"
                 ftext += "--------START DANTE CRASH LOG--------"
@@ -221,7 +215,7 @@ def kazu_cmd(
         if _add_new:
             if pattern:
                 cmd = compile_pattern(pattern, SUDO_HNDLR)
-            kazu_bot.add_event_handler(
+            dante_bot.add_event_handler(
                 wrapp,
                 NewMessage(
                     pattern=cmd,
@@ -234,7 +228,7 @@ def kazu_cmd(
             )
         if pattern:
             cmd = compile_pattern(pattern, HNDLR)
-        kazu_bot.add_event_handler(
+        dante_bot.add_event_handler(
             wrapp,
             NewMessage(
                 outgoing=True if _add_new else None,
