@@ -1,10 +1,4 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
-
+# Dante Userbot
 from telethon.errors.rpcerrorlist import (
     BotInlineDisabledError,
     BotMethodInvalidError,
@@ -12,10 +6,10 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.tl.custom import Button
 
-from Kazu.dB._core import HELP, LIST
-from Kazu.fns.tools import cmd_regex_replace
+from dante.dB._core import HELP, LIST
+from dante.fns.tools import cmd_regex_replace
 
-from . import HNDLR, LOGS, OWNER_NAME, asst, kazu_cmd, get_string, inline_pic, udB
+from . import HNDLR, LOGS, OWNER_NAME, asst, dante_cmd, get_string, inline_pic, udB
 
 _main_help_menu = [
     [
@@ -26,10 +20,10 @@ _main_help_menu = [
 ]
 
 
-@kazu_cmd(pattern="help( (.*)|$)")
-async def _help(kazu):
-    plug = kazu.pattern_match.group(1).strip()
-    chat = await kazu.get_chat()
+@dante_cmd(pattern="help( (.*)|$)")
+async def _help(dante):
+    plug = dante.pattern_match.group(1).strip()
+    chat = await dante.get_chat()
     if plug:
         try:
             if plug in HELP["Official"]:
@@ -37,13 +31,13 @@ async def _help(kazu):
                 for i in HELP["Official"][plug]:
                     output += i
                 output += "\nᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
-                await kazu.eor(output)
+                await dante.eor(output)
             elif HELP.get("Addons") and plug in HELP["Addons"]:
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["Addons"][plug]:
                     output += i
                 output += "\nᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
-                await kazu.eor(output)
+                await dante.eor(output)
             else:
                 try:
                     x = get_string("help_11").format(plug)
@@ -51,7 +45,7 @@ async def _help(kazu):
                         x += HNDLR + d
                         x += "\n"
                     x += "\nᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
-                    await kazu.eor(x)
+                    await dante.eor(x)
                 except BaseException:
                     file = None
                     compare_strings = []
@@ -76,7 +70,7 @@ async def _help(kazu):
                             None,
                         ):
                             text += f"\nDid you mean `{best_match}`?"
-                        return await kazu.eor(text)
+                        return await dante.eor(text)
                     output = f"**Command** `{plug}` **found in plugin** - `{file}`\n"
                     if file in HELP["Official"]:
                         for i in HELP["Official"][file]:
@@ -85,13 +79,13 @@ async def _help(kazu):
                         for i in HELP["Addons"][file]:
                             output += i
                     output += "\n▢ ᴅᴀɴᴛᴇ ᴜʙᴏᴛ"
-                    await kazu.eor(output)
+                    await dante.eor(output)
         except BaseException as er:
             LOGS.exception(er)
-            await kazu.eor("Error 🤔 occured.")
+            await dante.eor("Error 🤔 occured.")
     else:
         try:
-            results = await kazu.client.inline_query(asst.me.username, "kazu")
+            results = await dante.client.inline_query(asst.me.username, "dante")
         except BotMethodInvalidError:
             z = []
             for x in LIST.values():
@@ -99,7 +93,7 @@ async def _help(kazu):
             cmd = len(z) + 10
             if udB.get_key("MANAGER") and udB.get_key("DUAL_HNDLR") == "/":
                 _main_help_menu[2:2] = [[Button.inline("• Manager Help •", "mngbtn")]]
-            return await kazu.reply(
+            return await dante.reply(
                 get_string("inline_4").format(
                     OWNER_NAME,
                     len(HELP["Official"]),
@@ -110,10 +104,10 @@ async def _help(kazu):
                 buttons=_main_help_menu,
             )
         except BotResponseTimeoutError:
-            return await kazu.eor(
+            return await dante.eor(
                 get_string("help_2").format(HNDLR),
             )
         except BotInlineDisabledError:
-            return await kazu.eor(get_string("help_3"))
+            return await dante.eor(get_string("help_3"))
         await results[0].click(chat.id, reply_to=kazu.reply_to_msg_id, hide_via=True)
-        await kazu.delete()
+        await dante.delete()
