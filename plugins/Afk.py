@@ -1,9 +1,4 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
+
 
 """
 ◈ Perintah Tersedia
@@ -18,16 +13,16 @@ import asyncio
 from telegraph import upload_file as uf
 from telethon import events
 
-from Kazu.dB.afk_db import add_afk, del_afk, is_afk
-from Kazu.dB.pmpermit_db import is_approved
+from dante.dB.afk_db import add_afk, del_afk, is_afk
+from dante.dB.pmpermit_db import is_approved
 
 from . import (
     LOG_CHANNEL,
     NOSPAM_CHAT,
     Redis,
     asst,
-    kazu_bot,
-    kazu_cmd,
+    dante_bot,
+    dante_cmd,
     get_string,
     mediainfo,
     udB,
@@ -36,7 +31,7 @@ from . import (
 old_afk_msg = []
 
 
-@kazu_cmd(pattern="afk( (.*)|$)", owner_only=True)
+@dante_cmd(pattern="afk( (.*)|$)", owner_only=True)
 async def set_afk(event):
     if event.client._bot or is_afk():
         return
@@ -57,8 +52,8 @@ async def set_afk(event):
                 media = reply.file.id
     await event.eor("`Done`", time=2)
     add_afk(text, media_type, media)
-    kazu_bot.add_handler(remove_afk, events.NewMessage(outgoing=True))
-    kazu_bot.add_handler(
+    dante_bot.add_handler(remove_afk, events.NewMessage(outgoing=True))
+    dante_bot.add_handler(
         on_afk,
         events.NewMessage(
             incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
@@ -67,20 +62,20 @@ async def set_afk(event):
     msg1, msg2 = None, None
     if text and media:
         if "sticker" in media_type:
-            msg1 = await kazu_bot.send_file(event.chat_id, file=media)
-            msg2 = await kazu_bot.send_message(
+            msg1 = await dante_bot.send_file(event.chat_id, file=media)
+            msg2 = await dante_bot.send_message(
                 event.chat_id, get_string("afk_5").format(text)
             )
         else:
-            msg1 = await kazu_bot.send_message(
+            msg1 = await dante_bot.send_message(
                 event.chat_id, get_string("afk_5").format(text), file=media
             )
     elif media:
         if "sticker" in media_type:
-            msg1 = await kazu_bot.send_file(event.chat_id, file=media)
-            msg2 = await kazu_bot.send_message(event.chat_id, get_string("afk_6"))
+            msg1 = await dante_bot.send_file(event.chat_id, file=media)
+            msg2 = await dante_bot.send_message(event.chat_id, get_string("afk_6"))
         else:
-            msg1 = await kazu_bot.send_message(
+            msg1 = await dante_bot.send_message(
                 event.chat_id, get_string("afk_6"), file=media
             )
     elif text:
@@ -158,8 +153,8 @@ async def on_afk(event):
 
 
 if udB.get_key("AFK_DB"):
-    kazu_bot.add_handler(remove_afk, events.NewMessage(outgoing=True))
-    kazu_bot.add_handler(
+    dante_bot.add_handler(remove_afk, events.NewMessage(outgoing=True))
+    dante_bot.add_handler(
         on_afk,
         events.NewMessage(
             incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
