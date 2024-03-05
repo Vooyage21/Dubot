@@ -58,8 +58,8 @@ except ImportError:
 Redis = udB.get_key
 con = TgConverter
 quotly = Quotly()
-OWNER_NAME = kazu_bot.full_name
-OWNER_ID = kazu_bot.uid
+OWNER_NAME = dante_bot.full_name
+OWNER_ID = dante_bot.uid
 
 asstUserName = asst.me.username
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
@@ -77,7 +77,7 @@ StartTime = time.time()
 def inline_pic():
     INLINE_PIC = udB.get_key("INLINE_PIC")
     if INLINE_PIC is None:
-        INLINE_PIC = choice(KAZU_IMAGES)
+        INLINE_PIC = choice(DANTE_IMAGES)
     elif INLINE_PIC == False:
         INLINE_PIC = None
     return INLINE_PIC
