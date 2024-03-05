@@ -19,17 +19,17 @@
 """
 
 
-from Kazu.dB.blacklist_db import (
+from dante.dB.blacklist_db import (
     add_blacklist,
     get_blacklist,
     list_blacklist,
     rem_blacklist,
 )
 
-from . import kazu_bot, kazu_cmd, events, get_string, udB
+from . import dante_bot, dante_cmd, events, get_string, udB
 
 
-@kazu_cmd(pattern="blacklist( (.*)|$)", admins_only=True)
+@dante_cmd(pattern="blacklist( (.*)|$)", admins_only=True)
 async def af(e):
     wrd = e.pattern_match.group(1).strip()
     chat = e.chat_id
@@ -39,11 +39,11 @@ async def af(e):
     heh = wrd.split(" ")
     for z in heh:
         add_blacklist(int(chat), z.lower())
-    kazu_bot.add_handler(blacklist, events.NewMessage(incoming=True))
+    dante_bot.add_handler(blacklist, events.NewMessage(incoming=True))
     await e.eor(get_string("blk_2").format(wrd))
 
 
-@kazu_cmd(pattern="remblacklist( (.*)|$)", admins_only=True)
+@dante_cmd(pattern="remblacklist( (.*)|$)", admins_only=True)
 async def rf(e):
     wrd = e.pattern_match.group(1).strip()
     chat = e.chat_id
@@ -56,7 +56,7 @@ async def rf(e):
     await e.eor(get_string("blk_4").format(wrd))
 
 
-@kazu_cmd(pattern="listblacklist$", admins_only=True)
+@dante_cmd(pattern="listblacklist$", admins_only=True)
 async def lsnote(e):
     if x := list_blacklist(e.chat_id):
         sd = get_string("blk_5")
@@ -77,4 +77,4 @@ async def blacklist(e):
 
 
 if udB.get_key("BLACKLIST_DB"):
-    kazu_bot.add_handler(blacklist, events.NewMessage(incoming=True))
+    dante_bot.add_handler(blacklist, events.NewMessage(incoming=True))
