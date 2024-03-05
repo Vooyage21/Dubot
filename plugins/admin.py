@@ -30,13 +30,13 @@ from telethon.tl.functions.messages import GetFullChatRequest, SetHistoryTTLRequ
 from telethon.tl.types import InputMessagesFilterPinned
 from telethon.utils import get_display_name
 
-from Kazu.dB import DEVLIST
-from Kazu.fns.admins import ban_time
+from dante.dB import DEVLIST
+from dante.fns.admins import ban_time
 
 from . import (
     HNDLR,
     LOGS,
-    kazu_cmd,
+    dante_cmd,
     eod,
     eor,
     get_string,
@@ -46,7 +46,7 @@ from . import (
 )
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="promote( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -54,8 +54,8 @@ from . import (
     fullsudo=True,
 )
 async def prmte(ayra):
-    xx = await ayra.eor(get_string("com_1"))
-    user, rank = await get_uinfo(ayra)
+    xx = await dante.eor(get_string("com_1"))
+    user, rank = await get_uinfo(dante)
     rank = rank or "Admin"
     FullRight = False
     if not user:
@@ -68,12 +68,12 @@ async def prmte(ayra):
         FullRight = True
     try:
         if FullRight:
-            await ayra.client(
-                EditAdminRequest(ayra.chat_id, user.id, ayra.chat.admin_rights, rank)
+            await dante.client(
+                EditAdminRequest(dante.chat_id, user.id, dante.chat.admin_rights, rank)
             )
         else:
-            await ayra.client.edit_admin(
-                ayra.chat_id,
+            await dante.client.edit_admin(
+                dante.chat_id,
                 user.id,
                 invite_users=True,
                 ban_users=True,
@@ -89,23 +89,23 @@ async def prmte(ayra):
         return await xx.edit(f"`{ex}`")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="demote( (.*)|$)",
     admins_only=True,
     manager=True,
     require="add_admins",
     fullsudo=True,
 )
-async def dmote(ayra):
-    xx = await ayra.eor(get_string("com_1"))
-    user, rank = await get_uinfo(ayra)
+async def dmote(dante):
+    xx = await dante.eor(get_string("com_1"))
+    user, rank = await get_uinfo(dante)
     if not rank:
         rank = "Not Admin"
     if not user:
         return await xx.edit(get_string("de_1"))
     try:
-        await ayra.client.edit_admin(
-            ayra.chat_id,
+        await dante.client.edit_admin(
+            dante.chat_id,
             user.id,
             invite_users=None,
             ban_users=None,
@@ -114,85 +114,85 @@ async def dmote(ayra):
             manage_call=None,
             title=rank,
         )
-        await eod(xx, get_string("de_2").format(inline_mention(user), ayra.chat.title))
+        await eod(xx, get_string("de_2").format(inline_mention(user), dante.chat.title))
     except Exception as ex:
         return await xx.edit(f"`{ex}`")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="ban( (.*)|$)",
     admins_only=True,
     manager=True,
     require="ban_users",
     fullsudo=True,
 )
-async def bban(ayra):
-    something = await get_uinfo(ayra)
+async def bban(dante):
+    something = await get_uinfo(dante)
     if not something:
         return
     user, reason = something
     if not user:
-        return await eod(ayra, get_string("ban_1"))
+        return await eod(dante, get_string("ban_1"))
     if user.id in DEVLIST:
-        return await eod(ayra, get_string("ban_2"))
+        return await eod(dante, get_string("ban_2"))
     try:
-        await ayra.client.edit_permissions(ayra.chat_id, user.id, view_messages=False)
+        await dante.client.edit_permissions(dante.chat_id, user.id, view_messages=False)
     except UserIdInvalidError:
-        return await eod(ayra, get_string("adm_1"))
+        return await eod(dante, get_string("adm_1"))
     except BadRequestError:
-        return await eod(ayra, get_string("ban_3"))
-    senderme = inline_mention(await ayra.get_sender())
+        return await eod(dante, get_string("ban_3"))
+    senderme = inline_mention(await dante.get_sender())
     userme = inline_mention(user)
-    text = get_string("ban_4").format(userme, senderme, ayra.chat.title)
+    text = get_string("ban_4").format(userme, senderme, dante.chat.title)
     if reason:
         text += get_string("ban_5").format(reason)
-    await eod(ayra, text)
+    await eod(dante, text)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="unban( (.*)|$)",
     admins_only=True,
     manager=True,
     require="ban_users",
     fullsudo=True,
 )
-async def uunban(ayra):
-    xx = await ayra.eor(get_string("com_1"))
-    if ayra.text[1:].startswith("unbanall"):
+async def uunban(dante):
+    xx = await dante.eor(get_string("com_1"))
+    if dante.text[1:].startswith("unbanall"):
         return
-    something = await get_uinfo(ayra)
+    something = await get_uinfo(dante)
     if not something:
         return
     user, reason = something
     if not user:
         return await xx.edit(get_string("unban_1"))
     try:
-        await ayra.client.edit_permissions(ayra.chat_id, user.id, view_messages=True)
+        await dante.client.edit_permissions(dante.chat_id, user.id, view_messages=True)
     except UserIdInvalidError:
         return await eod(ayra, get_string("adm_1"))
     except BadRequestError:
         return await xx.edit(get_string("adm_2"))
     sender = inline_mention(await ayra.get_sender())
-    text = get_string("unban_3").format(inline_mention(user), sender, ayra.chat.title)
+    text = get_string("unban_3").format(inline_mention(user), sender, dante.chat.title)
     if reason:
         text += get_string("ban_5").format(reason)
     await xx.edit(text)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="kick( (.*)|$)",
     manager=True,
     require="ban_users",
     fullsudo=True,
 )
-async def kck(ayra):
-    if "kickme" in ayra.text:
+async def kck(dante):
+    if "kickme" in dante.text:
         return
-    if ayra.is_private:
-        return await ayra.eor("`Gunakan ini di Grup/Saluran.`", time=5)
-    ml = ayra.text.split(" ", maxsplit=1)[0]
-    xx = await ayra.eor(get_string("com_1"))
-    something = await get_uinfo(ayra)
+    if dante.is_private:
+        return await dante.eor("`Gunakan ini di Grup/Saluran.`", time=5)
+    ml = dante.text.split(" ", maxsplit=1)[0]
+    xx = await dante.eor(get_string("com_1"))
+    something = await get_uinfo(dante)
     if not something:
         return
     user, reason = something
@@ -203,7 +203,7 @@ async def kck(ayra):
     if getattr(user, "is_self", False):
         return await xx.edit(get_string("kick_3"))
     try:
-        await ayra.client.kick_participant(ayra.chat_id, user.id)
+        await dante.client.kick_participant(dante.chat_id, user.id)
     except BadRequestError as er:
         LOGS.info(er)
         return await xx.edit(get_string("kick_1"))
@@ -211,14 +211,14 @@ async def kck(ayra):
         LOGS.exception(e)
         return
     text = get_string("kick_4").format(
-        inline_mention(user), inline_mention(await ayra.get_sender()), ayra.chat.title
+        inline_mention(user), inline_mention(await dante.get_sender()), dante.chat.title
     )
     if reason:
         text += get_string("ban_5").format(reason)
     await xx.edit(text)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="tban( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -258,7 +258,7 @@ async def tkicki(e):
         return await e.eor(str(m))
 
 
-@kazu_cmd(pattern="pin$", manager=True, require="pin_messages", fullsudo=True)
+@dante_cmd(pattern="pin$", manager=True, require="pin_messages", fullsudo=True)
 async def pin(msg):
     if not msg.is_reply:
         return await eor(msg, get_string("pin_1"))
@@ -276,22 +276,22 @@ async def pin(msg):
     await eor(msg, text)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="unpin($| (.*))",
     manager=True,
     require="pin_messages",
     fullsudo=True,
 )
-async def unp(ayra):
-    xx = await ayra.eor(get_string("com_1"))
-    ch = (ayra.pattern_match.group(1).strip()).strip()
+async def unp(dante):
+    xx = await dante.eor(get_string("com_1"))
+    ch = (dante.pattern_match.group(1).strip()).strip()
     msg = None
     if ayra.is_reply:
-        msg = ayra.reply_to_msg_id
+        msg = dante.reply_to_msg_id
     elif ch != "all":
         return await xx.edit(get_string("unpin_1").format(HNDLR))
     try:
-        await ayra.client.unpin_message(ayra.chat_id, msg)
+        await dante.client.unpin_message(ayra.chat_id, msg)
     except BadRequestError:
         return await xx.edit(get_string("adm_2"))
     except Exception as e:
@@ -299,35 +299,35 @@ async def unp(ayra):
     await xx.edit("`Tidak disematkan!`")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="tpin( (.*)|$)",
     admins_only=True,
     manager=True,
     require="pin_messages",
     fullsudo=True,
 )
-async def pin_message(ayra):
-    match = ayra.pattern_match.group(1).strip()
-    if not ayra.is_reply:
-        return await ayra.eor("`Balas pesan..`", time=6)
+async def pin_message(dante):
+    match = dante.pattern_match.group(1).strip()
+    if not dante.is_reply:
+        return await dante.eor("`Balas pesan..`", time=6)
     if not match:
-        return await ayra.eor("`Harap sediakan waktu..`", time=8)
-    msg = await ayra.eor(get_string("com_1"))
-    msg_id = ayra.reply_to_msg_id
+        return await dante.eor("`Harap sediakan waktu..`", time=8)
+    msg = await dante.eor(get_string("com_1"))
+    msg_id = dante.reply_to_msg_id
     try:
         time = ban_time(match)
-        await ayra.client.pin_message(ayra.chat_id, msg_id)
+        await dante.client.pin_message(dante.chat_id, msg_id)
         await msg.eor(f"`disematkan waktu` `{time}`", time=8)
     except Exception as er:
         return await msg.edit(str(er))
     await asyncio.sleep(time)
     try:
-        await ayra.client.unpin_message(ayra.chat_id, msg_id)
+        await dante.client.unpin_message(ayra.chat_id, msg_id)
     except Exception as er:
         LOGS.exception(er)
 
 
-@kazu_cmd(pattern="purge( (.*)|$)", manager=True, require="delete_messages")
+@dante_cmd(pattern="purge( (.*)|$)", manager=True, require="delete_messages")
 async def fastpurger(purg):
     match = purg.pattern_match.group(1).strip()
     try:
@@ -361,7 +361,7 @@ async def fastpurger(purg):
     await purg.eor("__Fast purge complete!__", time=5)
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="purgeme( (.*)|$)",
 )
 async def fastpurgerme(purg):
@@ -403,7 +403,7 @@ async def fastpurgerme(purg):
     )
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="purgeall$",
 )
 async def _(e):
@@ -422,7 +422,7 @@ async def _(e):
         return await e.eor(str(er), time=5)
 
 
-@kazu_cmd(pattern="pinned", manager=True, groups_only=True)
+@dante_cmd(pattern="pinned", manager=True, groups_only=True)
 async def djshsh(event):
     chat = await event.get_chat()
     if isinstance(chat, types.Chat):
@@ -439,7 +439,7 @@ async def djshsh(event):
         await event.eor(get_string("pinned_2").format(msg.message_link))
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="listpinned$",
 )
 async def get_all_pinned(event):
@@ -470,14 +470,14 @@ async def get_all_pinned(event):
     await x.edit(m + a, parse_mode="html")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="autodelete( (.*)|$)",
     admins_only=True,
 )
-async def autodelte(ayra):
-    match = ayra.pattern_match.group(1).strip()
+async def autodelte(dante):
+    match = dante.pattern_match.group(1).strip()
     if not match or match not in ["24h", "7d", "1m", "off"]:
-        return await ayra.eor("`Silakan Gunakan dalam Format yang Tepat..`", time=5)
+        return await dante.eor("`Silakan Gunakan dalam Format yang Tepat..`", time=5)
     if match == "24h":
         tt = 3600 * 24
     elif match == "7d":
@@ -487,9 +487,9 @@ async def autodelte(ayra):
     else:
         tt = 0
     try:
-        await ayra.client(SetHistoryTTLRequest(ayra.chat_id, period=tt))
+        await dante.client(SetHistoryTTLRequest(dante.chat_id, period=tt))
     except ChatNotModifiedError:
-        return await ayra.eor(
+        return await dante.eor(
             f"Pengaturan Hapus Otomatis Sudah sama dengan `{match}`", time=5
         )
-    await ayra.eor(f"Status Hapus Otomatis Diubah menjadi `{match}` !")
+    await dante.eor(f"Status Hapus Otomatis Diubah menjadi `{match}` !")
