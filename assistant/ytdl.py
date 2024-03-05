@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 
 import os
@@ -18,14 +12,14 @@ from telethon.errors.rpcerrorlist import FilePartLengthInvalidError, MediaEmptyE
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from telethon.tl.types import InputWebDocument as wb
 
-from Kazu.fns.helper import (
+from dante.fns.helper import (
     bash,
     fast_download,
     humanbytes,
     numerize,
     time_formatter,
 )
-from Kazu.fns.ytdl import dler, get_buttons, get_formats
+from dante.fns.ytdl import dler, get_buttons, get_formats
 
 from . import LOGS, asst, callback, in_pattern, udB
 
