@@ -17,10 +17,10 @@
 
 import os
 
-from . import eor, get_string, udB, kazu_cmd
+from . import eor, get_string, udB, dante_cmd
 
 
-@kazu_cmd(pattern="get($| (.*))", fullsudo=False)
+@dante_cmd(pattern="get($| (.*))", fullsudo=False)
 async def get_var(event):
     try:
         opt = event.text.split(maxsplit=2)[1]
