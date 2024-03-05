@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 
 import asyncio
@@ -17,7 +11,7 @@ from random import choice
 from bs4 import BeautifulSoup as bs
 
 try:
-    from Kazu.fns.gDrive import GDriveManager
+    from dante.fns.gDrive import GDriveManager
 except ImportError:
     GDriveManager = None
 from telegraph import upload_file as upl
@@ -25,9 +19,9 @@ from telethon import Button, events
 from telethon.tl.types import MessageMediaWebPage
 from telethon.utils import get_peer_id
 
-from Kazu.fns.helper import fast_download, progress
-from Kazu.fns.tools import Carbon, async_searcher, get_paste, telegraph_client
-from Kazu.startup.loader import Loader
+from dante.fns.helper import fast_download, progress
+from dante.fns.tools import Carbon, async_searcher, get_paste, telegraph_client
+from dante.startup.loader import Loader
 
 from . import *
 
@@ -161,7 +155,7 @@ _buttons = {
         ],
     },
     "oofdm": {
-        "text": "About [Dual Mode](https://t.me/SpotifyStreamMusic)",
+        "text": "About [Dual Mode](https://t.me/MusicStreamSupport)",
         "buttons": [
             [
                 Button.inline("Dᴜᴀʟ Mᴏᴅᴇ Oɴ", "dmof"),
