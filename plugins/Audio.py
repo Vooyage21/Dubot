@@ -23,12 +23,12 @@ import os
 import time
 from datetime import datetime as dt
 
-from Kazu.fns.tools import set_attributes
+from dante.fns.tools import set_attributes
 
 from . import (
     LOGS,
-    KazuConfig,
-    kazu_cmd,
+    danteConfig,
+    dante_cmd,
     bash,
     downloader,
     eod,
@@ -43,7 +43,7 @@ from . import (
 )
 
 
-@kazu_cmd(pattern="makevoice$")
+@dante_cmd(pattern="makevoice$")
 async def vnc(e):
     if not e.reply_to:
         return await eod(e, get_string("audiotools_1"))
@@ -70,7 +70,7 @@ async def vnc(e):
     os.remove("out.opus")
 
 
-@kazu_cmd(pattern="atrim( (.*)|$)")
+@dante_cmd(pattern="atrim( (.*)|$)")
 async def trim_aud(e):
     sec = e.pattern_match.group(1).strip()
     if not sec or "-" not in sec:
@@ -132,7 +132,7 @@ async def trim_aud(e):
         await e.eor(get_string("audiotools_1"), time=5)
 
 
-@kazu_cmd(pattern="extractaudio$")
+@dante_cmd(pattern="extractaudio$")
 async def ex_aud(e):
     reply = await e.get_reply_message()
     if not (reply and reply.media and mediainfo(reply.media).startswith("video")):
