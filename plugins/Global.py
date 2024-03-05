@@ -46,8 +46,8 @@ from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import ChatAdminRights, User
 
-from Kazu.dB import DEVLIST
-from Kazu.dB.gban_mute_db import (
+from dante.dB import DEVLIST
+from dante.dB.gban_mute_db import (
     gban,
     gmute,
     is_gbanned,
@@ -56,12 +56,12 @@ from Kazu.dB.gban_mute_db import (
     ungban,
     ungmute,
 )
-from Kazu.dB.gcast_blacklist_db import (
+from dante.dB.gcast_blacklist_db import (
     add_gblacklist,
     is_gblacklisted,
     rem_gblacklist,
 )
-from Kazu.fns.tools import create_tl_btn, format_btn, get_msg_button
+from dante.fns.tools import create_tl_btn, format_btn, get_msg_button
 
 from . import (
     HNDLR,
@@ -72,8 +72,8 @@ from . import (
     eor,
     get_string,
     inline_mention,
-    kazu_bot,
-    kazu_cmd,
+    dante_bot,
+    dante_cmd,
 )
 from ._inline import something
 
@@ -96,10 +96,10 @@ _gdemote_rights = ChatAdminRights(
 )
 
 
-@kazu_cmd(pattern="gpromote( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="gpromote( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
-    kazu_bot = e.client
+    dante_bot = e.client
     if not x:
         return await e.eor(get_string("schdl_2"), time=5)
     user = await e.get_reply_message()
@@ -190,7 +190,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await kazu_bot(
+                    await dante_bot(
                         EditAdminRequest(
                             x.id,
                             user,
@@ -204,10 +204,10 @@ async def _(e):
         await eor(ev, f"Dipromosikan {name.first_name} secara keseluruhan : {c} {key} obrolan.")
 
 
-@kazu_cmd(pattern="gdemote( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="gdemote( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
-    kazu_bot = e.client
+    dante_bot = e.client
     if not x:
         return await e.eor(get_string("schdl_2"), time=5)
     user = await e.get_reply_message()
@@ -232,7 +232,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await kazu_bot(
+                    await dante_bot(
                         EditAdminRequest(
                             x.id,
                             user.id,
@@ -254,7 +254,7 @@ async def _(e):
         if user.isdigit():
             user = int(user)
         try:
-            name = await kazu_bot.get_entity(user)
+            name = await dante_bot.get_entity(user)
         except BaseException:
             return await e.eor(f"`Tidak Ada Pengguna Ditemukan Terkait {user}`", time=5)
         ev = await e.eor(f"`Demoting {name.first_name} globally.`")
@@ -263,7 +263,7 @@ async def _(e):
             key = k[2]
         rank = "Not AdMin"
         c = 0
-        async for x in kazu_bot.iter_dialogs():
+        async for x in dante_bot.iter_dialogs():
             if (
                 "group" in key.lower()
                 and x.is_group
@@ -289,7 +289,7 @@ async def _(e):
         await eor(ev, f"Demoted {name.first_name} in Total : {c} {key} chats.")
 
 
-@kazu_cmd(pattern="ungban( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="ungban( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`UnGbanning...`")
     match = e.pattern_match.group(1).strip()
@@ -353,7 +353,7 @@ async def _(e):
     )
 
 
-@kazu_cmd(pattern="gban( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="gban( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`Gbanning...`")
     reason = ""
@@ -434,7 +434,7 @@ async def _(e):
     await xx.edit(gb_msg)
 
 
-@kazu_cmd(pattern="g(admin|)cast( (.*)|$)", fullsudo=False)
+@dante_cmd(pattern="g(admin|)cast( (.*)|$)", fullsudo=False)
 async def gcast(event):
     text, btn, reply = "", None, None
     if xx := event.pattern_match.group(2):
@@ -520,7 +520,7 @@ async def gcast(event):
     await kk.edit(text)
 
 
-@kazu_cmd(pattern="gucast( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="gucast( (.*)|$)", fullsudo=True)
 async def gucast(event):
     msg, btn, reply = "", None, None
     if xx := event.pattern_match.group(1).strip():
@@ -569,7 +569,7 @@ async def gucast(event):
     await kk.edit(f"Berhasil di {done} obrolan, kesalahan {er} obrolan(s)")
 
 
-@kazu_cmd(pattern="gkick( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="gkick( (.*)|$)", fullsudo=True)
 async def gkick(e):
     xx = await e.eor("`Gkicking...`")
     if e.reply_to_msg_id:
@@ -582,7 +582,7 @@ async def gkick(e):
         return await xx.edit("`Balas beberapa pesan atau tambahkan id mereka.`", time=5)
     name = (await e.client.get_entity(userid)).first_name
     chats = 0
-    if userid == kazu_bot.uid:
+    if userid == dante_bot.uid:
         return await xx.eor("`I can't gkick myself.`", time=3)
     if userid in DEVLIST:
         return await xx.eor("`I can't gkick my Developers.`", time=3)
@@ -601,7 +601,7 @@ async def gkick(e):
     await xx.edit(f"`Gkicked` [{name}](tg://user?id={userid}) `in {chats} chats.`")
 
 
-@kazu_cmd(pattern="gmute( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="gmute( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`Gmuting...`")
     if e.reply_to_msg_id:
@@ -614,7 +614,7 @@ async def _(e):
         return await xx.eor("`Balas beberapa pesan atau tambahkan id mereka.`", tome=5, time=5)
     name = await e.client.get_entity(userid)
     chats = 0
-    if userid == kazu_bot.uid:
+    if userid == dante_bot.uid:
         return await xx.eor("`I can't gmute myself.`", time=3)
     if userid in DEVLIST:
         return await xx.eor("`I can't gmute my Developers.`", time=3)
@@ -636,7 +636,7 @@ async def _(e):
     await xx.edit(f"`Gmuted` {inline_mention(name)} `in {chats} chats.`")
 
 
-@kazu_cmd(pattern="ungmute( (.*)|$)", fullsudo=True)
+@dante_cmd(pattern="ungmute( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`UnGmuting...`")
     if e.reply_to_msg_id:
@@ -667,7 +667,7 @@ async def _(e):
     await xx.edit(f"`Ungmuted` {inline_mention(name)} `in {chats} chats.`")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="listgban$",
 )
 async def list_gengbanned(event):
@@ -703,7 +703,7 @@ async def list_gengbanned(event):
         await x.edit(gbanned_users, parse_mode="html")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="gstat( (.*)|$)",
 )
 async def gstat_(e):
@@ -731,12 +731,12 @@ async def gstat_(e):
     await xx.edit(msg)
 
 
-@kazu_cmd(pattern="gblacklist$")
+@dante_cmd(pattern="gblacklist$")
 async def blacklist_(event):
     await gblacker(event, "add")
 
 
-@kazu_cmd(pattern="ungblacklist$")
+@dante_cmd(pattern="ungblacklist$")
 async def ungblacker(event):
     await gblacker(event, "remove")
 
