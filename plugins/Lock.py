@@ -15,12 +15,12 @@
 """
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 
-from Kazu.fns.admins import lock_unlock
+from dante.fns.admins import lock_unlock
 
-from . import kazu_cmd
+from . import dante_cmd
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="(un|)lock( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def un_lock(e):
