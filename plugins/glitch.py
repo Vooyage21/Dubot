@@ -12,10 +12,10 @@
 """
 import os
 
-from . import bash, get_string, mediainfo, kazu_cmd
+from . import bash, get_string, mediainfo, dante_cmd
 
 
-@kazu_cmd(pattern="glitch$")
+@dante_cmd(pattern="glitch$")
 async def _(e):
     try:
         import glitch_me  # ignore :pylint
@@ -36,7 +36,7 @@ async def _(e):
         return await xx.eor(get_string("com_4"))
     cmd = f"glitch_me gif --line_count 200 -f 10 -d 50 '{ok}' ayra.gif"
     stdout, stderr = await bash(cmd)
-    await e.reply(file="kazu.gif", force_document=False)
+    await e.reply(file="dante.gif", force_document=False)
     await xx.delete()
     os.remove(ok)
-    os.remove("kazu.gif")
+    os.remove("dante.gif")
