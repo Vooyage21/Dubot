@@ -7,7 +7,7 @@
 """
 ◈ Perintah Tersedia
 
-• `{i} startvc`
+• `{i} mulaivc`
     Mulai Panggilan Grup dalam grup.
 
 • `{i} stopvc`
@@ -23,7 +23,7 @@
 • `{i} joinvc` <chat id/username grup>
    Bergabunglah dengan obrolan suara.
 
-• `{i} leavevc` <chat id/username grup>
+• `{i} turunvc` <chat id/username grup>
    Tinggalkan obrolan suara.
 
 """
@@ -37,7 +37,7 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from . import kazu_cmd, vc_asst, owner_and_sudos, get_string, udB, inline_mention, add_to_queue, mediainfo, file_download, LOGS, is_url_ok, bash, download, Player, VC_QUEUE, list_queue, CLIENTS,VIDEO_ON, vid_download, dl_playlist
+from . import dante_cmd, vc_asst, owner_and_sudos, get_string, udB, inline_mention, add_to_queue, mediainfo, file_download, LOGS, is_url_ok, bash, download, Player, VC_QUEUE, list_queue, CLIENTS,VIDEO_ON, vid_download, dl_playlist
 
 
 async def get_call(event):
@@ -51,7 +51,7 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="stopvc$",
     admins_only=True,
     groups_only=True,
@@ -64,7 +64,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="vcinvite$",
     groups_only=True,
 )
@@ -85,8 +85,8 @@ async def _(e):
     await ok.edit(get_string("vct_5").format(z))
 
 
-@kazu_cmd(
-    pattern="startvc$",
+@dante_cmd(
+    pattern="mulaivc$",
     admins_only=True,
     groups_only=True,
 )
@@ -98,7 +98,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="vctitle(?: |$)(.*)",
     admins_only=True,
     groups_only=True,
@@ -133,7 +133,7 @@ async def join_(event):
         await aySongs.vc_joiner()
 
 
-@vc_asst("(end|leavevc)")
+@vc_asst("(end|turunvc)")
 async def leaver(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
