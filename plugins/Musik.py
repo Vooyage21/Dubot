@@ -58,7 +58,7 @@ from pytgcalls.exceptions import NotConnectedError
 
 from . import vc_asst, owner_and_sudos, get_string, udB, inline_mention, add_to_queue, mediainfo, file_download, LOGS, is_url_ok, bash, download, Player, VC_QUEUE, list_queue, CLIENTS,VIDEO_ON, vid_download, dl_playlist
 
-from Kazu.dB.vc_sudos import add_vcsudo, del_vcsudo, get_vcsudos, is_vcsudo
+from dante.dB.vc_sudos import add_vcsudo, del_vcsudo, get_vcsudos, is_vcsudo
 from telethon.errors.rpcerrorlist import ChatSendMediaForbiddenError, MessageIdInvalidError
 
 
