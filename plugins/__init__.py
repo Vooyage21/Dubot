@@ -27,20 +27,20 @@ from telethon.errors.rpcerrorlist import (
     ChatSendMediaForbiddenError,
 )
 
-from Kazu import *
-from Kazu.kita import *
-from Kazu._misc._assistant import asst_cmd, callback, in_pattern
-from Kazu._misc._decorators import kazu_cmd, compile_pattern
-from Kazu._misc import owner_and_sudos, sudoers
-from Kazu.fns.admins import admin_check
-from Kazu._misc._wrappers import eod, eor
-from Kazu.dB import DEVLIST, KAZU_IMAGES, DEFAULT 
-from Kazu.fns.ytdl import get_videos_link
-from Kazu.fns.helper import *
-from Kazu.fns.info import *
-from Kazu.fns.misc import *
-from Kazu.fns.tools import *
-from Kazu.version import kazu_version, __version__ as KazuVer
+from dante import *
+from dante.kita import *
+from dante._misc._assistant import asst_cmd, callback, in_pattern
+from dante._misc._decorators import dante_cmd, compile_pattern
+from dante._misc import owner_and_sudos, sudoers
+from dante.fns.admins import admin_check
+from dante._misc._wrappers import eod, eor
+from dante.dB import DEVLIST, DANTE_IMAGES, DEFAULT 
+from dante.fns.ytdl import get_videos_link
+from dante.fns.helper import *
+from dante.fns.info import *
+from dante.fns.misc import *
+from dante.fns.tools import *
+from dante.version import dante_version, __version__ as danteVer
 from strings import get_help, get_string
 
 
@@ -89,7 +89,7 @@ List = []
 Dict = {}
 InlinePlugin = {}
 N = 0
-cmd = kazu_cmd
+cmd = dante_cmd
 STUFF = {}
 
 # Chats, which needs to be ignore for some cases
@@ -102,28 +102,16 @@ NOSPAM_CHAT = [
     -1001109500936,  # TelethonChat
     -1001050982793,  # Python
     -1001256902287,  # DurovsChat
-    -1001473548283,  # SharingUserbot
-    -1001599474353,  # Himiko Support 
-    -1001687155877,  # Cilik Support
-    -1001070335805,  # Private AOT
-    -1001578091827,  # Prime Support
-    -1001812143750,  # Kynan Support 
-    -1001675396283,  # Ayiin Support
-    -1001572486389,  # Pluvia Musik
-    -1001692751821,  # Ram Support
-    -1001675459127,  # Tede Group
-    -1001795125065,  # Bagaskara Support
-    -1001287188817,  # Kazu Support
-    -1001459812644,  # Geez Support
-    -1001657588564,  # Niskala
+    -1001473548283,  # SharingUserbot       
+    -1001627039023,  # Dev
 ]
 
 KANGING_STR = [
-    "Plagiat hehe...",
-    "Ijin bre comot stiker ini ke paket saya...",
+    "Ijin ambil ya...",
+    "Mau comot stiker ini ke paket sticker gw ah...",
     "Boleh juga nih...",
     "Keren juga nih...",
-    "Lah apaan tuh...",
+    "Curi dulu...",
 ]
 
 ATRA_COL = [
@@ -310,7 +298,7 @@ class Player:
         try:
             await vcClient(
                 functions.phone.CreateGroupCallRequest(
-                    self._chat, title="🎧 Kazu Music 🎶"
+                    self._chat, title="Dante Music 🎶"
                 )
             )
         except Exception as e:
@@ -418,7 +406,7 @@ class Player:
         if done:
             await vcClient.send_message(
                 self._current_chat,
-                f"◈ Bergabung dengan VC di <code>{chat_id}</code>",
+                f"Bergabung dengan VC di <code>{chat_id}</code>",
                 parse_mode="html",
             )
 
