@@ -28,7 +28,7 @@ from os import remove
 from pprint import pprint
 
 from telethon.utils import get_display_name
-from Kazu import _ignore_eval
+from dante import _ignore_eval
 
 from . import *
 
@@ -42,7 +42,7 @@ from random import choice
 try:
     from yaml import safe_load
 except ImportError:
-    from Kazu.fns.tools import safe_load
+    from dante.fns.tools import safe_load
 try:
     from telegraph import upload_file as uf
 except ImportError:
@@ -52,7 +52,7 @@ from telethon.tl import functions
 fn = functions
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="sysinfo$",
 )
 async def _(e):
@@ -68,7 +68,7 @@ async def _(e):
     remove("neo.txt")
 
 
-@kazu_cmd(pattern="bash", fullsudo=False, only_devs=False)
+@dante_cmd(pattern="bash", fullsudo=False, only_devs=False)
 async def _(event):
     carb, yamlf = None, False
     try:
@@ -130,7 +130,7 @@ async def _(event):
                 event.chat_id,
                 out_file,
                 force_document=True,
-                thumb=KazuConfig.thumb,
+                thumb=danteConfig.thumb,
                 allow_cache=False,
                 caption=f"`{cmd}`" if len(cmd) < 998 else None,
                 reply_to=reply_to_id,
@@ -142,7 +142,7 @@ async def _(event):
 
 
 pp = pprint  # ignore: pylint
-bot = kazu = kazu_bot
+bot = dante = dante_bot
 
 
 class u:
@@ -165,7 +165,7 @@ def _parse_eval(value=None):
     return str(value)
 
 
-@kazu_cmd(pattern="eval", fullsudo=False, only_devs=False)
+@dante_cmd(pattern="eval", fullsudo=False, only_devs=False)
 async def _(event):
     try:
         cmd = event.text.split(maxsplit=1)[1]
@@ -206,7 +206,7 @@ async def _(event):
     if (
         any(item in cmd for item in KEEP_SAFE().All)
         and not event.out
-        and event.sender_id != kazu_bot.uid
+        and event.sender_id != dante_bot.uid
     ):
         warning = await event.forward_to(udB.get_key("LOG_CHANNEL"))
         await warning.reply(
@@ -308,7 +308,7 @@ int main(){
 """
 
 
-@kazu_cmd(pattern="cpp", only_devs=False)
+@dante_cmd(pattern="cpp", only_devs=False)
 async def doie(e):
     match = e.text.split(" ", maxsplit=1)
     try:
@@ -319,20 +319,20 @@ async def doie(e):
     if "main(" not in match:
         new_m = "".join(" " * 4 + i + "\n" for i in match.split("\n"))
         match = DUMMY_CPP.replace("!code", new_m)
-    open("cpp-kazu.cpp", "w").write(match)
-    m = await bash("g++ -o CppKazu cpp-kazu.cpp")
+    open("cpp-dante.cpp", "w").write(match)
+    m = await bash("g++ -o Cppdante cpp-dante.cpp")
     o_cpp = f"• **Eval-Cpp**\n`{match}`"
     if m[1]:
         o_cpp += f"\n\n**• Error :**\n`{m[1]}`"
         if len(o_cpp) > 3000:
-            os.remove("cpp-kazu.cpp")
-            if os.path.exists("CppKazu"):
-                os.remove("CppKazu")
+            os.remove("cpp-dante.cpp")
+            if os.path.exists("Cppdante"):
+                os.remove("Cppdante")
             with BytesIO(str.encode(o_cpp)) as out_file:
                 out_file.name = "error.txt"
                 return await msg.reply(f"`{match}`", file=out_file)
         return await eor(msg, o_cpp)
-    m = await bash("./CppKazu")
+    m = await bash("./Cppdante")
     if m[0] != "":
         o_cpp += f"\n\n**• Output :**\n`{m[0]}`"
     if m[1]:
@@ -343,5 +343,5 @@ async def doie(e):
             await msg.reply(f"`{match}`", file=out_file)
     else:
         await eor(msg, o_cpp)
-    os.remove("CppKazu")
-    os.remove("cpp-kazu.cpp")
+    os.remove("Cppdante")
+    os.remove("cpp-dante.cpp")
