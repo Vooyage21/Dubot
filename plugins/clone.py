@@ -1,12 +1,6 @@
-# Ported From DarkCobra , Originally By Uniborg
-# Ultroid - UserBot
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-✘ Commands Available
+Commands Available
 
 • `{i}clone <reply/username>`
     clone the identity of user.
@@ -25,17 +19,17 @@ from telethon.tl.types import MessageEntityMentionName
 from . import *
 
 
-@kazu_cmd(pattern="clone ?(.*)", fullsudo=True)
+@dante_cmd(pattern="clone ?(.*)", fullsudo=True)
 async def _(event):
     eve = await event.eor("`Processing...`")
     reply_message = await event.get_reply_message()
-    whoiam = await event.client(GetFullUserRequest(ultroid_bot.uid))
+    whoiam = await event.client(GetFullUserRequest(dante_bot.uid))
     if whoiam.full_user.about:
-        mybio = str(ultroid_bot.me.id) + "01"
+        mybio = str(dante_bot.me.id) + "01"
         udB.set_key(f"{mybio}", whoiam.full_user.about)  # saving bio for revert
-    udB.set_key(f"{ultroid_bot.uid}02", whoiam.users[0].first_name)
+    udB.set_key(f"{dante_bot.uid}02", whoiam.users[0].first_name)
     if whoiam.users[0].last_name:
-        udB.set_key(f"{ultroid_bot.uid}03", whoiam.users[0].last_name)
+        udB.set_key(f"{dante.uid}03", whoiam.users[0].last_name)
     replied_user, error_i_a = await get_full_user(event)
     if replied_user is None:
         await eve.edit(str(error_i_a))
@@ -64,17 +58,17 @@ async def _(event):
     )
 
 
-@kazu_cmd(pattern="revert$")
+@dante_cmd(pattern="revert$")
 async def _(event):
     name = OWNER_NAME
     ok = ""
-    mybio = str(ultroid_bot.me.id) + "01"
+    mybio = str(dante_bot.me.id) + "01"
     bio = "Error : Bio Lost"
     chc = udB.get_key(mybio)
     if chc:
         bio = chc
-    fname = udB.get_key(f"{ultroid_bot.uid}02")
-    lname = udB.get_key(f"{ultroid_bot.uid}03")
+    fname = udB.get_key(f"{dante_bot.uid}02")
+    lname = udB.get_key(f"{dante_bot.uid}03")
     if fname:
         name = fname
     if lname:
