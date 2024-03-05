@@ -221,13 +221,13 @@ async def autobot():
 
 
 async def autopilot():
-    from .. import asst, udB, kazu_bot
+    from .. import asst, udB, dante_bot
 
     channel = udB.get_key("LOG_CHANNEL")
     new_channel = None
     if channel:
         try:
-            chat = await kazu_bot.get_entity(channel)
+            chat = await dante_bot.get_entity(channel)
         except BaseException as err:
             LOGS.exception(err)
             udB.del_key("LOG_CHANNEL")
@@ -240,7 +240,7 @@ async def autopilot():
                 kazu_bot.me.id, f"Gagal Membuat Saluran Log karena {exc}.."
             )
 
-        if kazu_bot._bot:
+        if dante_bot._bot:
             msg_ = "'LOG_CHANNEL' tidak ditemukan! Tambahkan untuk digunakan 'BOTMODE'"
             LOGS.error(msg_)
             return await _save(msg_)
