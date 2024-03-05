@@ -15,10 +15,10 @@ from telethon import Button
 from telethon.tl.types import InputWebDocument, Message
 from telethon.utils import resolve_bot_file_id
 
-from Kazu._misc._assistant import callback, in_pattern
-from Kazu.dB._core import HELP, LIST
-from Kazu.fns.helper import gen_chlog, time_formatter, updater
-from Kazu.fns.misc import split_list
+from dante._misc._assistant import callback, in_pattern
+from dante.dB._core import HELP, LIST
+from dante.fns.helper import gen_chlog, time_formatter, updater
+from dante.fns.misc import split_list
 
 from . import (
     HNDLR,
@@ -36,7 +36,7 @@ from ._help import _main_help_menu
 
 # ================================================#
 
-kazu = get_string("kazu_1")
+dante = get_string("dante_1")
 
 helps = get_string("inline_1")
 
@@ -53,14 +53,14 @@ upage = 0
 SUP_BUTTONS = [
     [
         Button.url("• Owner", url="https://t.me/Usern4meDoesNotExist404"),
-        Button.url("• Support", url="t.me/SpotifyStream_Id"),
+        Button.url("• Support", url="t.me/MusicStreamSupport"),
     ],
 ]
 
 # --------------------BUTTONS--------------------#
 
 
-@in_pattern("kazu", owner=True)
+@in_pattern("dante", owner=True)
 async def inline_handler(event):
     z = []
     for x in LIST.values():
@@ -110,7 +110,7 @@ async def setting(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
-            kazu,
+            dante,
             len(HELP.get("Official", [])),
             len(HELP.get("Addons", [])),
             len(z),
@@ -135,17 +135,17 @@ _strings = {"Official": helps, "Addons": zhelps, "VCBot": get_string("inline_6")
 
 
 @callback(re.compile("uh_(.*)"), owner=True)
-async def help_func(ayra):
-    key, count = ayra.data_match.group(1).decode("utf-8").split("_")
+async def help_func(dante):
+    key, count = dante.data_match.group(1).decode("utf-8").split("_")
     if key == "VCBot" and HELP.get("VCBot") is None:
-        return await ayra.answer(get_string("help_12"), alert=True)
+        return await dante.answer(get_string("help_12"), alert=True)
     elif key == "Addons" and HELP.get("Addons") is None:
-        return await ayra.answer(get_string("help_13").format(HNDLR), alert=True)
+        return await dante.answer(get_string("help_13").format(HNDLR), alert=True)
     if "|" in count:
         _, count = count.split("|")
     count = int(count) if count else 0
-    text = _strings.get(key, "").format(kazu, len(HELP.get(key)))
-    await ayra.edit(text, buttons=page_num(count, key), link_preview=False)
+    text = _strings.get(key, "").format(dante, len(HELP.get(key)))
+    await dante.edit(text, buttons=page_num(count, key), link_preview=False)
 
 
 @callback(re.compile("uplugin_(.*)"), owner=True)
@@ -221,7 +221,7 @@ async def _(event):
                 [Button.inline("«", data="ownr")],
             ],
         )
-        remove("kazu_updates.txt")
+        remove("dante_updates.txt")
     else:
         await event.edit(
             changelog_str,
@@ -273,7 +273,7 @@ async def opner(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
-            kazu,
+            dante,
             len(HELP.get("Official", [])),
             len(HELP.get("Addons", [])),
             len(z),
@@ -292,7 +292,7 @@ async def on_plug_in_callback_query_handler(event):
 
 
 def page_num(index, key):
-    rows = udB.get_key("HELP_ROWS") or 6
+    rows = udB.get_key("HELP_ROWS") or 5
     cols = udB.get_key("HELP_COLUMNS") or 2
     loaded = HELP.get(key, [])
     emoji = udB.get_key("EMOJI_IN_HELP") or ""
