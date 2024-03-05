@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 import inspect
 import re
@@ -14,11 +8,11 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery, NewMessage
 from telethon.tl.types import InputWebDocument
 
-from .. import LOGS, asst, udB, kazu_bot
+from .. import LOGS, asst, udB, dante_bot
 from ..fns.admins import admin_check
 from . import append_or_update, owner_and_sudos
 
-OWNER = kazu_bot.full_name
+OWNER = dante_bot.full_name
 
 MSG = f"""
 **ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​**
@@ -32,9 +26,9 @@ IN_BTTS = [
     [
         Button.url(
             "Channels",
-            url="https://t.me/SpotifyStreamMusic",
+            url="https://t.me/MusicStreamMp3",
         ),
-        Button.url("Support", url="https://t.me/SpotifyStream_Id"),
+        Button.url("Support", url="https://t.me/MusicStreamSupport"),
     ]
 ]
 
@@ -92,7 +86,7 @@ def in_pattern(pattern=None, owner=False, **kwargs):
                 res = [
                     await event.builder.article(
                         title="ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​",
-                        url="https://t.me/SpotifyStreamMusic",
+                        url="https://t.me/MusicStreamSupport",
                         description="ᴅᴀɴᴛᴇ ᴜʙᴏᴛ",
                         text=MSG,
                         thumb=InputWebDocument(
@@ -127,7 +121,7 @@ def in_pattern(pattern=None, owner=False, **kwargs):
                                 title="Unhandled Exception has Occured!",
                                 text=error_text(),
                                 buttons=Button.url(
-                                    "Report", "https://t.me/SpotifyStream_Id"
+                                    "Report", "https://t.me/MusicStreamSupport"
                                 ),
                             )
                         ]
