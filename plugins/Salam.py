@@ -1,9 +1,9 @@
-# @riizzvbss
+
 """
 Perintah Tersedia
 
 • `{i}ass`
-   Salam Lengkap
+   Salam 
 
 • `{i}as`
    Assalamu'alaikum
@@ -12,16 +12,16 @@ Perintah Tersedia
    Jawab Salam
    
 • `{i}ks`
-   Kenalan Salam
+   Kenalan 
    
 • `{i}jws`
    Istighfar Salam
    
 • `{i}3x`
-    Bisa Kali
+    Bisa 
 
 • `{i}kg`
-    Keren lu gitu
+    Keren lu
 
 • `{i}hm`
     Batuk
@@ -30,50 +30,50 @@ Perintah Tersedia
 from time import sleep
 from . import (
     eor,
-    kazu_cmd,
+    dante_cmd,
 )
 
-@kazu_cmd(pattern="ass$")
+@dante_cmd(pattern="ass$")
 async def _(event):
     await event.eor("**Assalamu'alaikum Warohmatulohi Wabarokatu**")
 
 
-@kazu_cmd(pattern="as$")
+@dante_cmd(pattern="as$")
 async def _(event):
     await event.eor("**Assalamu'alaikum**")
     
-@kazu_cmd(pattern="ws$")
+@dante_cmd(pattern="ws$")
 async def _(event):
     await event.eor("**Wa'alaikumussalam**")
 
     
-@kazu_cmd(pattern="ks$")
+@dante_cmd(pattern="ks$")
 async def _(event):
     xx = await event.eor("**Hy kaa 🥹**")
     sleep(2)
     await xx.edit("**Assalamualaikum...**")
 
 
-@kazu_cmd(pattern="jws$")
+@dante_cmd(pattern="jws$")
 async def _(event):
     xx = await event.eor(event, "**Astaghfirullah, Jawab dulu salam dong**")
     sleep(2)
     await xx.edit("**Assalamu'alaikum**")
 
 
-@kazu_cmd(pattern="3x$")
+@dante_cmd(pattern="3x$")
 async def _(event):
     xx = await event.eor("**Bismillah, 3x**")
     sleep(2)
     await xx.edit("**Assalamu'alaikum Bisa yug Kali**")
     
-@kazu_cmd(pattern="kg$")
+@dante_cmd(pattern="kg$")
 async def _(event):
     xx = await event.eor("**Nih Gw Pantun,Buah Apel Buah Kedondong**")
     sleep(2)
     await xx.edit("**Senggol Dong!!!**")
 
-@kazu_cmd(pattern="hm$")
+@dante_cmd(pattern="hm$")
 async def _(event):
     xx = await event.eor("**Batuk dulu g sih**")
     sleep(2)
