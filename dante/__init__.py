@@ -1,10 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
-
 import os
 import sys
 
@@ -12,7 +5,7 @@ from .version import __version__
 
 run_as_module = False
 
-class KazuConfig:
+class danteConfig:
     lang = "id"
     thumb = "https://mallucampaign.in/images/img_1708349297.jpg"
 
@@ -27,7 +20,7 @@ if sys.argv[0] == "-m":
     from .startup.BaseClient import KazuClient
     from .startup.connections import validate_session, vc_connection
     from .startup.funcs import _version_changes, autobot, enable_inline, update_envs
-    from .version import kazu_version
+    from .version import dante_version
 
     if not os.path.exists("./plugins"):
         LOGS.error(
@@ -36,10 +29,10 @@ if sys.argv[0] == "-m":
         exit()
 
     start_time = time.time()
-    _kazu_cache = {}
+    _dante_cache = {}
     _ignore_eval = []
 
-    udB = KazuDB()
+    udB = danteDB()
     update_envs()
 
     LOGS.info(f"Connecting to {udB.name}...")
@@ -53,7 +46,7 @@ if sys.argv[0] == "-m":
         if DUAL_MODE:
             udB.del_key("DUAL_MODE")
             DUAL_MODE = False
-        kazu_bot = None
+        dante_bot = None
 
         if not udB.get_key("BOT_TOKEN"):
             LOGS.critical(
@@ -62,29 +55,29 @@ if sys.argv[0] == "-m":
 
             sys.exit()
     else:
-        kazu_bot = KazuClient(
+        dante_bot = danteClient(
             validate_session(Var.SESSION, LOGS),
             udB=udB,
-            app_version=kazu_version,
+            app_version=dante_version,
             device_model="Dante",
         )
-        kazu_bot.run_in_loop(autobot())
+        dante_bot.run_in_loop(autobot())
 
-    asst = KazuClient(None, bot_token=udB.get_key("BOT_TOKEN"), udB=udB)
+    asst = danteClient(None, bot_token=udB.get_key("BOT_TOKEN"), udB=udB)
 
     if BOT_MODE:
-        kazu_bot = asst
+        dante_bot = asst
         if udB.get_key("OWNER_ID"):
             try:
-                kazu_bot.me = kazu_bot.run_in_loop(
-                    kazu_bot.get_entity(udB.get_key("OWNER_ID"))
+                dante_bot.me = dante_bot.run_in_loop(
+                    dante_bot.get_entity(udB.get_key("OWNER_ID"))
                 )
             except Exception as er:
                 LOGS.exception(er)
     elif not asst.me.bot_inline_placeholder:
-        kazu_bot.run_in_loop(enable_inline(kazu_bot, asst.me.username))
+        dante_bot.run_in_loop(enable_inline(kazu_bot, asst.me.username))
 
-    vcClient = vc_connection(udB, kazu_bot)
+    vcClient = vc_connection(udB, dante_bot)
 
     _version_changes(udB)
 
@@ -94,10 +87,10 @@ if sys.argv[0] == "-m":
     DUAL_HNDLR = udB.get_key("DUAL_HNDLR") or "/"
     SUDO_HNDLR = udB.get_key("SUDO_HNDLR") or "NO_HNDLR"
 else:
-    print("Dante-Ubot")
+    print("dante-Ubot")
 
     from logging import getLogger
 
-    LOGS = getLogger("Dante")
+    LOGS = getLogger("dante")
 
-    kazu_bot = asst = udB = vcClient = None
+    dante_bot = asst = udB = vcClient = None
