@@ -44,7 +44,7 @@ db_url = 0
 
 
 async def autoupdate_local_database():
-    from .. import asst, udB, kazu_bot, Var
+    from .. import asst, udB, dante_bot, Var
 
     global db_url
     if db_url := (
