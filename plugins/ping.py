@@ -126,7 +126,7 @@ async def _(pong):
 
 
 @dante_cmd(pattern=r"Dan$")
-@devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Kaz$")
+@devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Dan$")
 async def _(pong):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
