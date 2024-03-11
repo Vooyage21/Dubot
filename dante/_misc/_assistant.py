@@ -57,7 +57,7 @@ def callback(data=None, from_users=[], admins=False, owner=False, **kwargs):
     """Assistant's callback decorator"""
     if "me" in from_users:
         from_users.remove("me")
-        from_users.append(kazu_bot.uid)
+        from_users.append(dante_bot.uid)
 
     def ay(func):
         async def wrapper(event):
