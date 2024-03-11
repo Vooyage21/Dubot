@@ -48,7 +48,7 @@ async def _callback_check(event):
     if not _dante_cache.get("admin_callback"):
         _dante_cache.update({"admin_callback": {id_: None}})
     else:
-        _kazu_cache["admin_callback"].update({id_: None})
+        _dante_cache["admin_callback"].update({id_: None})
     while not _dante_cache["admin_callback"].get(id_):
         await asyncio.sleep(1)
     key = _dante_cache.get("admin_callback", {}).get(id_)
