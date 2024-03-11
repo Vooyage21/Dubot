@@ -75,7 +75,7 @@ if sys.argv[0] == "-m":
             except Exception as er:
                 LOGS.exception(er)
     elif not asst.me.bot_inline_placeholder:
-        dante_bot.run_in_loop(enable_inline(kazu_bot, asst.me.username))
+        dante_bot.run_in_loop(enable_inline(dante_bot, asst.me.username))
 
     vcClient = vc_connection(udB, dante_bot)
 
