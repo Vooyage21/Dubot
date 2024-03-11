@@ -25,7 +25,7 @@ from telethon.errors.rpcerrorlist import (
     ChatSendMediaForbiddenError,
 )
 
-from dante.version import __version__ as KazuVer
+from dante.version import __version__ as danteVer
 from dante.dB import DEVLIST
 from . import HOSTED_ON, LOGS
 
