@@ -99,11 +99,11 @@ def inline_mention(user, custom=None, html=False):
 
 
 def un_plug(shortname):
-    from .. import asst, kazu_bot
+    from .. import asst, dante_bot
 
     try:
         all_func = LOADED[shortname]
-        for client in [kazu_bot, asst]:
+        for client in [dante_bot, asst]:
             for x, _ in client.list_event_handlers():
                 if x in all_func:
                     client.remove_event_handler(x)
@@ -112,7 +112,7 @@ def un_plug(shortname):
         ADDONS.remove(shortname)
     except (ValueError, KeyError):
         name = f"addons.{shortname}"
-        for client in [kazu_bot, asst]:
+        for client in [dante_bot, asst]:
             for i in reversed(range(len(client._event_builders))):
                 ev, cb = client._event_builders[i]
                 if cb.__module__ == name:
@@ -206,19 +206,19 @@ if run_as_module:
             log.write(ok)
         await event.client.send_file(
             event.chat_id,
-            file="kazu-heroku.log",
-            thumb=KazuConfig.thumb,
+            file="dante-heroku.log",
+            thumb=danteConfig.thumb,
             caption="**Dante Heroku Logs.**",
         )
 
-        os.remove("kazu-heroku.log")
+        os.remove("dante-heroku.log")
         await xx.delete()
 
     async def def_logs(ay, file):
         await ay.client.send_file(
             ay.chat_id,
             file=file,
-            thumb=KazuConfig.thumb,
+            thumb=danteConfig.thumb,
             caption="**Dante Logs.**",
         )
 
@@ -536,13 +536,13 @@ async def restart(ay=None):
             else:
                 LOGS.exception(er)
     elif len(sys.argv) == 1:
-        os.execl(sys.executable, sys.executable, "-m", "Kazu")
+        os.execl(sys.executable, sys.executable, "-m", "dante")
     else:
         os.execl(
             sys.executable,
             sys.executable,
             "-m",
-            "Kazu",
+            "dante",
             sys.argv[1],
             sys.argv[2],
             sys.argv[3],
