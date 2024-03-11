@@ -33,7 +33,7 @@ async def setlang(event):
 async def settt(event):
     lang = event.data_match.group(1).decode("UTF-8")
     languages = get_languages()
-    KazuConfig.lang = lang
+    danteConfig.lang = lang
     udB.del_key("language") if lang == "id" else udB.set_key("language", lang)
     await event.edit(
         f"Bahasa Anda telah disetel ke {languages[lang]['natively']} [{lang}].",
