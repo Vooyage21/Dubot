@@ -165,7 +165,7 @@ async def _(event):
     with open(input_str, "w") as b:
         b.write(str(a.message))
     await xx.edit(f"**Pengepakan ke dalam** `{input_str}`")
-    await event.reply(file=input_str, thumb=KazuConfig.thumb)
+    await event.reply(file=input_str, thumb=danteConfig.thumb)
     await xx.delete()
     os.remove(input_str)
 
