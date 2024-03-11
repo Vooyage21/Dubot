@@ -36,12 +36,12 @@ import pytz
 from bs4 import BeautifulSoup as bs
 from telethon.tl.types import DocumentAttributeVideo
 
-from Kazu.fns.google_image import googleimagesdownload
-from Kazu.fns.tools import metadata
+from dante.fns.google_image import googleimagesdownload
+from dante.fns.tools import metadata
 
 from . import (
     HNDLR,
-    KazuConfig,
+    danteConfig,
     async_searcher,
     bash,
     downloader,
@@ -49,8 +49,8 @@ from . import (
     get_string,
     mediainfo,
     quotly,
-    kazu_bot,
-    kazu_cmd,
+    dante_bot,
+    dante_cmd,
     uploader,
 )
 from .Karbon import all_col
@@ -58,7 +58,7 @@ from .Karbon import all_col
 File = []
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="getaudio$",
 )
 async def daudtoid(e):
@@ -82,7 +82,7 @@ async def daudtoid(e):
     await xxx.edit(get_string("spcltool_2"))
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern="addaudio$",
 )
 async def adaudroid(e):
@@ -122,7 +122,7 @@ async def adaudroid(e):
     await e.client.send_file(
         e.chat_id,
         mmmm,
-        thumb=KazuConfig.thumb,
+        thumb=danteConfig.thumb,
         attributes=attributes,
         force_document=False,
         reply_to=e.reply_to_msg_id,
@@ -134,7 +134,7 @@ async def adaudroid(e):
     os.remove(File[0])
 
 
-@kazu_cmd(
+@dante_cmd(
     pattern=r"dob( (.*)|$)",
 )
 async def hbd(event):
@@ -146,7 +146,7 @@ async def hbd(event):
         nam = await kk.get_sender()
         name = nam.first_name
     else:
-        name = kazu_bot.me.first_name
+        name = dante_bot.me.first_name
     zn = pytz.timezone("Asia/Jakarta")
     abhi = dt.now(zn)
     kk = match.split("/")
@@ -248,7 +248,7 @@ Zodiac -: {sign}
     )
 
 
-@kazu_cmd(pattern="sticker( (.*)|$)")
+@dante_cmd(pattern="sticker( (.*)|$)")
 async def _(event):
     x = event.pattern_match.group(1).strip()
     if not x:
@@ -272,7 +272,7 @@ async def _(event):
     await uu.edit(a, parse_mode="html")
 
 
-@kazu_cmd(pattern="wall( (.*)|$)")
+@dante_cmd(pattern="wall( (.*)|$)")
 async def wall(event):
     inp = event.pattern_match.group(1).strip()
     if not inp:
@@ -293,7 +293,7 @@ async def wall(event):
     await nn.delete()
 
 
-@kazu_cmd(pattern="q( (.*)|$)", manager=True, allow_pm=True)
+@dante_cmd(pattern="q( (.*)|$)", manager=True, allow_pm=True)
 async def quott_(event):
     match = event.pattern_match.group(1).strip()
     if not event.is_reply:
@@ -350,7 +350,7 @@ async def quott_(event):
         )
     except Exception as er:
         return await msg.edit(str(er))
-    message = await reply.reply("Quotly by Kazu Ubot", file=file)
+    message = await reply.reply("Quotly by dante Ubot", file=file)
     os.remove(file)
     await msg.delete()
     return message
