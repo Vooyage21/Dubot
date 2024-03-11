@@ -33,7 +33,7 @@ SUP_BUTTONS = [
 
 ofox = "https://graph.org/file/231f0049fcd722824f13b.jpg"
 gugirl = "https://graph.org/file/0df54ae4541abca96aa11.jpg"
-kazupic = "https://mallucampaign.in/images/img_1708341080.jpg"
+dantepic = "https://mallucampaign.in/images/img_1708341080.jpg"
 
 apis = [
     "QUl6YVN5QXlEQnNZM1dSdEI1WVBDNmFCX3c4SkF5NlpkWE5jNkZV",
@@ -165,7 +165,7 @@ async def repo(e):
         await e.builder.article(
             title="Dante Ubot",
             description="Ubot | Telethon",
-            thumb=wb(kazupic, 0, "image/jpeg", []),
+            thumb=wb(dantepic, 0, "image/jpeg", []),
             text="**ᴅᴀɴᴛᴇ ᴜʙᴏᴛ​**",
             buttons=SUP_BUTTONS,
         ),
@@ -460,7 +460,7 @@ async def twitter_search(event):
         )
     try:
         return await event.answer(
-            _kazu_cache["twitter"][match],
+            _dante_cache["twitter"][match],
             switch_pm="• Twitter Search •",
             switch_pm_param="start",
         )
@@ -496,10 +496,10 @@ async def twitter_search(event):
         )
     swi_ = f"🐦 Showing {len(reso)} Results!" if reso else "No User Found :("
     await event.answer(reso, switch_pm=swi_, switch_pm_param="start")
-    if _kazu_cache.get("twitter"):
-        _kazu_cache["twitter"].update({match: reso})
+    if _dante_cache.get("twitter"):
+        _dante_cache["twitter"].update({match: reso})
     else:
-        _kazu_cache.update({"twitter": {match: reso}})
+        _dante_cache.update({"twitter": {match: reso}})
 
 
 _savn_cache = {}
