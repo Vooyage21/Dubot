@@ -59,7 +59,7 @@ async def af(e):
             txt, btn = get_msg_button(wt.text)
         add_filter(chat, wrd, txt, None, btn)
     await e.eor(get_string("flr_4").format(wrd))
-    kazu_bot.add_handler(filter_func, events.NewMessage())
+    dante_bot.add_handler(filter_func, events.NewMessage())
 
 
 @dante_cmd(pattern="remfilter( (.*)|$)")
@@ -99,4 +99,4 @@ async def filter_func(e):
 
 
 if udB.get_key("FILTERS"):
-    kazu_bot.add_handler(filter_func, events.NewMessage())
+    dante_bot.add_handler(filter_func, events.NewMessage())
