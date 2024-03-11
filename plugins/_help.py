@@ -109,5 +109,5 @@ async def _help(dante):
             )
         except BotInlineDisabledError:
             return await dante.eor(get_string("help_3"))
-        await results[0].click(chat.id, reply_to=kazu.reply_to_msg_id, hide_via=True)
+        await results[0].click(chat.id, reply_to=dante.reply_to_msg_id, hide_via=True)
         await dante.delete()
