@@ -41,7 +41,7 @@ async def warn(e):
         try:
             user = e.text.split()[1]
             if user.startswith("@"):
-                ok = await kazu_bot.get_entity(user)
+                ok = await dante_bot.get_entity(user)
                 user = ok.id
             else:
                 user = int(user)
@@ -80,7 +80,7 @@ async def warn(e):
                 return await e.eor("`Ada yang salah.`", time=5)
         add_warn(e.chat_id, user, count + 1, r)
         c, r = warns(e.chat_id, user)
-        ok = await kazu_bot.get_entity(user)
+        ok = await dante_bot.get_entity(user)
         user = inline_mention(ok)
         r = r.split("|$|")
         text = f"Pengguna {user} Mendapat {action} Karena {count+1} Peringatan.\n\n"
@@ -89,7 +89,7 @@ async def warn(e):
         await e.eor(text)
         return reset_warn(e.chat_id, ok.id)
     add_warn(e.chat_id, user, count + 1, r)
-    ok = await kazu_bot.get_entity(user)
+    ok = await dante_bot.get_entity(user)
     user = inline_mention(ok)
     await eor(
         e,
