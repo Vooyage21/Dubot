@@ -316,7 +316,7 @@ async def update(eve):
         await eve.edit(get_string("clst_1"))
         call_back()
         await bash("git pull && pip3 install -r requirements.txt")
-        execl(sys.executable, sys.executable, "-m", "Kazu")
+        execl(sys.executable, sys.executable, "-m", "dante")
 
 
 @callback(re.compile("changes(.*)"), owner=True)
@@ -350,7 +350,7 @@ async def changes(okk):
     if len(changelog_str) > 1024:
         await okk.edit(get_string("upd_4"))
         await asyncio.sleep(2)
-        with open("kazu_updates.txt", "w+") as file:
+        with open("dante_updates.txt", "w+") as file:
             file.write(tl_chnglog)
         await okk.edit(
             get_string("upd_5"),
