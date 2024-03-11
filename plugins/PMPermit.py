@@ -212,7 +212,7 @@ if udB.get_key("PMSETTING"):
         if not is_approved(user.id) and event.text != UND:
             if Redis("MOVE_ARCHIVE"):
                 try:
-                    await kazu_bot.edit_folder(user.id, folder=1)
+                    await dante_bot.edit_folder(user.id, folder=1)
                 except BaseException as er:
                     LOGS.info(er)
             if event.media and not udB.get_key("DISABLE_PMDEL"):
@@ -264,7 +264,7 @@ if udB.get_key("PMSETTING"):
                     )
                     update_pm(user.id, message_, wrn)
                     if inline_pm:
-                        results = await kazu_bot.inline_query(
+                        results = await dante_bot.inline_query(
                             my_bot, f"ip_{user.id}"
                         )
                         try:
@@ -300,7 +300,7 @@ if udB.get_key("PMSETTING"):
                     update_pm(user.id, message_, wrn)
                     if inline_pm:
                         try:
-                            results = await kazu_bot.inline_query(
+                            results = await dante_bot.inline_query(
                                 my_bot, f"ip_{user.id}"
                             )
                             _to_delete[user.id] = await results[0].click(
@@ -610,7 +610,7 @@ async def list_approved(event):
     users = []
     for i in all:
         try:
-            name = get_display_name(await kazu_bot.get_entity(i))
+            name = get_display_name(await dante_bot.get_entity(i))
         except BaseException:
             name = ""
         users.append([name.strip(), str(i)])
@@ -635,7 +635,7 @@ async def list_approved(event):
     re.compile(
         b"approve_(.*)",
     ),
-    from_users=[kazu_bot.uid],
+    from_users=[dante_bot.uid],
 )
 async def apr_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
@@ -644,11 +644,11 @@ async def apr_in(event):
     if not is_approved(uid):
         approve_user(uid)
         try:
-            await kazu_bot.edit_folder(uid, folder=0)
+            await dante_bot.edit_folder(uid, folder=0)
         except BaseException:
             pass
         try:
-            user = await kazu_bot.get_entity(uid)
+            user = await dante_bot.get_entity(uid)
         except BaseException:
             return await event.delete()
         await event.edit(
@@ -716,7 +716,7 @@ async def disapr_in(event):
     re.compile(
         b"block_(.*)",
     ),
-    from_users=[kazu_bot.uid],
+    from_users=[dante_bot.uid],
 )
 async def blck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
@@ -725,7 +725,7 @@ async def blck_in(event):
     except BaseException:
         pass
     try:
-        user = await kazu_bot.get_entity(uid)
+        user = await dante_bot.get_entity(uid)
     except BaseException:
         return await event.delete()
     await event.edit(
@@ -740,7 +740,7 @@ async def blck_in(event):
     re.compile(
         b"unblock_(.*)",
     ),
-    from_users=[kazu_bot.uid],
+    from_users=[dante_bot.uid],
 )
 async def unblck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
@@ -749,7 +749,7 @@ async def unblck_in(event):
     except BaseException:
         pass
     try:
-        user = await kazu_bot.get_entity(uid)
+        user = await dante_bot.get_entity(uid)
     except BaseException:
         return await event.delete()
     await event.edit(
@@ -766,7 +766,7 @@ async def ytfuxist(e):
         await e.answer("Deleted.")
         await e.delete()
     except BaseException:
-        await kazu_bot.delete_messages(e.chat_id, e.id)
+        await dante_bot.delete_messages(e.chat_id, e.id)
 
 
 @in_pattern(re.compile("ip_(.*)"), owner=True)
@@ -835,10 +835,10 @@ async def in_pm_ans(event):
                 content=cont,
             )
         ]
-    await event.answer(res, switch_pm="• Kazu •", switch_pm_param="start")
+    await event.answer(res, switch_pm="• dante •", switch_pm_param="start")
 
 
-@callback(re.compile("admin_only(.*)"), from_users=[kazu_bot.uid])
+@callback(re.compile("admin_only(.*)"), from_users=[dante_bot.uid])
 async def _admin_tools(event):
     chat = int(event.pattern_match.group(1).strip())
     await event.edit(
