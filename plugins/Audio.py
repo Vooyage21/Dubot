@@ -121,7 +121,7 @@ async def trim_aud(e):
         await e.client.send_file(
             e.chat_id,
             mmmm,
-            thumb=KazuConfig.thumb,
+            thumb=danteConfig.thumb,
             caption=caption,
             attributes=attributes,
             force_document=False,
@@ -165,7 +165,7 @@ async def ex_aud(e):
         e.chat_id,
         fo,
         caption=get_string("audiotools_10"),
-        thumb=KazuConfig.thumb,
+        thumb=danteConfig.thumb,
         attributes=attributes,
         reply_to=e.reply_to_msg_id,
     )
