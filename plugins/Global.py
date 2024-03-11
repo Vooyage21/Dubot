@@ -275,7 +275,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await kazu_bot(
+                    await dante_bot(
                         EditAdminRequest(
                             x.id,
                             user,
@@ -389,7 +389,7 @@ async def _(e):
         userid = int(userid)
         name = str(userid)
     chats = 0
-    if userid == kazu_bot.uid:
+    if userid == dante_bot.uid:
         return await xx.eor("`Aku tidak bisa membohongi diriku sendiri.`", time=3)
     elif userid in DEVLIST:
         return await xx.eor("`Saya tidak dapat melakukan gban pada Pengembang saya.`", time=3)
@@ -516,7 +516,7 @@ async def gcast(event):
     text += f"Berhasil di {done} obrolan, kesalahan {er} obrolan(s)"
     if err != "":
         open("gcast-error.log", "w+").write(err)
-        text += f"\Anda dapat melakukan `{HNDLR}kazu gcast-error.log` untuk mengetahui laporan kesalahan."
+        text += f"\Anda dapat melakukan `{HNDLR}dante gcast-error.log` untuk mengetahui laporan kesalahan."
     await kk.edit(text)
 
 
@@ -695,7 +695,7 @@ async def list_gengbanned(event):
             )
         await x.reply(
             file="gbanned.txt",
-            message=f"List of users GBanned by {inline_mention(kazu_bot.me)}",
+            message=f"List of users GBanned by {inline_mention(dante_bot.me)}",
         )
         os.remove("gbanned.txt")
         await x.delete()
