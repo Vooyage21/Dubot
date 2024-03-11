@@ -109,4 +109,4 @@ async def notes(e):
 
 
 if udB.get_key("NOTE"):
-    kazu_bot.add_handler(notes, events.NewMessage())
+    dante_bot.add_handler(notes, events.NewMessage())
