@@ -46,7 +46,6 @@ TAKE_EDITS = udB.get_key("TAKE_EDITS")
 black_list_chats = udB.get_key("BLACKLIST_CHATS")
 allow_sudo = SUDO_M.should_allow_sudo
 
-
 def compile_pattern(data, hndlr):
     if data.startswith("^"):
         data = data[1:]
@@ -244,7 +243,7 @@ def dante_cmd(
             def func_(x):
                 return not x.via_bot_id and not (x.is_channel and x.chat.broadcast)
 
-            kazu_bot.add_event_handler(
+            dante_bot.add_event_handler(
                 wrapp,
                 MessageEdited(
                     pattern=cmd,
